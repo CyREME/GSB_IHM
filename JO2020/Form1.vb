@@ -3,8 +3,6 @@ Imports System.Reflection.Metadata
 
 Public Class Form1
 
-    Dim dateNaiss As String = ""
-
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim nom As String = Me.TextBox1.Text
         Dim prenom As String = Me.TextBox2.Text
@@ -54,8 +52,9 @@ Public Class Form1
 
 
         If Date_Jour.Text <> "" And jour >= 1 AndAlso jour <= MaxJour Then
-            dateNaiss = jour & " " & dateNaiss
-            DateN.Text = dateNaiss
+            DateN.Text = jour & " " & mois & " " & an
+        Else
+            DateN.Text = mois & " " & an
         End If
 
     End Sub
@@ -89,11 +88,12 @@ Public Class Form1
 
 
             Dim culture As CultureInfo = CultureInfo.CurrentCulture
-            dateNaiss = culture.DateTimeFormat.AbbreviatedMonthNames(mois - 1) & " " & dateNaiss
+            DateN.Text = culture.DateTimeFormat.AbbreviatedMonthNames(mois - 1) & " " & Me.Date_An.Text
+            Date_Mois.Focus()
 
-            DateN.Text = dateNaiss
+        Else
 
-
+            DateN.Text = Me.Date_An.Text
         End If
 
 
@@ -125,10 +125,12 @@ Public Class Form1
 
         If Date_An.TextLength = 4 And an >= 1950 AndAlso an <= 2009 Then
             Date_Mois.Enabled = True
-
-            dateNaiss = an
-            DateN.Text = dateNaiss
-
+            DateN.Text = Date_An.Text
+            Date_Mois.Focus()
+        Else
+            Date_Mois.Enabled = False
+            Date_Jour.Enabled = False
+            DateN.Text = ""
         End If
 
 
