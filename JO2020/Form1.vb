@@ -11,17 +11,17 @@ Public Class Form1
 
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim nom As String = Me.PreomInput.Text
+        Dim nom As String = Me.PrenomInput.Text
         Dim prenom As String = Me.NomInput.Text
         Dim DayBorn As Integer = Me.Date_Jour.Text
         Dim MonthBorn As Integer = Me.Date_Mois.Text
         Dim YearBorn As Integer = Me.Date_An.Text
-        Dim discipline As String = Me.ComboBox1.SelectedItem.ToString()
-        Dim score As Integer = Me.TextBox5.Text
-        Dim abandon As Boolean = Me.RadioButton1.Checked
-        Dim m_OR As Boolean = Me.RadioButton2.Checked
-        Dim m_argent As Boolean = Me.RadioButton3.Checked
-        Dim m_bronze As Boolean = Me.RadioButton4.Checked
+        Dim discipline As String = Me.Selection_Sport.SelectedItem.ToString()
+        Dim score As Integer = Me.Score.Text
+        Dim abandon As Boolean = Me.Abandon.Checked
+        Dim m_OR As Boolean = Me.Medaille_Or.Checked
+        Dim m_argent As Boolean = Me.Medaille_Argent.Checked
+        Dim m_bronze As Boolean = Me.Medaille_Bronze.Checked
 
         Dim fenetre As New Form2(nom, prenom, DayBorn, MonthBorn, YearBorn, discipline,
                                  score, abandon, m_OR, m_argent, m_bronze)
@@ -162,8 +162,8 @@ Public Class Form1
 
     End Sub
 
-    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles PreomInput.TextChanged
-        If PreomInput.Text <> "" Then
+    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles PrenomInput.TextChanged
+        If PrenomInput.Text <> "" Then
             Champ_P = True
         Else
             Champ_P = False
@@ -181,8 +181,8 @@ Public Class Form1
         End If
     End Function
 
-    Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
-        If ComboBox1.SelectedItem.ToString() <> "" Then
+    Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Selection_Sport.SelectedIndexChanged
+        If Selection_Sport.SelectedItem.ToString() <> "" Then
             Champ_S = True
         Else
             Champ_S = False
@@ -192,24 +192,24 @@ Public Class Form1
 
     End Sub
 
-    Private Sub TextBox5_TextChanged(sender As Object, e As EventArgs) Handles RadioButton2.CheckedChanged, RadioButton3.CheckedChanged, RadioButton4.CheckedChanged
-        If RadioButton2.Checked Then
-            TextBox5.Text = "1"
-        ElseIf RadioButton3.Checked Then
-            TextBox5.Text = "2"
-        ElseIf RadioButton4.Checked Then
-            TextBox5.Text = "3"
+    Private Sub TextBox5_TextChanged(sender As Object, e As EventArgs) Handles Medaille_Or.CheckedChanged, Medaille_Argent.CheckedChanged, Medaille_Bronze.CheckedChanged
+        If Medaille_Or.Checked Then
+            Score.Text = "1"
+        ElseIf Medaille_Argent.Checked Then
+            Score.Text = "2"
+        ElseIf Medaille_Bronze.Checked Then
+            Score.Text = "3"
         End If
     End Sub
 
-    Private Sub TextBox5_TextChanged_1(sender As Object, e As EventArgs) Handles TextBox5.TextChanged
-        If TextBox5.Text = "1" Then
-            RadioButton2.Checked = True
-        ElseIf TextBox5.Text = "2" Then
+    Private Sub TextBox5_TextChanged_1(sender As Object, e As EventArgs) Handles Score.TextChanged
+        If Score.Text = "1" Then
+            Medaille_Or.Checked = True
+        ElseIf Score.Text = "2" Then
 
-            RadioButton3.Checked = True
-        ElseIf TextBox5.Text = "3" Then
-            RadioButton4.Checked = True
+            Medaille_Argent.Checked = True
+        ElseIf Score.Text = "3" Then
+            Medaille_Bronze.Checked = True
 
 
         End If
