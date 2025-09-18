@@ -1,11 +1,18 @@
 ﻿Imports System.Globalization
 Imports System.Reflection.Metadata
+Imports System.Text.RegularExpressions
 
 Public Class Form1
 
+    Dim Champ_N As Boolean = False
+    Dim Champ_P As Boolean = False
+    Dim Champ_D As Boolean = False
+    Dim Champ_S As Boolean = False
+
+
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim nom As String = Me.TextBox1.Text
-        Dim prenom As String = Me.TextBox2.Text
+        Dim nom As String = Me.PreomInput.Text
+        Dim prenom As String = Me.NomInput.Text
         Dim DayBorn As Integer = Me.Date_Jour.Text
         Dim MonthBorn As Integer = Me.Date_Mois.Text
         Dim YearBorn As Integer = Me.Date_An.Text
@@ -22,6 +29,9 @@ Public Class Form1
         fenetre.Show()
 
     End Sub
+
+
+
 
     Private Sub Label4_Click(sender As Object, e As EventArgs) Handles Date_Jour.TextChanged
         Dim dateStr As String = Date_Jour.Text & "/" & Date_Mois.Text & "/" & Date_An.Text
@@ -52,11 +62,14 @@ Public Class Form1
 
 
         If Date_Jour.Text <> "" And jour >= 1 AndAlso jour <= MaxJour Then
-            DateN.Text = jour & " " & mois & " " & an
+            Dim culture As CultureInfo = CultureInfo.CurrentCulture
+            DateN.Text = jour & " " & culture.DateTimeFormat.AbbreviatedMonthNames(mois - 1) & " " & an
+            Champ_D = True
         Else
             DateN.Text = mois & " " & an
         End If
 
+        button_enabled()
     End Sub
 
     Private Sub Date_Mois_TextChanged(sender As Object, e As EventArgs) Handles Date_Mois.TextChanged
@@ -135,5 +148,74 @@ Public Class Form1
 
 
 
+
     End Sub
+
+    Private Sub TextBox2_TextChanged(sender As Object, e As EventArgs) Handles NomInput.TextChanged
+        If NomInput.Text <> "" Then
+            Champ_N = True
+        Else
+            Champ_N = False
+        End If
+
+        button_enabled()
+
+    End Sub
+
+    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles PreomInput.TextChanged
+        If PreomInput.Text <> "" Then
+            Champ_P = True
+        Else
+            Champ_P = False
+        End If
+
+        button_enabled()
+
+    End Sub
+
+    Public Function button_enabled() As Boolean
+        If Champ_N And Champ_P And Champ_D And Champ_S Then
+            Button1.Enabled = True
+        Else
+            Button1.Enabled = False
+        End If
+    End Function
+
+    Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
+        If ComboBox1.SelectedItem.ToString() <> "" Then
+            Champ_S = True
+        Else
+            Champ_S = False
+        End If
+
+        button_enabled()
+
+    End Sub
+
+    Private Sub TextBox5_TextChanged(sender As Object, e As EventArgs) Handles RadioButton2.CheckedChanged, RadioButton3.CheckedChanged, RadioButton4.CheckedChanged
+        If RadioButton2.Checked Then
+            TextBox5.Text = "1"
+        ElseIf RadioButton3.Checked Then
+            TextBox5.Text = "2"
+        ElseIf RadioButton4.Checked Then
+            TextBox5.Text = "3"
+        End If
+    End Sub
+
+    Private Sub TextBox5_TextChanged_1(sender As Object, e As EventArgs) Handles TextBox5.TextChanged
+        If TextBox5.Text = "1" Then
+            RadioButton2.Checked = True
+        ElseIf TextBox5.Text = "2" Then
+
+            RadioButton3.Checked = True
+        ElseIf TextBox5.Text = "3" Then
+            RadioButton4.Checked = True
+
+
+        End If
+    End Sub
+
 End Class
+
+
+

@@ -5,10 +5,20 @@
                    score As Integer,
                    abandon As Boolean,
                    m_OR As Boolean, m_argent As Boolean, m_bronze As Boolean)
+
+        Dim Month_s As String = Format(MonthBorn, "00")
+        Dim Day_s As String = Format(MonthBorn, "00")
+
+        Dim Age As Integer = Year(DateTime.Now) - YearBorn
+
+
         ' This call is required by the designer.
         InitializeComponent()
         ' Add any initialization after the InitializeComponent() call.
-        Me.Label1.Text = nom & " " & prenom & "née le " & DayBorn & "/" & MonthBorn & "/" & YearBorn
+
+
+
+        Me.Label1.Text = Form1.Text & " " & prenom & ", " & Age & " ans née le " & Day_s & "/" & Month_s & "/" & Form1.Date_An.Text
 
         If discipline.ToLower() = "badminton" Then
             Me.Label2.Text = "Discipline : BAD"
@@ -41,5 +51,4 @@
         Me.Label5.Text = medals
 
     End Sub
-
 End Class
