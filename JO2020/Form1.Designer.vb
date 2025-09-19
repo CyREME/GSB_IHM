@@ -24,8 +24,8 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Label1 = New Label()
         Label2 = New Label()
-        TextBox1 = New TextBox()
-        TextBox2 = New TextBox()
+        PreomInput = New TextBox()
+        NomInput = New TextBox()
         Label3 = New Label()
         Date_Jour = New TextBox()
         Label5 = New Label()
@@ -53,45 +53,44 @@ Partial Class Form1
         Label1.AutoSize = True
         Label1.Location = New Point(21, 69)
         Label1.Name = "Label1"
-        Label1.Size = New Size(34, 15)
+        Label1.Size = New Size(45, 15)
         Label1.TabIndex = 0
-        Label1.Text = "Nom"
+        Label1.Text = "Nom  *"
         ' 
         ' Label2
         ' 
         Label2.AutoSize = True
         Label2.Location = New Point(21, 120)
         Label2.Name = "Label2"
-        Label2.Size = New Size(54, 15)
+        Label2.Size = New Size(65, 15)
         Label2.TabIndex = 1
-        Label2.Text = "Prénoms"
+        Label2.Text = "Prénoms  *"
         ' 
-        ' TextBox1
+        ' PreomInput
         ' 
-        TextBox1.Location = New Point(101, 120)
-        TextBox1.Name = "TextBox1"
-        TextBox1.Size = New Size(348, 23)
-        TextBox1.TabIndex = 2
+        PreomInput.Location = New Point(101, 120)
+        PreomInput.Name = "PreomInput"
+        PreomInput.Size = New Size(348, 23)
+        PreomInput.TabIndex = 2
         ' 
-        ' TextBox2
+        ' NomInput
         ' 
-        TextBox2.Location = New Point(101, 69)
-        TextBox2.Name = "TextBox2"
-        TextBox2.Size = New Size(348, 23)
-        TextBox2.TabIndex = 3
+        NomInput.Location = New Point(101, 69)
+        NomInput.Name = "NomInput"
+        NomInput.Size = New Size(348, 23)
+        NomInput.TabIndex = 3
         ' 
         ' Label3
         ' 
         Label3.AutoSize = True
         Label3.Location = New Point(21, 275)
         Label3.Name = "Label3"
-        Label3.Size = New Size(53, 15)
+        Label3.Size = New Size(64, 15)
         Label3.TabIndex = 4
-        Label3.Text = "Dicipline"
+        Label3.Text = "Dicipline  *"
         ' 
         ' Date_Jour
         ' 
-        Date_Jour.Enabled = False
         Date_Jour.Location = New Point(101, 234)
         Date_Jour.MaxLength = 2
         Date_Jour.Name = "Date_Jour"
@@ -103,9 +102,9 @@ Partial Class Form1
         Label5.AutoSize = True
         Label5.Location = New Point(21, 237)
         Label5.Name = "Label5"
-        Label5.Size = New Size(31, 15)
+        Label5.Size = New Size(42, 15)
         Label5.TabIndex = 10
-        Label5.Text = "Date"
+        Label5.Text = "Date  *"
         ' 
         ' GroupBox1
         ' 
@@ -127,8 +126,8 @@ Partial Class Form1
         GroupBox1.Controls.Add(Label5)
         GroupBox1.Controls.Add(Label3)
         GroupBox1.Controls.Add(Date_Jour)
-        GroupBox1.Controls.Add(TextBox2)
-        GroupBox1.Controls.Add(TextBox1)
+        GroupBox1.Controls.Add(NomInput)
+        GroupBox1.Controls.Add(PreomInput)
         GroupBox1.Location = New Point(12, 74)
         GroupBox1.Name = "GroupBox1"
         GroupBox1.Size = New Size(461, 488)
@@ -188,8 +187,9 @@ Partial Class Form1
         ' 
         ' ComboBox1
         ' 
+        ComboBox1.DropDownStyle = ComboBoxStyle.DropDownList
         ComboBox1.FormattingEnabled = True
-        ComboBox1.Items.AddRange(New Object() {"Badminton", "Athlétisme", "Aviron"})
+        ComboBox1.Items.AddRange(New Object() {"Badminton", "Athlétisme", "Aviron", "BasketBall", "Football"})
         ComboBox1.Location = New Point(101, 272)
         ComboBox1.Name = "ComboBox1"
         ComboBox1.Size = New Size(348, 23)
@@ -227,6 +227,7 @@ Partial Class Form1
         ' 
         ' Date_An
         ' 
+        Date_An.Enabled = False
         Date_An.Location = New Point(185, 234)
         Date_An.MaxLength = 4
         Date_An.Name = "Date_An"
@@ -279,6 +280,7 @@ Partial Class Form1
         ' 
         Button1.BackColor = Color.IndianRed
         Button1.BackgroundImageLayout = ImageLayout.None
+        Button1.Enabled = False
         Button1.FlatAppearance.BorderColor = Color.FromArgb(CByte(255), CByte(128), CByte(128))
         Button1.FlatAppearance.BorderSize = 0
         Button1.ForeColor = Color.White
@@ -308,8 +310,8 @@ Partial Class Form1
 
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
-    Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents PreomInput As TextBox
+    Friend WithEvents NomInput As TextBox
     Friend WithEvents Label3 As Label
     Friend WithEvents Date_Jour As TextBox
     Friend WithEvents Label5 As Label
