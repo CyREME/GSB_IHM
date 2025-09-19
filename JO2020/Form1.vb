@@ -36,22 +36,19 @@ Public Class Form1
     Private Sub Label4_Click(sender As Object, e As EventArgs) Handles Date_Jour.TextChanged
         Dim dateStr As String = Date_Jour.Text & "/" & Date_Mois.Text & "/" & Date_An.Text
 
-
     End Sub
 
     Private Sub Date_Jour_TextChanged(sender As Object, e As EventArgs) Handles Date_Jour.TextChanged
         Dim jour As Integer
-        Dim mois As Integer = Date_Mois.Text
-        Dim an As Integer = Date_An.Text
-        Dim MaxJour As Integer = DateTime.DaysInMonth(an, mois)
+
 
         If Date_Jour.Text = "" Then
             Date_Jour.Focus()
 
         ElseIf Integer.TryParse(Date_Jour.Text, jour) Then
-            If jour < 1 Or jour > MaxJour Then
+            If jour < 1 Or jour > 31 Then
                 Date_Jour.Text = ""
-                MessageBox.Show("Le jour doit être compris entre 1 et " & MaxJour)
+                MessageBox.Show("Le jour doit être compris entre 1 et 31")
             End If
 
         Else
@@ -61,12 +58,13 @@ Public Class Form1
 
 
 
-        If Date_Jour.Text <> "" And jour >= 1 AndAlso jour <= MaxJour Then
-            Dim culture As CultureInfo = CultureInfo.CurrentCulture
-            DateN.Text = jour & " " & culture.DateTimeFormat.AbbreviatedMonthNames(mois - 1) & " " & an
-            Champ_D = True
+        If Date_Jour.Text <> "" And jour >= 1 AndAlso jour <= 31 Then
+            Date_Mois.Enabled = True
+
+            DateN.Text = jour
+
         Else
-            DateN.Text = mois & " " & an
+            DateN.Text = ""
         End If
 
         button_enabled()
@@ -84,7 +82,7 @@ Public Class Form1
             If mois < 1 Or mois > 12 Then
                 Date_Mois.Text = ""
                 MessageBox.Show("Le mois doit être comprise entre 1 et 12")
-                Date_Jour.Enabled = False
+                Date_An.Enabled = False
 
             End If
 
@@ -92,21 +90,20 @@ Public Class Form1
         ElseIf Not Integer.TryParse(Date_Mois.Text, mois) And Date_Mois.Text <> "" Then
             Date_Mois.Text = ""
             MessageBox.Show("Le mois doit être un nombre entier")
-            Date_Jour.Enabled = False
+            Date_An.Enabled = False
         End If
 
         If mois >= 1 AndAlso mois <= 12 Then
             Date_Jour.Enabled = True
 
-
-
             Dim culture As CultureInfo = CultureInfo.CurrentCulture
-            DateN.Text = culture.DateTimeFormat.AbbreviatedMonthNames(mois - 1) & " " & Me.Date_An.Text
-            Date_Mois.Focus()
+            DateN.Text = Date_Jour.Text & " " & culture.DateTimeFormat.AbbreviatedMonthNames(mois - 1)
+            Date_An.Enabled = True
+            Date_An.Focus()
 
         Else
 
-            DateN.Text = Me.Date_An.Text
+            DateN.Text = Date_Jour.Text
         End If
 
 
@@ -115,6 +112,9 @@ Public Class Form1
 
     Private Sub Date_An_TextChanged(sender As Object, e As EventArgs) Handles Date_An.TextChanged
         Dim an As Integer
+        Dim mois As Integer = Date_Mois.Text
+        Dim jour As Integer = Date_Jour.Text
+        Dim MaxJour As Integer = DateTime.DaysInMonth(an, mois)
 
         If Integer.TryParse(Date_An.Text, an) Then
 
@@ -125,8 +125,10 @@ Public Class Form1
 
                 End If
 
-            Else
-                Date_Mois.Enabled = False
+                If jour >= 0 AndAlso jour > MaxJour Then
+                    MessageBox.Show("Le jour doit être compris entre 1 et " & MaxJour)
+                    Date_Jour.Focus()
+                End If
 
             End If
 
@@ -137,9 +139,9 @@ Public Class Form1
 
 
         If Date_An.TextLength = 4 And an >= 1950 AndAlso an <= 2009 Then
-            Date_Mois.Enabled = True
-            DateN.Text = Date_An.Text
-            Date_Mois.Focus()
+            DateN.Text = DateN.Text & " " & Date_An.Text
+
+            Champ_D = True
         Else
             Date_Mois.Enabled = False
             Date_Jour.Enabled = False

@@ -91,7 +91,6 @@ Partial Class Form1
         ' 
         ' Date_Jour
         ' 
-        Date_Jour.Enabled = False
         Date_Jour.Location = New Point(101, 234)
         Date_Jour.MaxLength = 2
         Date_Jour.Name = "Date_Jour"
@@ -228,6 +227,7 @@ Partial Class Form1
         ' 
         ' Date_An
         ' 
+        Date_An.Enabled = False
         Date_An.Location = New Point(185, 234)
         Date_An.MaxLength = 4
         Date_An.Name = "Date_An"
