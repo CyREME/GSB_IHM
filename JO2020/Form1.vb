@@ -11,24 +11,12 @@ Public Class Form1
 
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim nom As String = Me.PrenomInput.Text
-        Dim prenom As String = Me.NomInput.Text
-        Dim DayBorn As Integer = Me.Date_Jour.Text
-        Dim MonthBorn As Integer = Me.Date_Mois.Text
-        Dim YearBorn As Integer = Me.Date_An.Text
-        Dim discipline As String = Me.Selection_Sport.SelectedItem.ToString()
-        Dim score As Integer = Me.Score.Text
-        Dim abandon As Boolean = Me.Abandon.Checked
-        Dim m_OR As Boolean = Me.Medaille_Or.Checked
-        Dim m_argent As Boolean = Me.Medaille_Argent.Checked
-        Dim m_bronze As Boolean = Me.Medaille_Bronze.Checked
-
-        Dim fenetre As New Form2(nom, prenom, DayBorn, MonthBorn, YearBorn, discipline,
-                                 score, abandon, m_OR, m_argent, m_bronze)
-
+        Dim fenetre As New Form2()
         fenetre.Show()
 
     End Sub
+
+
 
 
 
@@ -110,15 +98,18 @@ Public Class Form1
 
     End Sub
     Private Sub Date_An_TextChanged(sender As Object, e As EventArgs) Handles Date_An.TextChanged
+        Dim culture As CultureInfo = CultureInfo.CurrentCulture
         Dim an As Integer
         Dim mois As Integer = Date_Mois.Text
         Dim jour As Integer = Date_Jour.Text
-        Dim MaxJour As Integer = DateTime.DaysInMonth(an, mois)
+
 
         If Integer.TryParse(Date_An.Text, an) Then
 
 
             If Date_An.TextLength = 4 Then
+
+                Dim MaxJour As Integer = DateTime.DaysInMonth(an, mois)
 
                 If an < 1950 Or an > 2009 Then
                     MessageBox.Show("L'année doit être comprise entre 1950 et 2009")
@@ -142,10 +133,11 @@ Public Class Form1
             DateN.Text = DateN.Text & " " & Date_An.Text
 
             Champ_D = True
+
         Else
-            Date_Mois.Enabled = False
-            Date_Jour.Enabled = False
-            DateN.Text = ""
+
+
+            DateN.Text = jour & " " & culture.DateTimeFormat.AbbreviatedMonthNames(mois - 1)
         End If
 
 
@@ -187,40 +179,60 @@ Public Class Form1
     End Function
 
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Selection_Sport.SelectedIndexChanged
-        If Selection_Sport.SelectedItem.ToString() <> "" Then
-            Champ_S = True
-        Else
-            Champ_S = False
-        End If
 
         button_enabled()
 
     End Sub
 
-    Private Sub TextBox5_TextChanged(sender As Object, e As EventArgs) Handles Medaille_Or.CheckedChanged, Medaille_Argent.CheckedChanged, Medaille_Bronze.CheckedChanged
+    Private Sub TextBox5_TextChanged(sender As Object, e As EventArgs) Handles Medaille_Or.CheckedChanged, Medaille_Argent.CheckedChanged, Medaille_Bronze.CheckedChanged, Abandon.CheckedChanged
         If Medaille_Or.Checked Then
             Score.Text = "1"
         ElseIf Medaille_Argent.Checked Then
             Score.Text = "2"
         ElseIf Medaille_Bronze.Checked Then
             Score.Text = "3"
+        ElseIf Abandon.Checked Then
+            Score.Text = "DNF"
         End If
     End Sub
 
     Private Sub TextBox5_TextChanged_1(sender As Object, e As EventArgs) Handles Score.TextChanged
-        If Score.Text = "1" Then
+
+        If Score.text = "1" Then
             Medaille_Or.Checked = True
-        ElseIf Score.Text = "2" Then
-
-            Medaille_Argent.Checked = True
-        ElseIf Score.Text = "3" Then
-            Medaille_Bronze.Checked = True
-
-
+        Else
+            Medaille_Or.Checked = False
         End If
-    End Sub
 
-    Private Sub RadioButton1_CheckedChanged(sender As Object, e As EventArgs) Handles Abandon.CheckedChanged
+
+        If Score.text = "2" Then
+            Medaille_Argent.Checked = True
+        Else
+            Medaille_Argent.Checked = False
+        End If
+
+        If Score.text = "3" Then
+            Medaille_Bronze.Checked = True
+        Else
+            Medaille_Bronze.Checked = False
+        End If
+
+        If Score.text = "DNF" Then
+            Abandon.Checked = True
+        Else
+            Abandon.Checked = False
+        End If
+
+
+        If Score.Text <> "" Then
+
+            Champ_S = True
+
+        Else
+            Champ_S = False
+        End If
+
+        button_enabled()
 
     End Sub
 
