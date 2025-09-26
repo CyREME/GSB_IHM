@@ -24,20 +24,20 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Label1 = New Label()
         Label2 = New Label()
-        PreomInput = New TextBox()
+        PrenomInput = New TextBox()
         NomInput = New TextBox()
         Label3 = New Label()
         Date_Jour = New TextBox()
         Label5 = New Label()
         GroupBox1 = New GroupBox()
         Label10 = New Label()
-        TextBox5 = New TextBox()
-        RadioButton4 = New RadioButton()
-        RadioButton3 = New RadioButton()
-        RadioButton2 = New RadioButton()
-        ComboBox1 = New ComboBox()
+        Score = New TextBox()
+        Medaille_Bronze = New RadioButton()
+        Medaille_Argent = New RadioButton()
+        Medaille_Or = New RadioButton()
+        Selection_Sport = New ComboBox()
         Label9 = New Label()
-        RadioButton1 = New RadioButton()
+        Abandon = New RadioButton()
         DateN = New Label()
         Date_An = New TextBox()
         Date_Mois = New TextBox()
@@ -66,12 +66,12 @@ Partial Class Form1
         Label2.TabIndex = 1
         Label2.Text = "Prénoms  *"
         ' 
-        ' PreomInput
+        ' PrenomInput
         ' 
-        PreomInput.Location = New Point(101, 120)
-        PreomInput.Name = "PreomInput"
-        PreomInput.Size = New Size(348, 23)
-        PreomInput.TabIndex = 2
+        PrenomInput.Location = New Point(101, 120)
+        PrenomInput.Name = "PrenomInput"
+        PrenomInput.Size = New Size(348, 23)
+        PrenomInput.TabIndex = 2
         ' 
         ' NomInput
         ' 
@@ -109,13 +109,13 @@ Partial Class Form1
         ' GroupBox1
         ' 
         GroupBox1.Controls.Add(Label10)
-        GroupBox1.Controls.Add(TextBox5)
-        GroupBox1.Controls.Add(RadioButton4)
-        GroupBox1.Controls.Add(RadioButton3)
-        GroupBox1.Controls.Add(RadioButton2)
-        GroupBox1.Controls.Add(ComboBox1)
+        GroupBox1.Controls.Add(Score)
+        GroupBox1.Controls.Add(Medaille_Bronze)
+        GroupBox1.Controls.Add(Medaille_Argent)
+        GroupBox1.Controls.Add(Medaille_Or)
+        GroupBox1.Controls.Add(Selection_Sport)
         GroupBox1.Controls.Add(Label9)
-        GroupBox1.Controls.Add(RadioButton1)
+        GroupBox1.Controls.Add(Abandon)
         GroupBox1.Controls.Add(DateN)
         GroupBox1.Controls.Add(Date_An)
         GroupBox1.Controls.Add(Date_Mois)
@@ -127,7 +127,7 @@ Partial Class Form1
         GroupBox1.Controls.Add(Label3)
         GroupBox1.Controls.Add(Date_Jour)
         GroupBox1.Controls.Add(NomInput)
-        GroupBox1.Controls.Add(PreomInput)
+        GroupBox1.Controls.Add(PrenomInput)
         GroupBox1.Location = New Point(12, 74)
         GroupBox1.Name = "GroupBox1"
         GroupBox1.Size = New Size(461, 488)
@@ -143,57 +143,57 @@ Partial Class Form1
         Label10.TabIndex = 25
         Label10.Text = "Score"
         ' 
-        ' TextBox5
+        ' Score
         ' 
-        TextBox5.Location = New Point(377, 362)
-        TextBox5.Name = "TextBox5"
-        TextBox5.Size = New Size(59, 23)
-        TextBox5.TabIndex = 24
+        Score.Location = New Point(377, 362)
+        Score.Name = "Score"
+        Score.Size = New Size(59, 23)
+        Score.TabIndex = 24
         ' 
-        ' RadioButton4
+        ' Medaille_Bronze
         ' 
-        RadioButton4.AutoSize = True
-        RadioButton4.CheckAlign = ContentAlignment.MiddleRight
-        RadioButton4.Location = New Point(201, 447)
-        RadioButton4.Name = "RadioButton4"
-        RadioButton4.Size = New Size(61, 19)
-        RadioButton4.TabIndex = 23
-        RadioButton4.TabStop = True
-        RadioButton4.Text = "Bronze"
-        RadioButton4.UseVisualStyleBackColor = True
+        Medaille_Bronze.AutoSize = True
+        Medaille_Bronze.CheckAlign = ContentAlignment.MiddleRight
+        Medaille_Bronze.Location = New Point(201, 447)
+        Medaille_Bronze.Name = "Medaille_Bronze"
+        Medaille_Bronze.Size = New Size(61, 19)
+        Medaille_Bronze.TabIndex = 23
+        Medaille_Bronze.TabStop = True
+        Medaille_Bronze.Text = "Bronze"
+        Medaille_Bronze.UseVisualStyleBackColor = True
         ' 
-        ' RadioButton3
+        ' Medaille_Argent
         ' 
-        RadioButton3.AutoSize = True
-        RadioButton3.CheckAlign = ContentAlignment.MiddleRight
-        RadioButton3.Location = New Point(201, 422)
-        RadioButton3.Name = "RadioButton3"
-        RadioButton3.Size = New Size(61, 19)
-        RadioButton3.TabIndex = 22
-        RadioButton3.TabStop = True
-        RadioButton3.Text = "Argent"
-        RadioButton3.UseVisualStyleBackColor = True
+        Medaille_Argent.AutoSize = True
+        Medaille_Argent.CheckAlign = ContentAlignment.MiddleRight
+        Medaille_Argent.Location = New Point(201, 422)
+        Medaille_Argent.Name = "Medaille_Argent"
+        Medaille_Argent.Size = New Size(61, 19)
+        Medaille_Argent.TabIndex = 22
+        Medaille_Argent.TabStop = True
+        Medaille_Argent.Text = "Argent"
+        Medaille_Argent.UseVisualStyleBackColor = True
         ' 
-        ' RadioButton2
+        ' Medaille_Or
         ' 
-        RadioButton2.CheckAlign = ContentAlignment.MiddleRight
-        RadioButton2.Location = New Point(201, 397)
-        RadioButton2.Name = "RadioButton2"
-        RadioButton2.Size = New Size(61, 19)
-        RadioButton2.TabIndex = 21
-        RadioButton2.TabStop = True
-        RadioButton2.Text = "Or"
-        RadioButton2.UseVisualStyleBackColor = True
+        Medaille_Or.CheckAlign = ContentAlignment.MiddleRight
+        Medaille_Or.Location = New Point(201, 397)
+        Medaille_Or.Name = "Medaille_Or"
+        Medaille_Or.Size = New Size(61, 19)
+        Medaille_Or.TabIndex = 21
+        Medaille_Or.TabStop = True
+        Medaille_Or.Text = "Or"
+        Medaille_Or.UseVisualStyleBackColor = True
         ' 
-        ' ComboBox1
+        ' Selection_Sport
         ' 
-        ComboBox1.DropDownStyle = ComboBoxStyle.DropDownList
-        ComboBox1.FormattingEnabled = True
-        ComboBox1.Items.AddRange(New Object() {"Badminton", "Athlétisme", "Aviron", "BasketBall", "Football"})
-        ComboBox1.Location = New Point(101, 272)
-        ComboBox1.Name = "ComboBox1"
-        ComboBox1.Size = New Size(348, 23)
-        ComboBox1.TabIndex = 20
+        Selection_Sport.DropDownStyle = ComboBoxStyle.DropDownList
+        Selection_Sport.FormattingEnabled = True
+        Selection_Sport.Items.AddRange(New Object() {"Badminton", "Athlétisme", "Aviron", "BasketBall", "Football"})
+        Selection_Sport.Location = New Point(101, 272)
+        Selection_Sport.Name = "Selection_Sport"
+        Selection_Sport.Size = New Size(348, 23)
+        Selection_Sport.TabIndex = 20
         ' 
         ' Label9
         ' 
@@ -204,18 +204,18 @@ Partial Class Form1
         Label9.TabIndex = 19
         Label9.Text = "Médaille"
         ' 
-        ' RadioButton1
+        ' Abandon
         ' 
-        RadioButton1.AutoSize = True
-        RadioButton1.CheckAlign = ContentAlignment.MiddleRight
-        RadioButton1.Location = New Point(21, 363)
-        RadioButton1.Name = "RadioButton1"
-        RadioButton1.Size = New Size(74, 19)
-        RadioButton1.TabIndex = 18
-        RadioButton1.TabStop = True
-        RadioButton1.Text = "Abandon"
-        RadioButton1.TextImageRelation = TextImageRelation.TextAboveImage
-        RadioButton1.UseVisualStyleBackColor = True
+        Abandon.AutoSize = True
+        Abandon.CheckAlign = ContentAlignment.MiddleRight
+        Abandon.Location = New Point(21, 363)
+        Abandon.Name = "Abandon"
+        Abandon.Size = New Size(74, 19)
+        Abandon.TabIndex = 18
+        Abandon.TabStop = True
+        Abandon.Text = "Abandon"
+        Abandon.TextImageRelation = TextImageRelation.TextAboveImage
+        Abandon.UseVisualStyleBackColor = True
         ' 
         ' DateN
         ' 
@@ -310,7 +310,7 @@ Partial Class Form1
 
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
-    Friend WithEvents PreomInput As TextBox
+    Friend WithEvents PrenomInput As TextBox
     Friend WithEvents NomInput As TextBox
     Friend WithEvents Label3 As Label
     Friend WithEvents Date_Jour As TextBox
@@ -323,13 +323,13 @@ Partial Class Form1
     Friend WithEvents Date_An As TextBox
     Friend WithEvents Date_Mois As TextBox
     Friend WithEvents Label9 As Label
-    Friend WithEvents RadioButton1 As RadioButton
-    Friend WithEvents ComboBox1 As ComboBox
-    Friend WithEvents RadioButton2 As RadioButton
-    Friend WithEvents RadioButton4 As RadioButton
-    Friend WithEvents RadioButton3 As RadioButton
+    Friend WithEvents Abandon As RadioButton
+    Friend WithEvents Selection_Sport As ComboBox
+    Friend WithEvents Medaille_Or As RadioButton
+    Friend WithEvents Medaille_Bronze As RadioButton
+    Friend WithEvents Medaille_Argent As RadioButton
     Friend WithEvents Label10 As Label
-    Friend WithEvents TextBox5 As TextBox
+    Friend WithEvents Score As TextBox
     Friend WithEvents Button1 As Button
 
 End Class

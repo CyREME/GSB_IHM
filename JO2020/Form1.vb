@@ -109,7 +109,6 @@ Public Class Form1
 
 
     End Sub
-
     Private Sub Date_An_TextChanged(sender As Object, e As EventArgs) Handles Date_An.TextChanged
         Dim an As Integer
         Dim mois As Integer = Date_Mois.Text
@@ -153,6 +152,9 @@ Public Class Form1
 
     End Sub
 
+
+
+
     Private Sub TextBox2_TextChanged(sender As Object, e As EventArgs) Handles NomInput.TextChanged
         If NomInput.Text <> "" Then
             Champ_N = True
@@ -177,9 +179,9 @@ Public Class Form1
 
     Public Function button_enabled() As Boolean
         If Champ_N And Champ_P And Champ_D And Champ_S Then
-            Button1.Enabled = True
+            Return Button1.Enabled = True
         Else
-            Button1.Enabled = False
+            Return Button1.Enabled = False
         End If
     End Function
 
@@ -217,6 +219,9 @@ Public Class Form1
         End If
     End Sub
 
+    Private Sub RadioButton1_CheckedChanged(sender As Object, e As EventArgs) Handles Abandon.CheckedChanged
+
+    End Sub
 End Class
 
 
