@@ -99,7 +99,7 @@ Public Class Form1
             Dim culture As CultureInfo = CultureInfo.CurrentCulture
             DateN.Text = Date_Jour.Text & " " & culture.DateTimeFormat.AbbreviatedMonthNames(mois - 1)
             Date_An.Enabled = True
-            Date_An.Focus()
+
 
         Else
 
@@ -116,6 +116,7 @@ Public Class Form1
         Dim MaxJour As Integer = DateTime.DaysInMonth(an, mois)
 
         If Integer.TryParse(Date_An.Text, an) Then
+
 
             If Date_An.TextLength = 4 Then
 
@@ -220,6 +221,10 @@ Public Class Form1
     End Sub
 
     Private Sub RadioButton1_CheckedChanged(sender As Object, e As EventArgs) Handles Abandon.CheckedChanged
+
+    End Sub
+
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
 End Class
