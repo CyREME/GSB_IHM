@@ -28,20 +28,16 @@
         Me.Label4.Text = "Score : " & Form1.Score.Text
 
 
-        Dim medals As String = "Aucune médaille"
 
         If Form1.Medaille_Or.Checked Then
-            Me.Label5.Text = "Médaille d'Or"
-
+            Me.Label5.Text = "Médaille : Or"
         ElseIf Form1.Medaille_Argent.Checked Then
-            Me.Label5.Text = "Médaille d'Argent"
-
+            Me.Label5.Text = "Médaille : Argent"
         ElseIf Form1.Medaille_Bronze.Checked Then
-            Me.Label5.Text = "Médaille de Bronze"
-
+            Me.Label5.Text = "Médaille : Bronze"
+        Else
+            Me.Label5.Text = "Médaille : Aucune"
         End If
-
-        Me.Label5.Text = medals
 
     End Sub
 End Class

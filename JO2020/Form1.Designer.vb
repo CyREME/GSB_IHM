@@ -44,7 +44,7 @@ Partial Class Form1
         Label8 = New Label()
         Label7 = New Label()
         Label6 = New Label()
-        Button1 = New Button()
+        btnValide = New Button()
         GroupBox1.SuspendLayout()
         SuspendLayout()
         ' 
@@ -276,32 +276,32 @@ Partial Class Form1
         Label6.TabIndex = 13
         Label6.Text = "JO 2020"
         ' 
-        ' Button1
+        ' btnValide
         ' 
-        Button1.BackColor = Color.IndianRed
-        Button1.BackgroundImageLayout = ImageLayout.None
-        Button1.Enabled = False
-        Button1.FlatAppearance.BorderColor = Color.FromArgb(CByte(255), CByte(128), CByte(128))
-        Button1.FlatAppearance.BorderSize = 0
-        Button1.ForeColor = Color.White
-        Button1.Location = New Point(213, 578)
-        Button1.Margin = New Padding(0)
-        Button1.Name = "Button1"
-        Button1.Size = New Size(84, 29)
-        Button1.TabIndex = 14
-        Button1.Text = "Valider"
-        Button1.UseVisualStyleBackColor = False
+        btnValide.BackColor = Color.IndianRed
+        btnValide.BackgroundImageLayout = ImageLayout.None
+        btnValide.Enabled = False
+        btnValide.FlatAppearance.BorderColor = Color.FromArgb(CByte(255), CByte(128), CByte(128))
+        btnValide.FlatAppearance.BorderSize = 0
+        btnValide.ForeColor = Color.White
+        btnValide.Location = New Point(213, 578)
+        btnValide.Margin = New Padding(0)
+        btnValide.Name = "btnValide"
+        btnValide.Size = New Size(84, 29)
+        btnValide.TabIndex = 14
+        btnValide.Text = "Valider"
+        btnValide.UseVisualStyleBackColor = False
         ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(480, 631)
-        Controls.Add(Button1)
+        Controls.Add(btnValide)
         Controls.Add(Label6)
         Controls.Add(GroupBox1)
         Name = "Form1"
-        Text = "Form1"
+        Text = "JO 2020"
         GroupBox1.ResumeLayout(False)
         GroupBox1.PerformLayout()
         ResumeLayout(False)
@@ -330,6 +330,6 @@ Partial Class Form1
     Friend WithEvents Medaille_Argent As RadioButton
     Friend WithEvents Label10 As Label
     Friend WithEvents Score As TextBox
-    Friend WithEvents Button1 As Button
+    Friend WithEvents btnValide As Button
 
 End Class

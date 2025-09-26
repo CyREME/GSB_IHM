@@ -10,7 +10,7 @@ Public Class Form1
     Dim Champ_S As Boolean = False
 
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnValide.Click
         Dim fenetre As New Form2()
         fenetre.Show()
 
@@ -135,9 +135,8 @@ Public Class Form1
             Champ_D = True
 
         Else
-
-
             DateN.Text = jour & " " & culture.DateTimeFormat.AbbreviatedMonthNames(mois - 1)
+            Champ_D = False
         End If
 
 
@@ -170,15 +169,16 @@ Public Class Form1
 
     End Sub
 
-    Public Function button_enabled() As Boolean
-        If Champ_N And Champ_P And Champ_D And Champ_S Then
-            Return Button1.Enabled = True
-        Else
-            Return Button1.Enabled = False
-        End If
-    End Function
+    Public Sub button_enabled()
+
+        btnValide.Enabled = Champ_D And Champ_N And Champ_P And Champ_S And Selection_Sport.SelectedIndex <> -1
+
+    End Sub
+
+
 
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Selection_Sport.SelectedIndexChanged
+
 
         button_enabled()
 
