@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\24Sruault\\source\\repos\\CyREME\\GSB_IHM\\GSB\\GSB\\GSB.vbproj": {}
+    "C:\\Users\\emeri\\source\\repos\\CyREME\\GSB_IHM\\GSB\\GSB\\GSB.vbproj": {}
   },
   "projects": {
-    "C:\\Users\\24Sruault\\source\\repos\\CyREME\\GSB_IHM\\GSB\\GSB\\GSB.vbproj": {
+    "C:\\Users\\emeri\\source\\repos\\CyREME\\GSB_IHM\\GSB\\GSB\\GSB.vbproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\24Sruault\\source\\repos\\CyREME\\GSB_IHM\\GSB\\GSB\\GSB.vbproj",
+        "projectUniqueName": "C:\\Users\\emeri\\source\\repos\\CyREME\\GSB_IHM\\GSB\\GSB\\GSB.vbproj",
         "projectName": "GSB",
-        "projectPath": "C:\\Users\\24Sruault\\source\\repos\\CyREME\\GSB_IHM\\GSB\\GSB\\GSB.vbproj",
-        "packagesPath": "C:\\Users\\24Sruault\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\24Sruault\\source\\repos\\CyREME\\GSB_IHM\\GSB\\GSB\\obj\\",
+        "projectPath": "C:\\Users\\emeri\\source\\repos\\CyREME\\GSB_IHM\\GSB\\GSB\\GSB.vbproj",
+        "packagesPath": "C:\\Users\\emeri\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\emeri\\source\\repos\\CyREME\\GSB_IHM\\GSB\\GSB\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\24Sruault\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\emeri\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -68,7 +68,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
