@@ -1,0 +1,8 @@
+C:\Users\24Sruault\source\repos\CyREME\GSB_IHM\GSB\GSB\obj\Debug\net8.0-windows\GSB.Login.resources
+C:\Users\24Sruault\source\repos\CyREME\GSB_IHM\GSB\GSB\obj\Debug\net8.0-windows\GSB.Visiteur.resources
+C:\Users\24Sruault\source\repos\CyREME\GSB_IHM\GSB\GSB\obj\Debug\net8.0-windows\GSB.vbproj.GenerateResource.cache
+C:\Users\24Sruault\source\repos\CyREME\GSB_IHM\GSB\GSB\obj\Debug\net8.0-windows\GSB.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\24Sruault\source\repos\CyREME\GSB_IHM\GSB\GSB\obj\Debug\net8.0-windows\GSB.AssemblyInfoInputs.cache
+C:\Users\24Sruault\source\repos\CyREME\GSB_IHM\GSB\GSB\obj\Debug\net8.0-windows\GSB.AssemblyInfo.vb
+C:\Users\24Sruault\source\repos\CyREME\GSB_IHM\GSB\GSB\obj\Debug\net8.0-windows\GSB.vbproj.CoreCompileInputs.cache
+C:\Users\24Sruault\source\repos\CyREME\GSB_IHM\GSB\GSB\obj\Debug\net8.0-windows\GSB.sourcelink.json
