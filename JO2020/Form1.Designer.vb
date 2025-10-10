@@ -300,6 +300,7 @@ Partial Class Form1
         Controls.Add(btnValide)
         Controls.Add(Label6)
         Controls.Add(GroupBox1)
+        FormBorderStyle = FormBorderStyle.FixedSingle
         Name = "Form1"
         Text = "JO 2020"
         GroupBox1.ResumeLayout(False)
