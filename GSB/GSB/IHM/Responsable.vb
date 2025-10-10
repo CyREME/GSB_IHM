@@ -5,29 +5,26 @@ Public Class Login
     Private Property MoveForm_MousePosition As Point
 
     Private Sub Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        With Me
-            .Region = New Region()
-        End With
     End Sub
 
-    Private Sub Panel1_MouseUp(sender As Object, e As MouseEventArgs)
+    Private Sub Panel1_MouseUp(sender As Object, e As MouseEventArgs) Handles Panel1.MouseUp
         If e.Button = MouseButtons.Left Then
             MoveForm = False
-            Cursor = Cursors.Default
+            Me.Cursor = Cursors.Default
         End If
     End Sub
 
-    Private Sub Panel1_MouseDown(sender As Object, e As MouseEventArgs)
+    Private Sub Panel1_MouseDown(sender As Object, e As MouseEventArgs) Handles Panel1.MouseDown
         If e.Button = MouseButtons.Left Then
             MoveForm = True
-            Cursor = Cursors.Default
+            Me.Cursor = Cursors.Default
             MoveForm_MousePosition = e.Location
         End If
     End Sub
 
-    Private Sub Panel1_MouseMove(sender As Object, e As MouseEventArgs)
+    Private Sub Panel1_MouseMove(sender As Object, e As MouseEventArgs) Handles Panel1.MouseMove
         If MoveForm Then
-            Location = Location + (e.Location - MoveForm_MousePosition)
+            Me.Location = Me.Location + (e.Location - MoveForm_MousePosition)
         End If
     End Sub
 End Class
