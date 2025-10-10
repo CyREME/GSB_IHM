@@ -22,18 +22,9 @@ Partial Class Login
     'Ne la modifiez pas à l'aide de l'éditeur de code.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        SuspendLayout()
-        ' 
-        ' Login
-        ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
-        AutoScaleMode = AutoScaleMode.Font
-        BackColor = Color.FromArgb(CByte(83), CByte(175), CByte(255))
-        ClientSize = New Size(721, 602)
-        FormBorderStyle = FormBorderStyle.None
-        Name = "Login"
-        StartPosition = FormStartPosition.CenterScreen
-        Text = "Login"
-        ResumeLayout(False)
+        components = New System.ComponentModel.Container
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Text = "Login"
     End Sub
 End Class

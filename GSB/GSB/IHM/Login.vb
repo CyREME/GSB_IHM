@@ -1,33 +1,3 @@
-﻿Imports System.Drawing.Text
+﻿Public Class Login
 
-Public Class Login
-    Private Property MoveForm As Boolean
-    Private Property MoveForm_MousePosition As Point
-
-    Private Sub Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        With Me
-            .Region = New Region()
-        End With
-    End Sub
-
-    Private Sub Panel1_MouseUp(sender As Object, e As MouseEventArgs)
-        If e.Button = MouseButtons.Left Then
-            MoveForm = False
-            Cursor = Cursors.Default
-        End If
-    End Sub
-
-    Private Sub Panel1_MouseDown(sender As Object, e As MouseEventArgs)
-        If e.Button = MouseButtons.Left Then
-            MoveForm = True
-            Cursor = Cursors.Default
-            MoveForm_MousePosition = e.Location
-        End If
-    End Sub
-
-    Private Sub Panel1_MouseMove(sender As Object, e As MouseEventArgs)
-        If MoveForm Then
-            Location = Location + (e.Location - MoveForm_MousePosition)
-        End If
-    End Sub
 End Class
