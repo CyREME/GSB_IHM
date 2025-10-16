@@ -32,7 +32,7 @@ Partial Class Login
         PictureBox2 = New PictureBox()
         Panel4 = New Panel()
         Txt_Password = New TextBox()
-        Panel5 = New Panel()
+        PanelHeader = New Panel()
         btn_exit = New Button()
         Panel6 = New Panel()
         Button1 = New Button()
@@ -42,7 +42,7 @@ Partial Class Login
         Panel3.SuspendLayout()
         CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
         Panel4.SuspendLayout()
-        Panel5.SuspendLayout()
+        PanelHeader.SuspendLayout()
         Panel6.SuspendLayout()
         SuspendLayout()
         ' 
@@ -137,14 +137,15 @@ Partial Class Login
         Txt_Password.Size = New Size(200, 32)
         Txt_Password.TabIndex = 3
         ' 
-        ' Panel5
+        ' PanelHeader
         ' 
-        Panel5.Controls.Add(btn_exit)
-        Panel5.Controls.Add(Login_label)
-        Panel5.Location = New Point(0, 0)
-        Panel5.Name = "Panel5"
-        Panel5.Size = New Size(721, 100)
-        Panel5.TabIndex = 3
+        PanelHeader.Controls.Add(btn_exit)
+        PanelHeader.Controls.Add(Login_label)
+        PanelHeader.Dock = DockStyle.Top
+        PanelHeader.Location = New Point(0, 0)
+        PanelHeader.Name = "PanelHeader"
+        PanelHeader.Size = New Size(721, 100)
+        PanelHeader.TabIndex = 3
         ' 
         ' btn_exit
         ' 
@@ -190,8 +191,8 @@ Partial Class Login
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(83), CByte(175), CByte(255))
         ClientSize = New Size(721, 602)
+        Controls.Add(PanelHeader)
         Controls.Add(Panel6)
-        Controls.Add(Panel5)
         FormBorderStyle = FormBorderStyle.None
         Name = "Login"
         Text = "Login"
@@ -203,8 +204,8 @@ Partial Class Login
         CType(PictureBox2, ComponentModel.ISupportInitialize).EndInit()
         Panel4.ResumeLayout(False)
         Panel4.PerformLayout()
-        Panel5.ResumeLayout(False)
-        Panel5.PerformLayout()
+        PanelHeader.ResumeLayout(False)
+        PanelHeader.PerformLayout()
         Panel6.ResumeLayout(False)
         ResumeLayout(False)
     End Sub
@@ -216,7 +217,7 @@ Partial Class Login
     Friend WithEvents Panel3 As Panel
     Friend WithEvents Panel4 As Panel
     Friend WithEvents Txt_Password As TextBox
-    Friend WithEvents Panel5 As Panel
+    Friend WithEvents PanelHeader As Panel
     Friend WithEvents Panel6 As Panel
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents PictureBox2 As PictureBox
