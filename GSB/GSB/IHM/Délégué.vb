@@ -1,6 +1,6 @@
 ﻿Imports System.Drawing.Text
 
-Public Class Login
+Public Class Délégué
     Private Property MoveForm As Boolean
     Private Property MoveForm_MousePosition As Point
 
@@ -26,5 +26,9 @@ Public Class Login
         If MoveForm Then
             Me.Location = Me.Location + (e.Location - MoveForm_MousePosition)
         End If
+    End Sub
+
+    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
+
     End Sub
 End Class

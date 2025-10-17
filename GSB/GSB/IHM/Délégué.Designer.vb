@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Visiteur
+Partial Class Délégué
     Inherits System.Windows.Forms.Form
 
     'Form remplace la méthode Dispose pour nettoyer la liste des composants.
@@ -25,14 +25,10 @@ Partial Class Visiteur
         Panel1 = New Panel()
         Panel2 = New Panel()
         Panel3 = New Panel()
-        FileSystemWatcher1 = New IO.FileSystemWatcher()
+        Panel4 = New Panel()
         Panel5 = New Panel()
-        Button3 = New Button()
-        Button2 = New Button()
-        Button1 = New Button()
+        Panel6 = New Panel()
         Panel1.SuspendLayout()
-        Panel2.SuspendLayout()
-        CType(FileSystemWatcher1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' Panel1
@@ -41,99 +37,80 @@ Partial Class Visiteur
         Panel1.BackgroundImageLayout = ImageLayout.None
         Panel1.BorderStyle = BorderStyle.FixedSingle
         Panel1.Controls.Add(Panel3)
+        Panel1.Controls.Add(Panel2)
         Panel1.Dock = DockStyle.Top
         Panel1.ForeColor = Color.CornflowerBlue
         Panel1.Location = New Point(0, 0)
         Panel1.Name = "Panel1"
         Panel1.Size = New Size(1069, 60)
-        Panel1.TabIndex = 1
+        Panel1.TabIndex = 0
         ' 
         ' Panel2
         ' 
         Panel2.BackColor = Color.SteelBlue
         Panel2.BorderStyle = BorderStyle.FixedSingle
-        Panel2.Controls.Add(Button1)
-        Panel2.Controls.Add(Button3)
-        Panel2.Controls.Add(Button2)
-        Panel2.Location = New Point(0, 60)
+        Panel2.Location = New Point(0, 66)
         Panel2.Name = "Panel2"
         Panel2.Size = New Size(200, 578)
-        Panel2.TabIndex = 2
+        Panel2.TabIndex = 3
         ' 
         ' Panel3
         ' 
         Panel3.BackColor = Color.White
         Panel3.BorderStyle = BorderStyle.FixedSingle
-        Panel3.Location = New Point(879, 11)
+        Panel3.Location = New Point(880, 12)
         Panel3.Name = "Panel3"
         Panel3.Size = New Size(177, 38)
-        Panel3.TabIndex = 0
+        Panel3.TabIndex = 4
         ' 
-        ' FileSystemWatcher1
+        ' Panel4
         ' 
-        FileSystemWatcher1.EnableRaisingEvents = True
-        FileSystemWatcher1.SynchronizingObject = Me
+        Panel4.BackColor = Color.SteelBlue
+        Panel4.BorderStyle = BorderStyle.FixedSingle
+        Panel4.Location = New Point(0, 60)
+        Panel4.Name = "Panel4"
+        Panel4.Size = New Size(200, 578)
+        Panel4.TabIndex = 3
         ' 
         ' Panel5
         ' 
         Panel5.BackColor = SystemColors.ActiveBorder
         Panel5.BorderStyle = BorderStyle.FixedSingle
-        Panel5.Location = New Point(230, 115)
+        Panel5.Location = New Point(228, 357)
         Panel5.Name = "Panel5"
-        Panel5.Size = New Size(807, 470)
-        Panel5.TabIndex = 11
+        Panel5.Size = New Size(813, 252)
+        Panel5.TabIndex = 4
         ' 
-        ' Button3
+        ' Panel6
         ' 
-        Button3.Location = New Point(55, 368)
-        Button3.Name = "Button3"
-        Button3.Size = New Size(91, 38)
-        Button3.TabIndex = 10
-        Button3.Text = "Historique"
-        Button3.UseVisualStyleBackColor = True
+        Panel6.BackColor = SystemColors.ActiveBorder
+        Panel6.BorderStyle = BorderStyle.FixedSingle
+        Panel6.Location = New Point(228, 83)
+        Panel6.Name = "Panel6"
+        Panel6.Size = New Size(813, 252)
+        Panel6.TabIndex = 5
         ' 
-        ' Button2
-        ' 
-        Button2.Location = New Point(55, 210)
-        Button2.Name = "Button2"
-        Button2.Size = New Size(89, 38)
-        Button2.TabIndex = 9
-        Button2.Text = "Echantillons"
-        Button2.UseVisualStyleBackColor = True
-        ' 
-        ' Button1
-        ' 
-        Button1.Location = New Point(55, 54)
-        Button1.Name = "Button1"
-        Button1.Size = New Size(95, 39)
-        Button1.TabIndex = 8
-        Button1.Text = "Saisie Visite"
-        Button1.UseVisualStyleBackColor = True
-        ' 
-        ' Visiteur
+        ' Délégué
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        AutoValidate = AutoValidate.EnablePreventFocusChange
         ClientSize = New Size(1069, 634)
+        Controls.Add(Panel6)
         Controls.Add(Panel5)
-        Controls.Add(Panel2)
+        Controls.Add(Panel4)
         Controls.Add(Panel1)
         FormBorderStyle = FormBorderStyle.None
-        Name = "Visiteur"
-        Text = "Visiteur"
+        Name = "Délégué"
+        StartPosition = FormStartPosition.CenterScreen
+        Text = "Login"
         Panel1.ResumeLayout(False)
-        Panel2.ResumeLayout(False)
-        CType(FileSystemWatcher1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub
 
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Panel2 As Panel
     Friend WithEvents Panel3 As Panel
-    Friend WithEvents FileSystemWatcher1 As IO.FileSystemWatcher
+    Friend WithEvents Panel4 As Panel
     Friend WithEvents Panel5 As Panel
-    Friend WithEvents Button3 As Button
-    Friend WithEvents Button2 As Button
-    Friend WithEvents Button1 As Button
+    Friend WithEvents Panel6 As Panel
 End Class
