@@ -22,38 +22,29 @@ Partial Class Responsable
     'Ne la modifiez pas à l'aide de l'éditeur de code.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        TableLayoutPanel1 = New TableLayoutPanel()
+        DataGridView1 = New DataGridView()
+        CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
-        ' TableLayoutPanel1
+        ' DataGridView1
         ' 
-        TableLayoutPanel1.ColumnCount = 7
-        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 14.28571F))
-        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 14.2857161F))
-        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 14.2857161F))
-        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 14.2857161F))
-        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 14.2857161F))
-        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 14.2857161F))
-        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 14.2857161F))
-        TableLayoutPanel1.Location = New Point(342, 155)
-        TableLayoutPanel1.Name = "TableLayoutPanel1"
-        TableLayoutPanel1.RowCount = 3
-        TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Absolute, 150F))
-        TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Absolute, 150F))
-        TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Absolute, 150F))
-        TableLayoutPanel1.Size = New Size(764, 557)
-        TableLayoutPanel1.TabIndex = 0
+        DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridView1.Location = New Point(418, 208)
+        DataGridView1.Name = "DataGridView1"
+        DataGridView1.Size = New Size(657, 319)
+        DataGridView1.TabIndex = 0
         ' 
         ' Responsable
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(1178, 786)
-        Controls.Add(TableLayoutPanel1)
+        Controls.Add(DataGridView1)
         Name = "Responsable"
         Text = "Responsable"
+        CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub
 
-    Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
+    Friend WithEvents DataGridView1 As DataGridView
 End Class

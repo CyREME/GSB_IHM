@@ -36,3 +36,7 @@ C:\Users\emeri\source\repos\CyREME\GSB_IHM\GSB\GSB\obj\Debug\net8.0-windows\GSB.
 C:\Users\emeri\source\repos\CyREME\GSB_IHM\GSB\GSB\obj\Debug\net8.0-windows\GSB.genruntimeconfig.cache
 C:\Users\emeri\source\repos\CyREME\GSB_IHM\GSB\GSB\obj\Debug\net8.0-windows\ref\GSB.dll
 C:\Users\emeri\source\repos\CyREME\GSB_IHM\GSB\GSB\obj\Debug\net8.0-windows\GSB.Resources.resources
+C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\GSB\GSB\obj\Debug\net8.0-windows\GSB.Delegue.resources
+C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\GSB\GSB\obj\Debug\net8.0-windows\GSB.Responsable.resources
+C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\GSB\GSB\obj\Debug\net8.0-windows\GSB.Visiteur.resources
+C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\GSB\GSB\obj\Debug\net8.0-windows\GSB.Resources.resources
