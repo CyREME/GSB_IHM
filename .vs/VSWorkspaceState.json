@@ -1,9 +1,15 @@
 {
   "ExpandedNodes": [
+<<<<<<< HEAD
     "",
     "\\GSB",
     "\\GSB\\GSB"
   ],
   "SelectedNode": "\\GSB\\GSB\\GSB.sln",
+=======
+    ""
+  ],
+  "SelectedNode": "\\GSB.sln",
+>>>>>>> 6d2ae1e19c9ce13aa6679444ee0fb3f70b9ae812
   "PreviewInSolutionExplorer": false
 }
