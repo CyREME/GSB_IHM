@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+<<<<<<< HEAD
+    <Compile Update="IHM\Délégué.vb">
+=======
+    <Compile Update="IHM\Delegue.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="IHM\Login.vb">
+>>>>>>> 1cbcecb6649128d5e1c0544f58476de74d5a2646
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="IHM\Responsable.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="IHM\Visiteur.vb">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>

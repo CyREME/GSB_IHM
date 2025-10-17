@@ -4,8 +4,5 @@
     <Compile Update="IHM\Délégué.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Visiteur.vb">
-      <SubType>Form</SubType>
-    </Compile>
   </ItemGroup>
 </Project>

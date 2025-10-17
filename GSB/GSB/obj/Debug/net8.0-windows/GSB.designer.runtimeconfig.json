@@ -13,7 +13,7 @@
     ],
     "additionalProbingPaths": [
       "C:\\Users\\24Sruault\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\24Sruault\\.nuget\\packages",
+      "C:\\Users\\emeri\\.nuget\\packages",
       "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
     ],
     "configProperties": {
