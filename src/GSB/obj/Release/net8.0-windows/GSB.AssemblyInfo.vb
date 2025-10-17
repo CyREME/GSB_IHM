@@ -16,7 +16,7 @@ Imports System.Reflection
 <Assembly: System.Reflection.AssemblyCompanyAttribute("GSB"),  _
  Assembly: System.Reflection.AssemblyConfigurationAttribute("Release"),  _
  Assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0"),  _
- Assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+24f506978cbb2b8aaa8a8a2fde6ca756a65e3f22"),  _
+ Assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+839998aaf919e67a473327148b0f8227b803e223"),  _
  Assembly: System.Reflection.AssemblyProductAttribute("GSB"),  _
  Assembly: System.Reflection.AssemblyTitleAttribute("GSB"),  _
  Assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0"),  _
