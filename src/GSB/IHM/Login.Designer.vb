@@ -48,16 +48,15 @@ Partial Class Login
         ' 
         ' Login_label
         ' 
-        Login_label.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom
-        Login_label.AutoSize = True
-        Login_label.Font = New Font("Arial Rounded MT Bold", 40F)
+        Login_label.Dock = DockStyle.Fill
+        Login_label.Font = New Font("Spline Sans Mono", 38F)
         Login_label.ForeColor = Color.White
-        Login_label.Location = New Point(275, 21)
+        Login_label.Location = New Point(0, 0)
         Login_label.Name = "Login_label"
-        Login_label.Size = New Size(175, 62)
+        Login_label.Size = New Size(721, 100)
         Login_label.TabIndex = 0
         Login_label.Text = "Login"
-        Login_label.TextAlign = ContentAlignment.TopCenter
+        Login_label.TextAlign = ContentAlignment.MiddleCenter
         ' 
         ' Panel1
         ' 
@@ -176,7 +175,7 @@ Partial Class Login
         ' 
         ' Button1
         ' 
-        Button1.Font = New Font("Arial Rounded MT Bold", 20F)
+        Button1.Font = New Font("Spline Sans Mono", 18F)
         Button1.ForeColor = Color.FromArgb(CByte(83), CByte(175), CByte(255))
         Button1.Location = New Point(229, 319)
         Button1.Name = "Button1"
