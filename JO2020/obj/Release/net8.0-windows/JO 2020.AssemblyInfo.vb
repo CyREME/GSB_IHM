@@ -13,12 +13,12 @@ Option Explicit On
 
 Imports System
 Imports System.Reflection
-<Assembly: System.Reflection.AssemblyCompanyAttribute("GSB"),  _
- Assembly: System.Reflection.AssemblyConfigurationAttribute("Debug"),  _
+<Assembly: System.Reflection.AssemblyCompanyAttribute("JO 2020"),  _
+ Assembly: System.Reflection.AssemblyConfigurationAttribute("Release"),  _
  Assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0"),  _
- Assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+29750eed83f8e87a615cac903333d16af6827ca1"),  _
- Assembly: System.Reflection.AssemblyProductAttribute("GSB"),  _
- Assembly: System.Reflection.AssemblyTitleAttribute("GSB"),  _
+ Assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+101dc97e86a485b8fdec776b7502390032d834a6"),  _
+ Assembly: System.Reflection.AssemblyProductAttribute("JO 2020"),  _
+ Assembly: System.Reflection.AssemblyTitleAttribute("JO 2020"),  _
  Assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0"),  _
  Assembly: System.Runtime.Versioning.TargetPlatformAttribute("Windows7.0"),  _
  Assembly: System.Runtime.Versioning.SupportedOSPlatformAttribute("Windows7.0")> 

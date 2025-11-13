@@ -20,16 +20,16 @@
 
 
     '' Ici c'est pour pouvoir déplacer la fenêtre en cliquant sur le panel du haut ou le label Login
-    Private Sub PanelHeader_MouseDown(sender As Object, e As MouseEventArgs) Handles PanelHeader.MouseDown, Login_label.MouseUp
+    Private Sub PanelHeader_MouseDown(sender As Object, e As MouseEventArgs) Handles PanelHeader.MouseDown, Login_label.MouseUp, Login_label.MouseDown
         MoveForm = True
         MoveForm_MousePosition = Cursor.Position
-        MoveForm_Position = Me.Location
+        MoveForm_Position = Location
     End Sub
 
-    Private Sub PanelHeader_MouseMove(sender As Object, e As MouseEventArgs) Handles PanelHeader.MouseMove, Login_label.MouseUp
+    Private Sub PanelHeader_MouseMove(sender As Object, e As MouseEventArgs) Handles PanelHeader.MouseMove, Login_label.MouseUp, Login_label.MouseMove
         If MoveForm Then
-            Dim dif As Point = New Point(Cursor.Position.X - MoveForm_MousePosition.X, Cursor.Position.Y - MoveForm_MousePosition.Y)
-            Me.Location = New Point(MoveForm_Position.X + dif.X, MoveForm_Position.Y + dif.Y)
+            Dim dif = New Point(Cursor.Position.X - MoveForm_MousePosition.X, Cursor.Position.Y - MoveForm_MousePosition.Y)
+            Location = New Point(MoveForm_Position.X + dif.X, MoveForm_Position.Y + dif.Y)
         End If
     End Sub
 
@@ -82,5 +82,4 @@
     Private Sub btn_exit_Click(sender As Object, e As EventArgs) Handles btn_exit.Click
         Me.Close()
     End Sub
-
 End Class

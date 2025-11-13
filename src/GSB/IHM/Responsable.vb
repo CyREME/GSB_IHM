@@ -1,6 +1,38 @@
 ﻿Public Class Responsable
 
+    Private Property MoveForm As Boolean
+    Private Property MoveForm_MousePosition As Point
+    Private Property MoveForm_Position As Point
     Private colorBtnSelect As Color = Color.FromArgb(83, 175, 255)
+
+
+
+
+    '' Ici c'est pour pouvoir déplacer la fenêtre en cliquant sur le panel du haut ou le label Login
+    Private Sub PanelHeader_MouseDown(sender As Object, e As MouseEventArgs) Handles PanelHeader.MouseDown, lbl_nom.MouseDown
+        MoveForm = True
+        MoveForm_MousePosition = Cursor.Position
+        MoveForm_Position = Location
+    End Sub
+
+    Private Sub PanelHeader_MouseMove(sender As Object, e As MouseEventArgs) Handles PanelHeader.MouseMove, lbl_nom.MouseUp, lbl_nom.MouseMove
+        If MoveForm Then
+            Dim dif = New Point(Cursor.Position.X - MoveForm_MousePosition.X, Cursor.Position.Y - MoveForm_MousePosition.Y)
+            Location = New Point(MoveForm_Position.X + dif.X, MoveForm_Position.Y + dif.Y)
+        End If
+    End Sub
+
+    Private Sub PanelHeader_MouseUp(sender As Object, e As MouseEventArgs) Handles PanelHeader.MouseUp, lbl_nom.MouseUp
+        MoveForm = False
+    End Sub
+
+
+
+
+
+
+
+
 
     Private Sub Responsable_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         lbl_Delegue.Visible = False
@@ -83,4 +115,7 @@
         Me.Close()
     End Sub
 
+    Private Sub btn_Deconnexion_Click(sender As Object, e As EventArgs) Handles btn_Deconnexion.Click
+
+    End Sub
 End Class

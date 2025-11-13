@@ -27,8 +27,8 @@ Partial Class Responsable
         btn_Visiteurs = New Button()
         btn_Regions = New Button()
         btn_Secteur = New Button()
-        Panel2 = New Panel()
-        Label1 = New Label()
+        PanelHeader = New Panel()
+        lbl_nom = New Label()
         btn_Deconnexion = New Button()
         btn_exit = New Button()
         lbl_Delegue = New Label()
@@ -37,7 +37,7 @@ Partial Class Responsable
         Liste_Visiteurs = New ComboBox()
         CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         Panel1.SuspendLayout()
-        Panel2.SuspendLayout()
+        PanelHeader.SuspendLayout()
         SuspendLayout()
         ' 
         ' DataGridView1
@@ -51,7 +51,7 @@ Partial Class Responsable
         ' 
         ' Panel1
         ' 
-        Panel1.BackColor = Color.FromArgb(CByte(69), CByte(149), CByte(217))
+        Panel1.BackColor = Color.FromArgb(69, 149, 217)
         Panel1.Controls.Add(btn_Visiteurs)
         Panel1.Controls.Add(btn_Regions)
         Panel1.Controls.Add(btn_Secteur)
@@ -110,29 +110,29 @@ Partial Class Responsable
         btn_Secteur.TextAlign = ContentAlignment.TopCenter
         btn_Secteur.UseVisualStyleBackColor = False
         ' 
-        ' Panel2
+        ' PanelHeader
         ' 
-        Panel2.BackColor = Color.FromArgb(CByte(81), CByte(175), CByte(255))
-        Panel2.Controls.Add(Label1)
-        Panel2.Controls.Add(btn_Deconnexion)
-        Panel2.Controls.Add(btn_exit)
-        Panel2.Location = New Point(0, 0)
-        Panel2.Margin = New Padding(4, 3, 4, 3)
-        Panel2.Name = "Panel2"
-        Panel2.Size = New Size(1069, 60)
-        Panel2.TabIndex = 2
+        PanelHeader.BackColor = Color.FromArgb(81, 175, 255)
+        PanelHeader.Controls.Add(lbl_nom)
+        PanelHeader.Controls.Add(btn_Deconnexion)
+        PanelHeader.Controls.Add(btn_exit)
+        PanelHeader.Location = New Point(0, 0)
+        PanelHeader.Margin = New Padding(4, 3, 4, 3)
+        PanelHeader.Name = "PanelHeader"
+        PanelHeader.Size = New Size(1069, 60)
+        PanelHeader.TabIndex = 2
         ' 
-        ' Label1
+        ' lbl_nom
         ' 
-        Label1.Dock = DockStyle.Left
-        Label1.Font = New Font("Spline Sans Mono", 26F)
-        Label1.Location = New Point(0, 0)
-        Label1.Margin = New Padding(4, 0, 4, 0)
-        Label1.Name = "Label1"
-        Label1.Size = New Size(644, 60)
-        Label1.TabIndex = 4
-        Label1.Text = "NOM / PRENOM RESPONSABLE"
-        Label1.TextAlign = ContentAlignment.MiddleCenter
+        lbl_nom.Dock = DockStyle.Left
+        lbl_nom.Font = New Font("Spline Sans Mono", 26F)
+        lbl_nom.Location = New Point(0, 0)
+        lbl_nom.Margin = New Padding(4, 0, 4, 0)
+        lbl_nom.Name = "lbl_nom"
+        lbl_nom.Size = New Size(644, 60)
+        lbl_nom.TabIndex = 4
+        lbl_nom.Text = "NOM / PRENOM RESPONSABLE"
+        lbl_nom.TextAlign = ContentAlignment.MiddleCenter
         ' 
         ' btn_Deconnexion
         ' 
@@ -158,7 +158,7 @@ Partial Class Responsable
         btn_exit.FlatAppearance.BorderColor = Color.Red
         btn_exit.FlatAppearance.BorderSize = 0
         btn_exit.FlatStyle = FlatStyle.Popup
-        btn_exit.Font = New Font("Spline Sans Mono", 75F, FontStyle.Bold, GraphicsUnit.Document, CByte(0))
+        btn_exit.Font = New Font("Spline Sans Mono", 75F, FontStyle.Bold, GraphicsUnit.Document, 0)
         btn_exit.ForeColor = Color.White
         btn_exit.ImageAlign = ContentAlignment.BottomCenter
         btn_exit.Location = New Point(1018, 10)
@@ -214,7 +214,7 @@ Partial Class Responsable
         Controls.Add(Liste_Delegues)
         Controls.Add(lbl_Visiteur)
         Controls.Add(lbl_Delegue)
-        Controls.Add(Panel2)
+        Controls.Add(PanelHeader)
         Controls.Add(Panel1)
         Controls.Add(DataGridView1)
         FormBorderStyle = FormBorderStyle.None
@@ -223,15 +223,15 @@ Partial Class Responsable
         Text = "Responsable"
         CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
         Panel1.ResumeLayout(False)
-        Panel2.ResumeLayout(False)
+        PanelHeader.ResumeLayout(False)
         ResumeLayout(False)
     End Sub
 
     Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents Panel2 As Panel
+    Friend WithEvents PanelHeader As Panel
     Friend WithEvents btn_exit As Button
-    Friend WithEvents Label1 As Label
+    Friend WithEvents lbl_nom As Label
     Friend WithEvents btn_Deconnexion As Button
     Friend WithEvents btn_Visiteurs As Button
     Friend WithEvents btn_Regions As Button
