@@ -7,6 +7,15 @@
     <Compile Update="IHM\Login.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="IHM\Pages\CompteRendu.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="IHM\Pages\HistoriqueVisites.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="IHM\Pages\VueTableauRegionSecteur.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="IHM\Responsable.vb">
       <SubType>Form</SubType>
     </Compile>

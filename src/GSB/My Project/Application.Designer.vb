@@ -33,7 +33,7 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.GSB.Delegue
+            Me.MainForm = Global.GSB.Visiteur
         End Sub
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _

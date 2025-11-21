@@ -46,6 +46,7 @@ Partial Class Delegue
         Panel1.Controls.Add(btn_Visiteurs)
         Panel1.Controls.Add(btn_Regions)
         Panel1.Controls.Add(btn_Compte_Rendue)
+        Panel1.Dock = DockStyle.Left
         Panel1.Location = New Point(0, 60)
         Panel1.Margin = New Padding(4, 3, 4, 3)
         Panel1.Name = "Panel1"
@@ -132,8 +133,8 @@ Partial Class Delegue
         PanelHeader.Controls.Add(lbl_nom)
         PanelHeader.Controls.Add(btn_Deconnexion)
         PanelHeader.Controls.Add(btn_exit)
+        PanelHeader.Dock = DockStyle.Top
         PanelHeader.Location = New Point(0, 0)
-        PanelHeader.Margin = New Padding(4, 3, 4, 3)
         PanelHeader.Name = "PanelHeader"
         PanelHeader.Size = New Size(1069, 60)
         PanelHeader.TabIndex = 7
@@ -147,7 +148,7 @@ Partial Class Delegue
         lbl_nom.Name = "lbl_nom"
         lbl_nom.Size = New Size(644, 60)
         lbl_nom.TabIndex = 4
-        lbl_nom.Text = "NOM / PRENOM RESPONSABLE"
+        lbl_nom.Text = "NOM / PRENOM DELEGUE"
         lbl_nom.TextAlign = ContentAlignment.MiddleCenter
         ' 
         ' btn_Deconnexion

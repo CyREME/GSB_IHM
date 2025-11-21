@@ -1,7 +1,12 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\GSB",
+    "\\GSB\\GSB",
+    "\\src",
+    "\\src\\GSB",
+    "\\src\\GSB\\IHM"
   ],
-  "SelectedNode": "\\GSB.sln",
+  "SelectedNode": "\\src\\GSB\\IHM\\Responsable.vb",
   "PreviewInSolutionExplorer": false
 }

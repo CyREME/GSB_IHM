@@ -154,9 +154,4 @@
     Private Sub btn_exit_Click(sender As Object, e As EventArgs) Handles btn_exit.Click
         Me.Close()
     End Sub
-
-    Private Sub btn_Deconnexion_Click(sender As Object, e As EventArgs) Handles btn_Deconnexion.Click
-
-    End Sub
-
 End Class

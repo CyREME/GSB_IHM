@@ -1,8 +1,15 @@
-﻿Public Class Login
+﻿Imports Mysqlx
+Imports Mysqlx.XDevAPI.Common
+
+Public Class Login
 
     Private Property MoveForm As Boolean
     Private Property MoveForm_MousePosition As Point
     Private Property MoveForm_Position As Point
+
+    Private Property serverConn As String = "server=???; port=???; user=???; password=???; database=???"
+
+    Private Property connexionSql As MySqlConnection
 
 
     Private Sub Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -12,6 +19,16 @@
         Txt_Password.Text = "Mot de passe"
         Txt_Password.ForeColor = Color.DarkGray
         Txt_Password.PasswordChar = ""
+
+        Try
+            Dim connexionSql = New MySqlConnection(serverConn)
+            connexionSql.Open()
+            MessageBox.Show("Connexion réussie")
+        Catch ex As Exception
+            MessageBox.Show("Connexion échoué")
+        End Try
+
+
     End Sub
 
 
