@@ -80,3 +80,4 @@ C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\obj\Debug\net8.0-windows
 C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\obj\Debug\net8.0-windows\GSB.HistoriqueVisites.resources
 C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\obj\Debug\net8.0-windows\GSB.VueTableauRegionSecteur.resources
 C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\obj\Debug\net8.0-windows\GSB.VisionSynth.resources
+C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\bin\Debug\net8.0-windows\Oracle.ManagedDataAccess.dll

@@ -9,6 +9,14 @@
     <ImportedNamespaces>MySql.Data.MySqlClient=False,System.Data=False,System.Drawing=False,System.Windows.Forms=False,Microsoft.VisualBasic=True,System=True,System.Collections=True,System.Collections.Generic=True,System.Diagnostics=True,System.Linq=True,System.Xml.Linq=True,System.Threading.Tasks=True,GSB=True</ImportedNamespaces>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+
   <ItemGroup>
     <Import Include="MySql.Data.MySqlClient" />
     <Import Include="System.Data" />
@@ -18,6 +26,9 @@
 
   <ItemGroup>
     <PackageReference Include="MySql.Data" Version="9.5.0" />
+    <PackageReference Include="Oracle.ManagedDataAccess" Version="23.26.0" />
+    <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="23.26.0" />
+    <PackageReference Include="Oracle.ManagedDataAccess.EntityFramework" Version="23.26.0" />
   </ItemGroup>
 
   <ItemGroup>
