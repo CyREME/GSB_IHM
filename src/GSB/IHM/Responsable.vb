@@ -5,7 +5,7 @@
     Private Property MoveForm_Position As Point
     Private colorBtnSelect As Color = Color.FromArgb(83, 175, 255)
 
-
+    Dim VueTab As New VueTableauRegionSecteur()
 
 
     '' Ici c'est pour pouvoir déplacer la fenêtre en cliquant sur le panel du haut ou le label Login
@@ -35,11 +35,6 @@
 
 
     Private Sub Responsable_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        lbl_Delegue.Visible = False
-        Liste_Delegues.Visible = False
-
-        lbl_Visiteur.Visible = False
-        Liste_Visiteurs.Visible = False
 
         btn_Secteur.BackColor = colorBtnSelect
         btn_Secteur.ForeColor = Color.FromArgb(255, 255, 255)
@@ -49,17 +44,25 @@
 
         btn_Visiteurs.BackColor = Color.FromArgb(255, 255, 255)
         btn_Visiteurs.ForeColor = Color.FromArgb(0, 0, 0)
+
+        'Affichage dans le panneau du Compte Rendu
+        PanelAffichage.Controls.Clear()
+
+        VueTab.lbl_Delegue.Visible = False
+        VueTab.Liste_Delegues.Visible = False
+
+        VueTab.lbl_Visiteur.Visible = False
+        VueTab.Liste_Visiteurs.Visible = False
+
+        VueTab.Dock = DockStyle.Fill
+
+        PanelAffichage.Controls.Add(VueTab)
 
     End Sub
 
 
 
     Private Sub btn_Secteur_Click(sender As Object, e As EventArgs) Handles btn_Secteur.Click
-        lbl_Delegue.Visible = False
-        Liste_Delegues.Visible = False
-
-        lbl_Visiteur.Visible = False
-        Liste_Visiteurs.Visible = False
 
         btn_Secteur.BackColor = colorBtnSelect
         btn_Secteur.ForeColor = Color.FromArgb(255, 255, 255)
@@ -69,16 +72,20 @@
 
         btn_Visiteurs.BackColor = Color.FromArgb(255, 255, 255)
         btn_Visiteurs.ForeColor = Color.FromArgb(0, 0, 0)
+
+
+        VueTab.lbl_Delegue.Visible = False
+        VueTab.Liste_Delegues.Visible = False
+
+        VueTab.lbl_Visiteur.Visible = False
+        VueTab.Liste_Visiteurs.Visible = False
+
+
     End Sub
 
 
 
     Private Sub btn_Regions_Click(sender As Object, e As EventArgs) Handles btn_Regions.Click
-        lbl_Delegue.Visible = True
-        Liste_Delegues.Visible = True
-
-        lbl_Visiteur.Visible = False
-        Liste_Visiteurs.Visible = False
 
         btn_Secteur.BackColor = Color.FromArgb(255, 255, 255)
         btn_Secteur.ForeColor = Color.FromArgb(0, 0, 0)
@@ -88,16 +95,18 @@
 
         btn_Visiteurs.BackColor = Color.FromArgb(255, 255, 255)
         btn_Visiteurs.ForeColor = Color.FromArgb(0, 0, 0)
+
+
+        VueTab.lbl_Delegue.Visible = True
+        VueTab.Liste_Delegues.Visible = True
+
+        VueTab.lbl_Visiteur.Visible = False
+        VueTab.Liste_Visiteurs.Visible = False
     End Sub
 
 
 
     Private Sub btn_Visiteurs_Click(sender As Object, e As EventArgs) Handles btn_Visiteurs.Click
-        lbl_Delegue.Visible = True
-        Liste_Delegues.Visible = True
-
-        lbl_Visiteur.Visible = True
-        Liste_Visiteurs.Visible = True
 
         btn_Secteur.BackColor = Color.FromArgb(255, 255, 255)
         btn_Secteur.ForeColor = Color.FromArgb(0, 0, 0)
@@ -107,6 +116,13 @@
 
         btn_Visiteurs.BackColor = colorBtnSelect
         btn_Visiteurs.ForeColor = Color.FromArgb(255, 255, 255)
+
+
+        VueTab.lbl_Delegue.Visible = True
+        VueTab.Liste_Delegues.Visible = True
+
+        VueTab.lbl_Visiteur.Visible = True
+        VueTab.Liste_Visiteurs.Visible = True
     End Sub
 
 

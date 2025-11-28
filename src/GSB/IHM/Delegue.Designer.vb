@@ -27,15 +27,12 @@ Partial Class Delegue
         btn_Visiteurs = New Button()
         btn_Regions = New Button()
         btn_Compte_Rendue = New Button()
-        Tableau = New DataGridView()
         PanelHeader = New Panel()
         lbl_nom = New Label()
         btn_Deconnexion = New Button()
         btn_exit = New Button()
-        Liste_Visiteurs = New ComboBox()
-        lbl_Visiteur = New Label()
+        PanelAffichage = New Panel()
         Panel1.SuspendLayout()
-        CType(Tableau, ComponentModel.ISupportInitialize).BeginInit()
         PanelHeader.SuspendLayout()
         SuspendLayout()
         ' 
@@ -118,15 +115,6 @@ Partial Class Delegue
         btn_Compte_Rendue.TextAlign = ContentAlignment.TopCenter
         btn_Compte_Rendue.UseVisualStyleBackColor = False
         ' 
-        ' Tableau
-        ' 
-        Tableau.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Tableau.Location = New Point(270, 150)
-        Tableau.Margin = New Padding(4, 3, 4, 3)
-        Tableau.Name = "Tableau"
-        Tableau.Size = New Size(769, 444)
-        Tableau.TabIndex = 5
-        ' 
         ' PanelHeader
         ' 
         PanelHeader.BackColor = Color.FromArgb(CByte(81), CByte(175), CByte(255))
@@ -186,25 +174,13 @@ Partial Class Delegue
         btn_exit.TextAlign = ContentAlignment.TopRight
         btn_exit.UseVisualStyleBackColor = False
         ' 
-        ' Liste_Visiteurs
+        ' PanelAffichage
         ' 
-        Liste_Visiteurs.FormattingEnabled = True
-        Liste_Visiteurs.Location = New Point(270, 110)
-        Liste_Visiteurs.Name = "Liste_Visiteurs"
-        Liste_Visiteurs.Size = New Size(147, 23)
-        Liste_Visiteurs.TabIndex = 10
-        Liste_Visiteurs.Visible = False
-        ' 
-        ' lbl_Visiteur
-        ' 
-        lbl_Visiteur.Font = New Font("Spline Sans Mono", 12F)
-        lbl_Visiteur.Location = New Point(270, 83)
-        lbl_Visiteur.Name = "lbl_Visiteur"
-        lbl_Visiteur.Size = New Size(147, 24)
-        lbl_Visiteur.TabIndex = 8
-        lbl_Visiteur.Text = "Visiteur :"
-        lbl_Visiteur.TextAlign = ContentAlignment.TopCenter
-        lbl_Visiteur.Visible = False
+        PanelAffichage.Dock = DockStyle.Fill
+        PanelAffichage.Location = New Point(250, 60)
+        PanelAffichage.Name = "PanelAffichage"
+        PanelAffichage.Size = New Size(819, 573)
+        PanelAffichage.TabIndex = 8
         ' 
         ' Delegue
         ' 
@@ -212,16 +188,13 @@ Partial Class Delegue
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.Control
         ClientSize = New Size(1069, 633)
+        Controls.Add(PanelAffichage)
         Controls.Add(Panel1)
-        Controls.Add(Tableau)
         Controls.Add(PanelHeader)
-        Controls.Add(Liste_Visiteurs)
-        Controls.Add(lbl_Visiteur)
         FormBorderStyle = FormBorderStyle.None
         Name = "Delegue"
         Text = "Delegue"
         Panel1.ResumeLayout(False)
-        CType(Tableau, ComponentModel.ISupportInitialize).EndInit()
         PanelHeader.ResumeLayout(False)
         ResumeLayout(False)
     End Sub
@@ -230,12 +203,10 @@ Partial Class Delegue
     Friend WithEvents btn_Visiteurs As Button
     Friend WithEvents btn_Regions As Button
     Friend WithEvents btn_Compte_Rendue As Button
-    Friend WithEvents Tableau As DataGridView
     Friend WithEvents PanelHeader As Panel
     Friend WithEvents lbl_nom As Label
     Friend WithEvents btn_Deconnexion As Button
     Friend WithEvents btn_exit As Button
     Friend WithEvents btn_Historique_Visites As Button
-    Friend WithEvents Liste_Visiteurs As ComboBox
-    Friend WithEvents lbl_Visiteur As Label
+    Friend WithEvents PanelAffichage As Panel
 End Class

@@ -1,9 +1,15 @@
-﻿Public Class Delegue
+﻿Imports Mysqlx.XDevAPI.Relational
+
+Public Class Delegue
 
     Private Property MoveForm As Boolean
     Private Property MoveForm_MousePosition As Point
     Private Property MoveForm_Position As Point
     Private colorBtnSelect As Color = Color.FromArgb(83, 175, 255)
+
+    Dim VueTab As New VueTableauRegionSecteur()
+    Dim PageCR As New CompteRendu()
+    Dim HistVisit As New HistoriqueVisites()
 
 
     '' Ici c'est pour pouvoir déplacer la fenêtre en cliquant sur le panel du haut ou le label Login
@@ -29,10 +35,7 @@
 
     Private Sub Delegue_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        lbl_Visiteur.Visible = False
-        Liste_Visiteurs.Visible = False
 
-        Tableau.Visible = True
 
         btn_Regions.BackColor = colorBtnSelect
         btn_Regions.ForeColor = Color.FromArgb(255, 255, 255)
@@ -45,6 +48,23 @@
 
         btn_Historique_Visites.BackColor = Color.FromArgb(255, 255, 255)
         btn_Historique_Visites.ForeColor = Color.FromArgb(0, 0, 0)
+
+        'Changement de l'affichage de la page dans le panneau
+        PanelAffichage.Controls.Clear()
+
+        VueTab.Dock = DockStyle.Fill
+
+        VueTab.lbl_Delegue.Visible = False
+        VueTab.Liste_Delegues.Visible = False
+
+        VueTab.lbl_Visiteur.Visible = False
+        VueTab.Liste_Visiteurs.Visible = False
+
+        VueTab.lbl_Visiteur.Location() = New Point(25, 31)
+        VueTab.Liste_Visiteurs.Location() = New Point(25, 58)
+
+
+        PanelAffichage.Controls.Add(VueTab)
 
     End Sub
 
@@ -65,11 +85,19 @@
 
 
 
-        lbl_Visiteur.Visible = False
-        Liste_Visiteurs.Visible = False
+        'Changement de l'affichage de la page dans le panneau
+        PanelAffichage.Controls.Clear()
 
-        Tableau.Visible = True
+        VueTab.Dock = DockStyle.Fill
 
+        VueTab.lbl_Delegue.Visible = False
+        VueTab.Liste_Delegues.Visible = False
+
+        VueTab.lbl_Visiteur.Visible = False
+        VueTab.Liste_Visiteurs.Visible = False
+
+
+        PanelAffichage.Controls.Add(VueTab)
 
     End Sub
 
@@ -89,10 +117,16 @@
 
 
 
-        lbl_Visiteur.Visible = True
-        Liste_Visiteurs.Visible = True
+        'Changement de l'affichage de la page dans le panneau
+        PanelAffichage.Controls.Clear()
 
-        Tableau.Visible = True
+        VueTab.Dock = DockStyle.Fill
+
+        VueTab.lbl_Visiteur.Visible = True
+        VueTab.Liste_Visiteurs.Visible = True
+
+
+        PanelAffichage.Controls.Add(VueTab)
 
     End Sub
 
@@ -112,12 +146,12 @@
         btn_Historique_Visites.BackColor = Color.FromArgb(255, 255, 255)
         btn_Historique_Visites.ForeColor = Color.FromArgb(0, 0, 0)
 
+        'Changement de l'affichage de la page dans le panneau
+        PanelAffichage.Controls.Clear()
 
+        PageCR.Dock = DockStyle.Fill
 
-        lbl_Visiteur.Visible = False
-        Liste_Visiteurs.Visible = False
-
-        Tableau.Visible = False
+        PanelAffichage.Controls.Add(PageCR)
 
     End Sub
 
@@ -137,12 +171,12 @@
         btn_Compte_Rendue.BackColor = Color.FromArgb(255, 255, 255)
         btn_Compte_Rendue.ForeColor = Color.FromArgb(0, 0, 0)
 
+        'Changement de l'affichage de la page dans le panneau
+        PanelAffichage.Controls.Clear()
 
+        HistVisit.Dock = DockStyle.Fill
 
-        lbl_Visiteur.Visible = False
-        Liste_Visiteurs.Visible = False
-
-        Tableau.Visible = True
+        PanelAffichage.Controls.Add(HistVisit)
 
     End Sub
 

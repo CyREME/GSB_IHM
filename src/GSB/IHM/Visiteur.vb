@@ -7,6 +7,12 @@ Public Class Visiteur
 
     Private colorBtnSelect As Color = Color.FromArgb(83, 175, 255)
 
+    Dim PageCR As New CompteRendu()
+
+    Dim HistVisit As New HistoriqueVisites()
+
+    Dim VisionSynth As New VisionSynth()
+
 
     '' Ici c'est pour pouvoir déplacer la fenêtre en cliquant sur le panel du haut ou le label Login
     Private Sub PanelHeader_MouseDown(sender As Object, e As MouseEventArgs) Handles PanelHeader.MouseDown, lbl_nom.MouseDown
@@ -44,8 +50,6 @@ Public Class Visiteur
         'Affichage dans le panneau du Compte Rendu
         PanelAffichage.Controls.Clear()
 
-        Dim PageCR As New CompteRendu()
-
         PageCR.Dock = DockStyle.Fill
 
         PanelAffichage.Controls.Add(PageCR)
@@ -68,8 +72,6 @@ Public Class Visiteur
 
         'Changement de l'affichage de la page dans le panneau
         PanelAffichage.Controls.Clear()
-
-        Dim PageCR As New CompteRendu()
 
         PageCR.Dock = DockStyle.Fill
 
@@ -95,9 +97,9 @@ Public Class Visiteur
         'Changement de l'affichage de la page dans le panneau
         PanelAffichage.Controls.Clear()
 
-        Dim PageCR As New CompteRendu()
+        HistVisit.Dock = DockStyle.Fill
 
-        PageCR.Dock = DockStyle.Fill
+        PanelAffichage.Controls.Add(HistVisit)
 
 
     End Sub
@@ -118,9 +120,9 @@ Public Class Visiteur
         'Changement de l'affichage de la page dans le panneau
         PanelAffichage.Controls.Clear()
 
-        Dim PageCR As New CompteRendu()
+        VisionSynth.Dock = DockStyle.Fill
 
-        PageCR.Dock = DockStyle.Fill
+        PanelAffichage.Controls.Add(VisionSynth)
 
 
     End Sub
@@ -138,5 +140,4 @@ Public Class Visiteur
     Private Sub btn_exit_Click(sender As Object, e As EventArgs) Handles btn_exit.Click
         Me.Close()
     End Sub
-
 End Class

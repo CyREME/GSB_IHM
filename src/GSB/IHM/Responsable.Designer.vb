@@ -30,7 +30,7 @@ Partial Class Responsable
         lbl_nom = New Label()
         btn_Deconnexion = New Button()
         btn_exit = New Button()
-        Panel2 = New Panel()
+        PanelAffichage = New Panel()
         Panel1.SuspendLayout()
         PanelHeader.SuspendLayout()
         SuspendLayout()
@@ -159,20 +159,20 @@ Partial Class Responsable
         btn_exit.TextAlign = ContentAlignment.TopRight
         btn_exit.UseVisualStyleBackColor = False
         ' 
-        ' Panel2
+        ' PanelAffichage
         ' 
-        Panel2.Dock = DockStyle.Fill
-        Panel2.Location = New Point(250, 60)
-        Panel2.Name = "Panel2"
-        Panel2.Size = New Size(819, 573)
-        Panel2.TabIndex = 3
+        PanelAffichage.Dock = DockStyle.Fill
+        PanelAffichage.Location = New Point(250, 60)
+        PanelAffichage.Name = "PanelAffichage"
+        PanelAffichage.Size = New Size(819, 573)
+        PanelAffichage.TabIndex = 3
         ' 
         ' Responsable
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(1069, 633)
-        Controls.Add(Panel2)
+        Controls.Add(PanelAffichage)
         Controls.Add(Panel1)
         Controls.Add(PanelHeader)
         FormBorderStyle = FormBorderStyle.None
@@ -191,5 +191,5 @@ Partial Class Responsable
     Friend WithEvents btn_Visiteurs As Button
     Friend WithEvents btn_Regions As Button
     Friend WithEvents btn_Secteur As Button
-    Friend WithEvents Panel2 As Panel
+    Friend WithEvents PanelAffichage As Panel
 End Class

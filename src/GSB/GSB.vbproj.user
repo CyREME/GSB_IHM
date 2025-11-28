@@ -13,6 +13,9 @@
     <Compile Update="IHM\Pages\HistoriqueVisites.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="IHM\Pages\VisionSynth.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="IHM\Pages\VueTableauRegionSecteur.vb">
       <SubType>UserControl</SubType>
     </Compile>
