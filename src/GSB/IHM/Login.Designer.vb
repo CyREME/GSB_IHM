@@ -35,7 +35,7 @@ Partial Class Login
         PanelHeader = New Panel()
         btn_exit = New Button()
         Panel6 = New Panel()
-        Button1 = New Button()
+        btn_login = New Button()
         Panel1.SuspendLayout()
         Panel2.SuspendLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
@@ -165,7 +165,7 @@ Partial Class Login
         ' Panel6
         ' 
         Panel6.Anchor = AnchorStyles.None
-        Panel6.Controls.Add(Button1)
+        Panel6.Controls.Add(btn_login)
         Panel6.Controls.Add(Panel1)
         Panel6.Controls.Add(Panel4)
         Panel6.Location = New Point(0, 99)
@@ -173,16 +173,16 @@ Partial Class Login
         Panel6.Size = New Size(721, 505)
         Panel6.TabIndex = 4
         ' 
-        ' Button1
+        ' btn_login
         ' 
-        Button1.Font = New Font("Spline Sans Mono", 18F)
-        Button1.ForeColor = Color.FromArgb(CByte(83), CByte(175), CByte(255))
-        Button1.Location = New Point(229, 319)
-        Button1.Name = "Button1"
-        Button1.Size = New Size(271, 46)
-        Button1.TabIndex = 3
-        Button1.Text = "SE CONNECTER"
-        Button1.UseVisualStyleBackColor = True
+        btn_login.Font = New Font("Spline Sans Mono", 18F)
+        btn_login.ForeColor = Color.FromArgb(CByte(83), CByte(175), CByte(255))
+        btn_login.Location = New Point(229, 319)
+        btn_login.Name = "btn_login"
+        btn_login.Size = New Size(271, 46)
+        btn_login.TabIndex = 3
+        btn_login.Text = "SE CONNECTER"
+        btn_login.UseVisualStyleBackColor = True
         ' 
         ' Login
         ' 
@@ -220,6 +220,6 @@ Partial Class Login
     Friend WithEvents Panel6 As Panel
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents PictureBox2 As PictureBox
-    Friend WithEvents Button1 As Button
+    Friend WithEvents btn_login As Button
     Friend WithEvents btn_exit As Button
 End Class

@@ -25,17 +25,6 @@ Public Class Login
         End Try
 
 
-
-
-
-
-
-
-
-
-
-
-
         Txt_Username.Text = "Login"
         Txt_Username.ForeColor = Color.DarkGray
         Txt_Password.Text = "Mot de passe"
@@ -111,5 +100,28 @@ Public Class Login
     '' Ici c'est pour les boutons de la fenêtre
     Private Sub btn_exit_Click(sender As Object, e As EventArgs) Handles btn_exit.Click
         Me.Close()
+    End Sub
+
+    Private Sub btn_login_Click(sender As Object, e As EventArgs) Handles btn_login.Click
+
+        ''Recupéraition des informations
+        Dim login As String = Txt_Username.Text
+        Dim password As String = Txt_Password.Text
+        Dim role As String = ""
+
+        Dim dbConn As New Conn()
+        connexionSql = dbConn.GetConnection()
+
+        Try
+            connexionSql.Open()
+
+            Dim sql As String = "SELECT ROLE FROM ADMINDB.UTILISATEUR WHERE LOGIN = :p_login AND MOTDEPASSE = :p_mdp"
+
+
+
+        Catch ex As Exception
+
+        End Try
+
     End Sub
 End Class
