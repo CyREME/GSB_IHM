@@ -4,9 +4,8 @@
     "\\GSB",
     "\\GSB\\GSB",
     "\\src",
-    "\\src\\GSB",
-    "\\src\\GSB\\IHM"
+    "\\src\\GSB"
   ],
-  "SelectedNode": "\\src\\GSB\\IHM\\Responsable.vb",
+  "SelectedNode": "\\src\\GSB\\GSB.sln",
   "PreviewInSolutionExplorer": false
 }

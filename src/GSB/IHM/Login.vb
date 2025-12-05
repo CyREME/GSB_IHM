@@ -1,5 +1,5 @@
 ﻿Imports Oracle.ManagedDataAccess.Client
-
+Imports Conn
 Public Class Login
 
     Private Property MoveForm As Boolean
@@ -7,11 +7,33 @@ Public Class Login
     Private Property MoveForm_Position As Point
 
 
+    '' Partie connexion à la base de données
+    Dim connexionSql As OracleConnection
+
+
 
 
     Private Sub Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim test As New Conn
+        Try
+            Dim connexion As OracleConnection = test.GetConnection()
+            connexion.Open()
+            MessageBox.Show("Connexion réussie !", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            connexion.Close()
+        Catch ex As Exception
+            MessageBox.Show("Erreur de connexion : " & ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
 
-        'Connexion DB
+
+
+
+
+
+
+
+
+
+
 
 
         Txt_Username.Text = "Login"
