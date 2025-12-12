@@ -1,5 +1,8 @@
 ﻿Imports Oracle.ManagedDataAccess.Client
 Imports Conn
+Imports System.Security.Cryptography
+Imports System.Text
+
 Public Class Login
 
     Private Property MoveForm As Boolean
@@ -14,15 +17,6 @@ Public Class Login
 
 
     Private Sub Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim test As New Conn
-        Try
-            Dim connexion As OracleConnection = test.GetConnection()
-            connexion.Open()
-            MessageBox.Show("Connexion réussie !", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            connexion.Close()
-        Catch ex As Exception
-            MessageBox.Show("Erreur de connexion : " & ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
 
 
         Txt_Username.Text = "Login"
@@ -34,7 +28,20 @@ Public Class Login
     End Sub
 
 
-
+    ' ---------------------------------------------------------
+    ' La fonction qui transforme "1234" en "03ac67..."
+    ' ---------------------------------------------------------
+    Public Function GenererHashSHA256(texte As String) As String
+        Using sha256 As SHA256 = SHA256.Create()
+            Dim bytes As Byte() = Encoding.UTF8.GetBytes(texte)
+            Dim hash As Byte() = sha256.ComputeHash(bytes)
+            Dim builder As New StringBuilder()
+            For Each b As Byte In hash
+                builder.Append(b.ToString("x2"))
+            Next
+            Return builder.ToString()
+        End Using
+    End Function
 
 
 
@@ -104,9 +111,14 @@ Public Class Login
 
     Private Sub btn_login_Click(sender As Object, e As EventArgs) Handles btn_login.Click
 
+        If Txt_Password.Text = "Mot de passe" Or Txt_Username.Text = "Login" Then
+            MessageBox.Show("Veuillez entrer vos identifiants.")
+            Exit Sub
+        End If
+
         ''Recupéraition des informations
         Dim login As String = Txt_Username.Text
-        Dim password As String = Txt_Password.Text
+        Dim password As String = GenererHashSHA256(Txt_Password.Text)
         Dim role As String = ""
 
         Dim dbConn As New Conn()
@@ -115,12 +127,48 @@ Public Class Login
         Try
             connexionSql.Open()
 
-            Dim sql As String = "SELECT ROLE FROM ADMINDB.UTILISATEUR WHERE LOGIN = :p_login AND MOTDEPASSE = :p_mdp"
+            Dim sql As String = "SELECT ROLE FROM UTILISATEUR WHERE LOGIN = :p_login AND MOTDEPASSE = :p_mdp"
+            Dim cmd As New OracleCommand(sql, connexionSql)
 
+            cmd.Parameters.Add(New OracleParameter("p_login", login))
+            cmd.Parameters.Add(New OracleParameter("p_mdp", password))
+
+            Dim result = cmd.ExecuteScalar()
+
+            If result IsNot Nothing Then
+                role = result.ToString()
+
+                Select Case role
+                    Case "Visiteur"
+                        Dim visiteurForm As New Visiteur()
+                        visiteurForm.Show()
+                        Me.Hide()
+
+                    Case "Delegue"
+                        Dim delegueForm As New Delegue()
+                        delegueForm.Show()
+                        Me.Hide()
+
+                    Case "Responsable"
+                        Dim responsableForm As New Responsable()
+                        responsableForm.Show()
+                        Me.Hide()
+
+                    Case Else
+                        MessageBox.Show("Erreur : Rôle inconnu (" & role & ")")
+                End Select
+
+            Else
+                MessageBox.Show("Identifiant ou mot de passe incorrect.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
 
 
         Catch ex As Exception
-
+            MessageBox.Show("Erreur de connexion : " & ex.Message)
+        Finally
+            If connexionSql.State = ConnectionState.Open Then
+                connexionSql.Close()
+            End If
         End Try
 
     End Sub
