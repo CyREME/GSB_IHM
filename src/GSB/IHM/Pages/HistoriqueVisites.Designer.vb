@@ -26,10 +26,10 @@ Partial Class HistoriqueVisites
         lbl_annee = New Label()
         lbl_visites = New Label()
         lbl_echantillon = New Label()
-        DataGridView1 = New DataGridView()
-        DataGridView2 = New DataGridView()
-        CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
-        CType(DataGridView2, ComponentModel.ISupportInitialize).BeginInit()
+        Tableau_Synthese_Praticiens = New DataGridView()
+        Tableau_Activite = New DataGridView()
+        CType(Tableau_Synthese_Praticiens, ComponentModel.ISupportInitialize).BeginInit()
+        CType(Tableau_Activite, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' Liste_Annee
@@ -71,36 +71,42 @@ Partial Class HistoriqueVisites
         lbl_echantillon.TabIndex = 2
         lbl_echantillon.Text = "Nombre total d'échantillon distribué :"
         ' 
-        ' DataGridView1
+        ' Tableau_Synthese_Praticiens
         ' 
-        DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView1.Location = New Point(33, 177)
-        DataGridView1.Name = "DataGridView1"
-        DataGridView1.Size = New Size(355, 380)
-        DataGridView1.TabIndex = 3
+        Tableau_Synthese_Praticiens.AllowUserToAddRows = False
+        Tableau_Synthese_Praticiens.AllowUserToDeleteRows = False
+        Tableau_Synthese_Praticiens.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+        Tableau_Synthese_Praticiens.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Tableau_Synthese_Praticiens.Location = New Point(33, 177)
+        Tableau_Synthese_Praticiens.Name = "Tableau_Synthese_Praticiens"
+        Tableau_Synthese_Praticiens.Size = New Size(355, 380)
+        Tableau_Synthese_Praticiens.TabIndex = 3
         ' 
-        ' DataGridView2
+        ' Tableau_Activite
         ' 
-        DataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView2.Location = New Point(431, 177)
-        DataGridView2.Name = "DataGridView2"
-        DataGridView2.Size = New Size(355, 380)
-        DataGridView2.TabIndex = 3
+        Tableau_Activite.AllowUserToAddRows = False
+        Tableau_Activite.AllowUserToDeleteRows = False
+        Tableau_Activite.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+        Tableau_Activite.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Tableau_Activite.Location = New Point(431, 177)
+        Tableau_Activite.Name = "Tableau_Activite"
+        Tableau_Activite.Size = New Size(355, 380)
+        Tableau_Activite.TabIndex = 3
         ' 
         ' HistoriqueVisites
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        Controls.Add(DataGridView2)
-        Controls.Add(DataGridView1)
+        Controls.Add(Tableau_Activite)
+        Controls.Add(Tableau_Synthese_Praticiens)
         Controls.Add(lbl_echantillon)
         Controls.Add(lbl_visites)
         Controls.Add(lbl_annee)
         Controls.Add(Liste_Annee)
         Name = "HistoriqueVisites"
         Size = New Size(819, 573)
-        CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
-        CType(DataGridView2, ComponentModel.ISupportInitialize).EndInit()
+        CType(Tableau_Synthese_Praticiens, ComponentModel.ISupportInitialize).EndInit()
+        CType(Tableau_Activite, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -109,7 +115,7 @@ Partial Class HistoriqueVisites
     Friend WithEvents lbl_annee As Label
     Friend WithEvents lbl_visites As Label
     Friend WithEvents lbl_echantillon As Label
-    Friend WithEvents DataGridView1 As DataGridView
-    Friend WithEvents DataGridView2 As DataGridView
+    Friend WithEvents Tableau_Synthese_Praticiens As DataGridView
+    Friend WithEvents Tableau_Activite As DataGridView
 
 End Class

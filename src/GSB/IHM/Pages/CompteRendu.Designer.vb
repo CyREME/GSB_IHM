@@ -23,11 +23,10 @@ Partial Class CompteRendu
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Tableau_Recherche = New DataGridView()
-        btn_Recherche_Praticien = New Button()
-        btn_Recherche_Produit = New Button()
-        Button4 = New Button()
-        DataGridView3 = New DataGridView()
-        DataGridView1 = New DataGridView()
+        Btn_Praticien = New Button()
+        Btn_Produit = New Button()
+        Btn_Valider = New Button()
+        Tableau_Echantillons = New DataGridView()
         NumericUpDown1 = New NumericUpDown()
         TextBox2 = New TextBox()
         Barre_Recherche = New TextBox()
@@ -43,74 +42,72 @@ Partial Class CompteRendu
         lbl_Praticien_Vu = New Label()
         lbl_Date_Visite = New Label()
         Date_Visite = New DateTimePicker()
+        Txt_Description = New TextBox()
         CType(Tableau_Recherche, ComponentModel.ISupportInitialize).BeginInit()
-        CType(DataGridView3, ComponentModel.ISupportInitialize).BeginInit()
-        CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
+        CType(Tableau_Echantillons, ComponentModel.ISupportInitialize).BeginInit()
         CType(NumericUpDown1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' Tableau_Recherche
         ' 
+        Tableau_Recherche.AllowUserToAddRows = False
+        Tableau_Recherche.AllowUserToDeleteRows = False
+        Tableau_Recherche.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         Tableau_Recherche.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Tableau_Recherche.Location = New Point(482, 131)
+        Tableau_Recherche.Location = New Point(362, 95)
         Tableau_Recherche.Name = "Tableau_Recherche"
-        Tableau_Recherche.Size = New Size(320, 338)
+        Tableau_Recherche.Size = New Size(428, 414)
         Tableau_Recherche.TabIndex = 41
         ' 
-        ' btn_Recherche_Praticien
+        ' Btn_Praticien
         ' 
-        btn_Recherche_Praticien.Location = New Point(652, 101)
-        btn_Recherche_Praticien.Name = "btn_Recherche_Praticien"
-        btn_Recherche_Praticien.Size = New Size(150, 25)
-        btn_Recherche_Praticien.TabIndex = 40
-        btn_Recherche_Praticien.Text = "PRATICIEN"
-        btn_Recherche_Praticien.UseVisualStyleBackColor = True
+        Btn_Praticien.Location = New Point(576, 64)
+        Btn_Praticien.Name = "Btn_Praticien"
+        Btn_Praticien.Size = New Size(214, 25)
+        Btn_Praticien.TabIndex = 40
+        Btn_Praticien.Text = "PRATICIEN"
+        Btn_Praticien.UseVisualStyleBackColor = True
         ' 
-        ' btn_Recherche_Produit
+        ' Btn_Produit
         ' 
-        btn_Recherche_Produit.Location = New Point(482, 101)
-        btn_Recherche_Produit.Name = "btn_Recherche_Produit"
-        btn_Recherche_Produit.Size = New Size(150, 25)
-        btn_Recherche_Produit.TabIndex = 39
-        btn_Recherche_Produit.Text = "PRODUITS"
-        btn_Recherche_Produit.UseVisualStyleBackColor = True
+        Btn_Produit.Location = New Point(362, 64)
+        Btn_Produit.Name = "Btn_Produit"
+        Btn_Produit.Size = New Size(214, 25)
+        Btn_Produit.TabIndex = 39
+        Btn_Produit.Text = "PRODUITS"
+        Btn_Produit.UseVisualStyleBackColor = True
         ' 
-        ' Button4
+        ' Btn_Valider
         ' 
-        Button4.Location = New Point(362, 503)
-        Button4.Name = "Button4"
-        Button4.Size = New Size(104, 36)
-        Button4.TabIndex = 38
-        Button4.Text = "VALIDER"
-        Button4.UseVisualStyleBackColor = True
+        Btn_Valider.Location = New Point(530, 522)
+        Btn_Valider.Name = "Btn_Valider"
+        Btn_Valider.Size = New Size(104, 36)
+        Btn_Valider.TabIndex = 38
+        Btn_Valider.Text = "VALIDER"
+        Btn_Valider.UseVisualStyleBackColor = True
         ' 
-        ' DataGridView3
+        ' Tableau_Echantillons
         ' 
-        DataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView3.Location = New Point(184, 407)
-        DataGridView3.Name = "DataGridView3"
-        DataGridView3.Size = New Size(267, 62)
-        DataGridView3.TabIndex = 37
-        ' 
-        ' DataGridView1
-        ' 
-        DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView1.Location = New Point(184, 182)
-        DataGridView1.Name = "DataGridView1"
-        DataGridView1.Size = New Size(267, 68)
-        DataGridView1.TabIndex = 36
+        Tableau_Echantillons.AllowUserToAddRows = False
+        Tableau_Echantillons.AllowUserToDeleteRows = False
+        Tableau_Echantillons.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+        Tableau_Echantillons.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Tableau_Echantillons.Location = New Point(16, 425)
+        Tableau_Echantillons.Name = "Tableau_Echantillons"
+        Tableau_Echantillons.Size = New Size(288, 133)
+        Tableau_Echantillons.TabIndex = 37
         ' 
         ' NumericUpDown1
         ' 
         NumericUpDown1.DecimalPlaces = 2
-        NumericUpDown1.Location = New Point(184, 369)
+        NumericUpDown1.Location = New Point(164, 374)
         NumericUpDown1.Name = "NumericUpDown1"
         NumericUpDown1.Size = New Size(120, 23)
         NumericUpDown1.TabIndex = 35
         ' 
         ' TextBox2
         ' 
-        TextBox2.Location = New Point(184, 270)
+        TextBox2.Location = New Point(16, 291)
         TextBox2.Multiline = True
         TextBox2.Name = "TextBox2"
         TextBox2.Size = New Size(267, 68)
@@ -118,14 +115,14 @@ Partial Class CompteRendu
         ' 
         ' Barre_Recherche
         ' 
-        Barre_Recherche.Location = New Point(482, 71)
+        Barre_Recherche.Location = New Point(362, 34)
         Barre_Recherche.Name = "Barre_Recherche"
-        Barre_Recherche.Size = New Size(320, 23)
+        Barre_Recherche.Size = New Size(428, 23)
         Barre_Recherche.TabIndex = 32
         ' 
         ' Nom_Praticien
         ' 
-        Nom_Praticien.Location = New Point(184, 70)
+        Nom_Praticien.Location = New Point(104, 70)
         Nom_Praticien.Name = "Nom_Praticien"
         Nom_Praticien.ReadOnly = True
         Nom_Praticien.Size = New Size(100, 23)
@@ -134,7 +131,7 @@ Partial Class CompteRendu
         ' CheckedListBox1
         ' 
         CheckedListBox1.FormattingEnabled = True
-        CheckedListBox1.Location = New Point(184, 144)
+        CheckedListBox1.Location = New Point(126, 144)
         CheckedListBox1.Name = "CheckedListBox1"
         CheckedListBox1.Size = New Size(120, 22)
         CheckedListBox1.TabIndex = 31
@@ -142,7 +139,7 @@ Partial Class CompteRendu
         ' ComboBox2
         ' 
         ComboBox2.FormattingEnabled = True
-        ComboBox2.Location = New Point(184, 105)
+        ComboBox2.Location = New Point(104, 105)
         ComboBox2.Name = "ComboBox2"
         ComboBox2.Size = New Size(121, 23)
         ComboBox2.TabIndex = 30
@@ -150,7 +147,7 @@ Partial Class CompteRendu
         ' lbl_Liste_Echantillon
         ' 
         lbl_Liste_Echantillon.AutoSize = True
-        lbl_Liste_Echantillon.Location = New Point(16, 407)
+        lbl_Liste_Echantillon.Location = New Point(16, 406)
         lbl_Liste_Echantillon.Name = "lbl_Liste_Echantillon"
         lbl_Liste_Echantillon.Size = New Size(149, 15)
         lbl_Liste_Echantillon.TabIndex = 29
@@ -160,7 +157,7 @@ Partial Class CompteRendu
         ' lbl_Coef_Confiance
         ' 
         lbl_Coef_Confiance.AutoSize = True
-        lbl_Coef_Confiance.Location = New Point(16, 369)
+        lbl_Coef_Confiance.Location = New Point(16, 376)
         lbl_Coef_Confiance.Name = "lbl_Coef_Confiance"
         lbl_Coef_Confiance.Size = New Size(138, 15)
         lbl_Coef_Confiance.TabIndex = 28
@@ -170,7 +167,7 @@ Partial Class CompteRendu
         ' lbl_Bilan_Visite
         ' 
         lbl_Bilan_Visite.AutoSize = True
-        lbl_Bilan_Visite.Location = New Point(16, 270)
+        lbl_Bilan_Visite.Location = New Point(16, 273)
         lbl_Bilan_Visite.Name = "lbl_Bilan_Visite"
         lbl_Bilan_Visite.Size = New Size(64, 15)
         lbl_Bilan_Visite.TabIndex = 27
@@ -180,7 +177,7 @@ Partial Class CompteRendu
         ' lbl_Details_Produit
         ' 
         lbl_Details_Produit.AutoSize = True
-        lbl_Details_Produit.Location = New Point(16, 182)
+        lbl_Details_Produit.Location = New Point(16, 176)
         lbl_Details_Produit.Name = "lbl_Details_Produit"
         lbl_Details_Produit.Size = New Size(84, 15)
         lbl_Details_Produit.TabIndex = 26
@@ -229,22 +226,31 @@ Partial Class CompteRendu
         ' 
         ' Date_Visite
         ' 
-        Date_Visite.Location = New Point(184, 34)
+        Date_Visite.Location = New Point(104, 34)
         Date_Visite.Name = "Date_Visite"
         Date_Visite.Size = New Size(200, 23)
         Date_Visite.TabIndex = 21
+        ' 
+        ' Txt_Description
+        ' 
+        Txt_Description.Location = New Point(16, 194)
+        Txt_Description.Multiline = True
+        Txt_Description.Name = "Txt_Description"
+        Txt_Description.ReadOnly = True
+        Txt_Description.Size = New Size(267, 68)
+        Txt_Description.TabIndex = 34
         ' 
         ' CompteRendu
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         Controls.Add(Tableau_Recherche)
-        Controls.Add(btn_Recherche_Praticien)
-        Controls.Add(btn_Recherche_Produit)
-        Controls.Add(Button4)
-        Controls.Add(DataGridView3)
-        Controls.Add(DataGridView1)
+        Controls.Add(Btn_Praticien)
+        Controls.Add(Btn_Produit)
+        Controls.Add(Btn_Valider)
+        Controls.Add(Tableau_Echantillons)
         Controls.Add(NumericUpDown1)
+        Controls.Add(Txt_Description)
         Controls.Add(TextBox2)
         Controls.Add(Barre_Recherche)
         Controls.Add(Nom_Praticien)
@@ -262,19 +268,17 @@ Partial Class CompteRendu
         Name = "CompteRendu"
         Size = New Size(819, 573)
         CType(Tableau_Recherche, ComponentModel.ISupportInitialize).EndInit()
-        CType(DataGridView3, ComponentModel.ISupportInitialize).EndInit()
-        CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
+        CType(Tableau_Echantillons, ComponentModel.ISupportInitialize).EndInit()
         CType(NumericUpDown1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
 
     Friend WithEvents Tableau_Recherche As DataGridView
-    Friend WithEvents btn_Recherche_Praticien As Button
-    Friend WithEvents btn_Recherche_Produit As Button
-    Friend WithEvents Button4 As Button
-    Friend WithEvents DataGridView3 As DataGridView
-    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents Btn_Praticien As Button
+    Friend WithEvents Btn_Produit As Button
+    Friend WithEvents Btn_Valider As Button
+    Friend WithEvents Tableau_Echantillons As DataGridView
     Friend WithEvents NumericUpDown1 As NumericUpDown
     Friend WithEvents TextBox2 As TextBox
     Friend WithEvents Barre_Recherche As TextBox
@@ -290,5 +294,6 @@ Partial Class CompteRendu
     Friend WithEvents lbl_Praticien_Vu As Label
     Friend WithEvents lbl_Date_Visite As Label
     Friend WithEvents Date_Visite As DateTimePicker
+    Friend WithEvents Txt_Description As TextBox
 
 End Class

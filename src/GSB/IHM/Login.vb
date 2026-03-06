@@ -5,6 +5,11 @@ Imports System.Text
 
 Public Class Login
 
+    ' Variables partagées pour stocker les infos de l'utilisateur connecté
+    Public Shared NomUtilisateur As String = ""
+    Public Shared PrenomUtilisateur As String = ""
+    Public Shared IdUtilisateur As Integer = 0 ' Très utile pour vos futurs INSERT de rapports
+
     Private Property MoveForm As Boolean
     Private Property MoveForm_MousePosition As Point
     Private Property MoveForm_Position As Point
@@ -116,10 +121,8 @@ Public Class Login
             Exit Sub
         End If
 
-        ''Recupéraition des informations
-        Dim login As String = Txt_Username.Text
-        Dim password As String = GenererHashSHA256(Txt_Password.Text)
-        Dim role As String = ""
+        Dim loginInput As String = Txt_Username.Text
+        Dim passwordHash As String = GenererHashSHA256(Txt_Password.Text)
 
         Dim dbConn As New Conn()
         connexionSql = dbConn.GetConnection()
@@ -127,49 +130,44 @@ Public Class Login
         Try
             connexionSql.Open()
 
-            Dim sql As String = "SELECT ROLE FROM UTILISATEUR WHERE LOGIN = :p_login AND MOTDEPASSE = :p_mdp"
+            ' On récupère ID, NOM, PRENOM et ROLE
+            Dim sql As String = "SELECT ID_USER, NOM, PRENOM, ROLE FROM UTILISATEUR WHERE LOGIN = :p_login AND MOTDEPASSE = :p_mdp"
             Dim cmd As New OracleCommand(sql, connexionSql)
 
-            cmd.Parameters.Add(New OracleParameter("p_login", login))
-            cmd.Parameters.Add(New OracleParameter("p_mdp", password))
+            cmd.Parameters.Add(New OracleParameter("p_login", loginInput))
+            cmd.Parameters.Add(New OracleParameter("p_mdp", passwordHash))
 
-            Dim result = cmd.ExecuteScalar()
+            Dim reader As OracleDataReader = cmd.ExecuteReader()
 
-            If result IsNot Nothing Then
-                role = result.ToString()
+            If reader.Read() Then
+                ' Stockage des infos dans les variables partagées
+                IdUtilisateur = reader.GetInt32(0)
+                NomUtilisateur = reader.GetString(1)
+                PrenomUtilisateur = reader.GetString(2)
+                Dim role As String = reader.GetString(3)
 
                 Select Case role
                     Case "Visiteur"
                         Dim visiteurForm As New Visiteur()
                         visiteurForm.Show()
                         Me.Hide()
-
                     Case "Delegue"
                         Dim delegueForm As New Delegue()
                         delegueForm.Show()
                         Me.Hide()
-
                     Case "Responsable"
                         Dim responsableForm As New Responsable()
                         responsableForm.Show()
                         Me.Hide()
-
-                    Case Else
-                        MessageBox.Show("Erreur : Rôle inconnu (" & role & ")")
                 End Select
-
             Else
                 MessageBox.Show("Identifiant ou mot de passe incorrect.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
 
-
         Catch ex As Exception
             MessageBox.Show("Erreur de connexion : " & ex.Message)
         Finally
-            If connexionSql.State = ConnectionState.Open Then
-                connexionSql.Close()
-            End If
+            connexionSql.Close()
         End Try
-
     End Sub
 End Class

@@ -22,31 +22,21 @@ Partial Class VisionSynth
     'Ne la modifiez pas à l'aide de l'éditeur de code.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        DataGridView2 = New DataGridView()
-        DataGridView1 = New DataGridView()
+        Tableau_vision_synthèse = New DataGridView()
         lbl_echantillon = New Label()
         DatePickerMin = New DateTimePicker()
         Label1 = New Label()
         DatePickerMax = New DateTimePicker()
-        CType(DataGridView2, ComponentModel.ISupportInitialize).BeginInit()
-        CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
+        CType(Tableau_vision_synthèse, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
-        ' DataGridView2
+        ' Tableau_vision_synthèse
         ' 
-        DataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView2.Location = New Point(431, 115)
-        DataGridView2.Name = "DataGridView2"
-        DataGridView2.Size = New Size(355, 432)
-        DataGridView2.TabIndex = 6
-        ' 
-        ' DataGridView1
-        ' 
-        DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView1.Location = New Point(33, 115)
-        DataGridView1.Name = "DataGridView1"
-        DataGridView1.Size = New Size(355, 432)
-        DataGridView1.TabIndex = 5
+        Tableau_vision_synthèse.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Tableau_vision_synthèse.Location = New Point(33, 115)
+        Tableau_vision_synthèse.Name = "Tableau_vision_synthèse"
+        Tableau_vision_synthèse.Size = New Size(753, 432)
+        Tableau_vision_synthèse.TabIndex = 5
         ' 
         ' lbl_echantillon
         ' 
@@ -88,20 +78,16 @@ Partial Class VisionSynth
         AutoScaleMode = AutoScaleMode.Font
         Controls.Add(DatePickerMax)
         Controls.Add(DatePickerMin)
-        Controls.Add(DataGridView2)
-        Controls.Add(DataGridView1)
+        Controls.Add(Tableau_vision_synthèse)
         Controls.Add(Label1)
         Controls.Add(lbl_echantillon)
         Name = "VisionSynth"
         Size = New Size(819, 573)
-        CType(DataGridView2, ComponentModel.ISupportInitialize).EndInit()
-        CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
+        CType(Tableau_vision_synthèse, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
-
-    Friend WithEvents DataGridView2 As DataGridView
-    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents Tableau_vision_synthèse As DataGridView
     Friend WithEvents lbl_echantillon As Label
     Friend WithEvents DatePickerMin As DateTimePicker
     Friend WithEvents Label1 As Label

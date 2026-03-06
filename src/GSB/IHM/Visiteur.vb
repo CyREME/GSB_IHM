@@ -36,6 +36,9 @@ Public Class Visiteur
 
     Private Sub Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+        ' Affichage du Nom et Prénom dans le label
+        lbl_nom.Text = Login.PrenomUtilisateur & " " & Login.NomUtilisateur
+
         'Bouton Compte Rendu Chargée
         btn_Compte_Rendu.BackColor = colorBtnSelect
         btn_Compte_Rendu.ForeColor = Color.FromArgb(255, 255, 255)

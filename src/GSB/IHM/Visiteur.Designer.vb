@@ -155,6 +155,7 @@ Partial Class Visiteur
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
+        AutoSize = True
         AutoValidate = AutoValidate.EnablePreventFocusChange
         ClientSize = New Size(1069, 633)
         Controls.Add(PanelAffichage)

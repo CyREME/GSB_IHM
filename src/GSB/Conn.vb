@@ -6,4 +6,25 @@
     Public Shared Function GetConnection() As OracleConnection
         Return New OracleConnection(chaineConnexion)
     End Function
+
+    ' Methode pour récupérer des données depuis la base de données
+    Public Shared Function getData(sql As String) As DataTable
+        Dim dt As New DataTable()
+        Using conn As OracleConnection = GetConnection()
+            Dim cmd As New OracleCommand(sql, conn)
+            Dim da As New OracleDataAdapter(cmd)
+            da.Fill(dt)
+        End Using
+        Return dt
+    End Function
+
+    ' Méthode pour insert, update ou delete des données dans la base de données
+    Public Shared Sub execute(sql As String)
+        Using conn As OracleConnection = GetConnection()
+            conn.Open()
+            Dim cmd As New OracleCommand(sql, conn)
+            cmd.ExecuteNonQuery()
+        End Using
+    End Sub
+
 End Class
