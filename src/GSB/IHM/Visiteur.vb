@@ -138,6 +138,14 @@ Public Class Visiteur
 
     'Gestion bouton Déconnexion et Exit
     Private Sub btn_logout_Click(sender As Object, e As EventArgs) Handles btn_Deconnexion.Click
+        Login.Txt_Username.Text = "Login"
+        Login.Txt_Username.ForeColor = Color.DarkGray
+        Login.Txt_Password.Text = "Mot de passe"
+        Login.Txt_Password.ForeColor = Color.DarkGray
+        Login.Txt_Password.PasswordChar = ""
+
+        Login.Show()
+        Me.Close()
     End Sub
 
     Private Sub btn_exit_Click(sender As Object, e As EventArgs) Handles btn_exit.Click

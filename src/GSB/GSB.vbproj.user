@@ -7,16 +7,16 @@
     <Compile Update="IHM\Login.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="IHM\Pages\CompteRendu.vb">
+    <Compile Update="IHM\Modules\CompteRendu.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="IHM\Pages\HistoriqueVisites.vb">
+    <Compile Update="IHM\Modules\HistoriqueVisites.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="IHM\Pages\VisionSynth.vb">
+    <Compile Update="IHM\Modules\VisionSynth.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="IHM\Pages\VueTableauRegionSecteur.vb">
+    <Compile Update="IHM\Modules\VueTableauRegionSecteur.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="IHM\Responsable.vb">
