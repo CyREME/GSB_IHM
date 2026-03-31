@@ -36,6 +36,9 @@
 
     Private Sub Responsable_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+        ' Affichage du Nom et Prénom dans le label
+        lbl_nom.Text = Login.PrenomUtilisateur & " " & Login.NomUtilisateur
+
         btn_Secteur.BackColor = colorBtnSelect
         btn_Secteur.ForeColor = Color.FromArgb(255, 255, 255)
 
@@ -102,6 +105,9 @@
 
         VueTab.lbl_Visiteur.Visible = False
         VueTab.Liste_Visiteurs.Visible = False
+
+        VueTab.ModeActuel = "Regions"
+        VueTab.ChargerListeDelegues()
     End Sub
 
 
@@ -121,8 +127,12 @@
         VueTab.lbl_Delegue.Visible = True
         VueTab.Liste_Delegues.Visible = True
 
-        VueTab.lbl_Visiteur.Visible = True
-        VueTab.Liste_Visiteurs.Visible = True
+        VueTab.lbl_Visiteur.Visible = False
+        VueTab.Liste_Visiteurs.Visible = False
+
+        VueTab.ModeActuel = "Visiteurs"
+        VueTab.ChargerListeDelegues()
+
     End Sub
 
 
@@ -134,4 +144,5 @@
     Private Sub btn_Deconnexion_Click(sender As Object, e As EventArgs) Handles btn_Deconnexion.Click
 
     End Sub
+
 End Class

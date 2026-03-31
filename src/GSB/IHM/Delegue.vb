@@ -35,6 +35,9 @@ Public Class Delegue
 
     Private Sub Delegue_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+        ' Affichage du Nom et Prénom dans le label
+        lbl_nom.Text = Login.PrenomUtilisateur & " " & Login.NomUtilisateur
+
 
 
         btn_Regions.BackColor = colorBtnSelect
