@@ -19,6 +19,7 @@ Public Class Login
     Dim connexionSql As OracleConnection
 
 
+    Dim WithEvents btn_exit As New btn_exit()
 
 
     Private Sub Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -29,6 +30,9 @@ Public Class Login
         Txt_Password.Text = "Mot de passe"
         Txt_Password.ForeColor = Color.DarkGray
         Txt_Password.PasswordChar = ""
+
+        btn_exit_Panel.Controls.Clear()
+        btn_exit_Panel.Controls.Add(btn_exit)
 
     End Sub
 
@@ -110,8 +114,8 @@ Public Class Login
 
 
     '' Ici c'est pour les boutons de la fenêtre
-    Private Sub btn_exit_Click(sender As Object, e As EventArgs) Handles btn_exit.Click
-        Me.Close()
+    Private Sub btn_exit_Click(sender As Object, e As EventArgs)
+        Close
     End Sub
 
     Private Sub btn_login_Click(sender As Object, e As EventArgs) Handles btn_login.Click

@@ -13,6 +13,9 @@ Public Class Visiteur
 
     Dim VisionSynth As New VisionSynth()
 
+    Dim btn_logout As New btn_logout()
+    Dim btn_deco As New btn_exit()
+
 
     '' Ici c'est pour pouvoir déplacer la fenêtre en cliquant sur le panel du haut ou le label Login
     Private Sub PanelHeader_MouseDown(sender As Object, e As MouseEventArgs) Handles PanelHeader.MouseDown, lbl_nom.MouseDown
@@ -49,6 +52,11 @@ Public Class Visiteur
         btn_Vision_Synthese.BackColor = Color.FromArgb(255, 255, 255)
         btn_Vision_Synthese.ForeColor = Color.FromArgb(0, 0, 0)
 
+        btn_logout_Panel.Controls.Clear()
+        btn_logout_Panel.Controls.Add(btn_logout)
+
+        btn_exit_Panel.Controls.Clear()
+        btn_exit_Panel.Controls.Add(btn_deco)
 
         'Affichage dans le panneau du Compte Rendu
         PanelAffichage.Controls.Clear()
@@ -127,28 +135,5 @@ Public Class Visiteur
 
         PanelAffichage.Controls.Add(VisionSynth)
 
-
-    End Sub
-
-
-
-
-
-
-
-    'Gestion bouton Déconnexion et Exit
-    Private Sub btn_logout_Click(sender As Object, e As EventArgs) Handles btn_Deconnexion.Click
-        Login.Txt_Username.Text = "Login"
-        Login.Txt_Username.ForeColor = Color.DarkGray
-        Login.Txt_Password.Text = "Mot de passe"
-        Login.Txt_Password.ForeColor = Color.DarkGray
-        Login.Txt_Password.PasswordChar = ""
-
-        Login.Show()
-        Me.Close()
-    End Sub
-
-    Private Sub btn_exit_Click(sender As Object, e As EventArgs) Handles btn_exit.Click
-        Me.Close()
     End Sub
 End Class

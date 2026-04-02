@@ -7,6 +7,12 @@
     <Compile Update="IHM\Login.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="IHM\Modules\btn_exit.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="IHM\Modules\btn_logout.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="IHM\Modules\CompteRendu.vb">
       <SubType>UserControl</SubType>
     </Compile>

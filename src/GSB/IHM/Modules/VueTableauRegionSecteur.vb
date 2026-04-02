@@ -4,8 +4,9 @@ Public Class VueTableauRegionSecteur
 
     Public ModeActuel As String = "Regions"
 
-    ' Événement que le formulaire parent (Responsable.vb) pourra écouter
+    ' ---> LES DEUX ÉVÉNEMENTS (Un pour les Visiteurs, Un pour les Délégués) <---
     Public Event DemandeObservationVisiteur(idVisiteur As Integer)
+    Public Event DemandeObservationDelegue(idDelegue As Integer)
 
     Private Sub VueTableauRegionSecteur_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ActualiserTableau()
@@ -32,14 +33,32 @@ Public Class VueTableauRegionSecteur
         Dim sql As String = ""
 
         Try
-            ' On vide complètement le tableau et ses colonnes 
             Tab.DataSource = Nothing
             Tab.Columns.Clear()
 
             ' =========================================================
-            ' CAS 1 : MODE RÉGIONS
+            ' CAS 0 : MODE SECTEUR (Nouvel onglet d'accueil)
             ' =========================================================
-            If ModeActuel = "Regions" Then
+            If ModeActuel = "Secteur" Then
+                ' On affiche les statistiques globales pour chaque délégué du secteur
+                sql = "SELECT D.ID_USER AS ""ID"", " &
+                      "D.NOM || ' ' || D.PRENOM AS ""Délégué"", " &
+                      "COUNT(DISTINCT V.ID_USER) AS ""Nb. Visiteurs"", " &
+                      "COUNT(DISTINCT CR.ID_COMPTE_RENDU) AS ""Nb. Visites"", " &
+                      "NVL(SUM(E.QUANTITE), 0) AS ""Total Échantillons"", " &
+                      "NVL(D.BUDGET, 0) AS ""Budget alloué"", " &
+                      "0 AS ""Dépenses réelles"" " &
+                      "FROM UTILISATEUR D " &
+                      "LEFT JOIN UTILISATEUR V ON V.ID_DELEGUE = D.ID_USER AND V.ROLE = 'Visiteur' " &
+                      "LEFT JOIN COMPTE_RENDU CR ON CR.ID_USER = V.ID_USER " &
+                      "LEFT JOIN ECHANTILLON E ON CR.ID_COMPTE_RENDU = E.ID_COMPTE_RENDU " &
+                      "WHERE D.ROLE = 'Delegue' AND D.ID_SECTEUR_RESP = " & Login.IdUtilisateur & " " &
+                      "GROUP BY D.ID_USER, D.NOM, D.PRENOM, D.BUDGET"
+
+                ' =========================================================
+                ' CAS 1 : MODE RÉGIONS
+                ' =========================================================
+            ElseIf ModeActuel = "Regions" Then
                 If Liste_Delegues.Visible AndAlso Not Liste_Visiteurs.Visible Then
                     If Liste_Delegues.SelectedValue IsNot Nothing Then
                         sql = "SELECT U.ID_USER AS ""ID"", " &
@@ -62,20 +81,11 @@ Public Class VueTableauRegionSecteur
                 End If
 
                 ' =========================================================
-                ' CAS 2 : MODE DÉLÉGUÉS
-                ' =========================================================
-            ElseIf ModeActuel = "Delegues" Then
-                sql = "SELECT ID_User AS ""ID"", Nom, Prenom " &
-                      "FROM Utilisateur WHERE Role = 'Delegue' AND ID_SECTEUR_RESP = " & Login.IdUtilisateur
-
-                ' =========================================================
-                ' CAS 3 : MODE VISITEURS (Affichage des comptes rendus)
+                ' CAS 2 : MODE VISITEURS
                 ' =========================================================
             ElseIf ModeActuel = "Visiteurs" Then
                 If Liste_Delegues.Visible AndAlso Liste_Visiteurs.Visible Then
                     If Liste_Visiteurs.SelectedValue IsNot Nothing Then
-
-                        ' ---> NOUVELLE REQUÊTE : L'historique des visites du visiteur choisi <---
                         sql = "SELECT " &
                               "TO_CHAR(CR.DATE_VISITE, 'DD/MM/YYYY') AS ""Date visite"", " &
                               "TO_CHAR(CR.DATE_SAISIE, 'DD/MM/YYYY') AS ""Date saisie"", " &
@@ -89,7 +99,6 @@ Public Class VueTableauRegionSecteur
                               "WHERE CR.ID_USER = " & Liste_Visiteurs.SelectedValue.ToString() & " " &
                               "GROUP BY CR.ID_COMPTE_RENDU, CR.DATE_VISITE, CR.DATE_SAISIE, P.NOM, CR.BILAN_VISITE, P.COEF_CONFIANCE " &
                               "ORDER BY CR.DATE_VISITE DESC"
-
                     End If
                 End If
             End If
@@ -99,8 +108,8 @@ Public Class VueTableauRegionSecteur
                 Dim dt As DataTable = Conn.getData(sql)
                 Tab.DataSource = dt
 
-                ' Ajout du bouton Observer (seulement en mode Régions)
-                If ModeActuel = "Regions" AndAlso Liste_Delegues.Visible AndAlso Not Liste_Visiteurs.Visible Then
+                ' ---> AJOUT DU BOUTON "OBSERVER" (Pour Secteur OU Regions) <---
+                If ModeActuel = "Secteur" OrElse (ModeActuel = "Regions" AndAlso Liste_Delegues.Visible AndAlso Not Liste_Visiteurs.Visible) Then
                     Dim btnCol As New DataGridViewButtonColumn()
                     btnCol.Name = "BtnObserver"
                     btnCol.HeaderText = "Action"
@@ -113,12 +122,11 @@ Public Class VueTableauRegionSecteur
                 Tab.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
 
                 If Tab.Columns.Contains("Bilan") Then
-                    ' On étire la colonne Bilan car c'est elle qui contient le plus de texte !
                     Tab.Columns("Bilan").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+                ElseIf Tab.Columns.Contains("Délégué") Then
+                    Tab.Columns("Délégué").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
                 ElseIf Tab.Columns.Contains("Visiteur") Then
                     Tab.Columns("Visiteur").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-                ElseIf Tab.Columns.Contains("Région") Then
-                    Tab.Columns("Région").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
                 ElseIf Tab.Columns.Count > 0 Then
                     Tab.Columns(Tab.Columns.Count - 1).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
                 End If
@@ -138,8 +146,14 @@ Public Class VueTableauRegionSecteur
     ' ---------------------------------------------------------
     Private Sub Tab_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles Tab.CellContentClick
         If e.RowIndex >= 0 AndAlso Tab.Columns(e.ColumnIndex).Name = "BtnObserver" Then
-            Dim idDuVisiteur As Integer = Convert.ToInt32(Tab.Rows(e.RowIndex).Cells("ID").Value)
-            RaiseEvent DemandeObservationVisiteur(idDuVisiteur)
+            Dim idCible As Integer = Convert.ToInt32(Tab.Rows(e.RowIndex).Cells("ID").Value)
+
+            ' On déclenche le bon événement selon la page où l'on se trouve
+            If ModeActuel = "Secteur" Then
+                RaiseEvent DemandeObservationDelegue(idCible)
+            ElseIf ModeActuel = "Regions" Then
+                RaiseEvent DemandeObservationVisiteur(idCible)
+            End If
         End If
     End Sub
 
@@ -157,11 +171,9 @@ Public Class VueTableauRegionSecteur
         Liste_Delegues.ValueMember = "ID_USER"
         AddHandler Liste_Delegues.SelectedIndexChanged, AddressOf Liste_Delegues_SelectedIndexChanged
 
-        ' Si on a des délégués, on charge ses visiteurs (ce qui va actualiser le tableau)
         If Liste_Delegues.Items.Count > 0 Then
             ChargerListeVisiteurs(Convert.ToInt32(Liste_Delegues.SelectedValue))
         Else
-            ' S'il n'y a pas de délégué, on force quand même l'actualisation pour vider le tableau
             ActualiserTableau()
         End If
     End Sub
@@ -177,7 +189,6 @@ Public Class VueTableauRegionSecteur
         Liste_Visiteurs.ValueMember = "ID_USER"
         AddHandler Liste_Visiteurs.SelectedIndexChanged, AddressOf Liste_Visiteurs_SelectedIndexChanged
 
-        ' ---> NOUVEAU : On force le tableau à s'afficher avec les données du visiteur fraîchement chargé !
         ActualiserTableau()
     End Sub
 

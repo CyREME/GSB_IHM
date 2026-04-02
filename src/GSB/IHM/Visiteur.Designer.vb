@@ -24,13 +24,13 @@ Partial Class Visiteur
     Private Sub InitializeComponent()
         PanelHeader = New Panel()
         lbl_nom = New Label()
-        btn_Deconnexion = New Button()
-        btn_exit = New Button()
         Panel2 = New Panel()
         btn_Compte_Rendu = New Button()
         btn_Vision_Synthese = New Button()
         btn_Historique_Visites = New Button()
         PanelAffichage = New Panel()
+        btn_exit_Panel = New Panel()
+        btn_logout_Panel = New Panel()
         PanelHeader.SuspendLayout()
         Panel2.SuspendLayout()
         SuspendLayout()
@@ -39,9 +39,9 @@ Partial Class Visiteur
         ' 
         PanelHeader.BackColor = Color.FromArgb(CByte(81), CByte(175), CByte(255))
         PanelHeader.BackgroundImageLayout = ImageLayout.None
+        PanelHeader.Controls.Add(btn_exit_Panel)
+        PanelHeader.Controls.Add(btn_logout_Panel)
         PanelHeader.Controls.Add(lbl_nom)
-        PanelHeader.Controls.Add(btn_Deconnexion)
-        PanelHeader.Controls.Add(btn_exit)
         PanelHeader.Dock = DockStyle.Top
         PanelHeader.ForeColor = SystemColors.ControlText
         PanelHeader.Location = New Point(0, 0)
@@ -52,7 +52,7 @@ Partial Class Visiteur
         ' lbl_nom
         ' 
         lbl_nom.Dock = DockStyle.Left
-        lbl_nom.Font = New Font("Spline Sans Mono", 26F)
+        lbl_nom.Font = New Font("Spline Sans Mono", 26.0F)
         lbl_nom.ForeColor = SystemColors.ControlText
         lbl_nom.Location = New Point(0, 0)
         lbl_nom.Margin = New Padding(4, 0, 4, 0)
@@ -61,41 +61,6 @@ Partial Class Visiteur
         lbl_nom.TabIndex = 6
         lbl_nom.Text = "NOM / PRENOM VISITEUR"
         lbl_nom.TextAlign = ContentAlignment.MiddleCenter
-        ' 
-        ' btn_Deconnexion
-        ' 
-        btn_Deconnexion.Anchor = AnchorStyles.Top
-        btn_Deconnexion.BackColor = Color.White
-        btn_Deconnexion.BackgroundImageLayout = ImageLayout.Stretch
-        btn_Deconnexion.Font = New Font("Spline Sans Mono", 14F)
-        btn_Deconnexion.ForeColor = Color.Black
-        btn_Deconnexion.ImageAlign = ContentAlignment.TopCenter
-        btn_Deconnexion.Location = New Point(836, 10)
-        btn_Deconnexion.Margin = New Padding(4, 3, 4, 3)
-        btn_Deconnexion.Name = "btn_Deconnexion"
-        btn_Deconnexion.Size = New Size(163, 40)
-        btn_Deconnexion.TabIndex = 4
-        btn_Deconnexion.Text = "Deconnexion"
-        btn_Deconnexion.UseVisualStyleBackColor = False
-        ' 
-        ' btn_exit
-        ' 
-        btn_exit.Anchor = AnchorStyles.Top
-        btn_exit.BackColor = Color.Red
-        btn_exit.BackgroundImageLayout = ImageLayout.Stretch
-        btn_exit.FlatAppearance.BorderColor = Color.Red
-        btn_exit.FlatAppearance.BorderSize = 0
-        btn_exit.FlatStyle = FlatStyle.Popup
-        btn_exit.Font = New Font("Spline Sans Mono", 75F, FontStyle.Bold, GraphicsUnit.Document, CByte(0))
-        btn_exit.ForeColor = Color.White
-        btn_exit.ImageAlign = ContentAlignment.BottomCenter
-        btn_exit.Location = New Point(1018, 10)
-        btn_exit.Name = "btn_exit"
-        btn_exit.Size = New Size(40, 40)
-        btn_exit.TabIndex = 5
-        btn_exit.Text = "X"
-        btn_exit.TextAlign = ContentAlignment.TopRight
-        btn_exit.UseVisualStyleBackColor = False
         ' 
         ' Panel2
         ' 
@@ -113,7 +78,7 @@ Partial Class Visiteur
         ' 
         ' btn_Compte_Rendu
         ' 
-        btn_Compte_Rendu.Font = New Font("Spline Sans Mono", 14F)
+        btn_Compte_Rendu.Font = New Font("Spline Sans Mono", 14.0F)
         btn_Compte_Rendu.ImageAlign = ContentAlignment.TopCenter
         btn_Compte_Rendu.Location = New Point(10, 50)
         btn_Compte_Rendu.Name = "btn_Compte_Rendu"
@@ -124,7 +89,7 @@ Partial Class Visiteur
         ' 
         ' btn_Vision_Synthese
         ' 
-        btn_Vision_Synthese.Font = New Font("Spline Sans Mono", 14F)
+        btn_Vision_Synthese.Font = New Font("Spline Sans Mono", 14.0F)
         btn_Vision_Synthese.ImageAlign = ContentAlignment.TopCenter
         btn_Vision_Synthese.Location = New Point(10, 270)
         btn_Vision_Synthese.Name = "btn_Vision_Synthese"
@@ -135,7 +100,7 @@ Partial Class Visiteur
         ' 
         ' btn_Historique_Visites
         ' 
-        btn_Historique_Visites.Font = New Font("Spline Sans Mono", 14F)
+        btn_Historique_Visites.Font = New Font("Spline Sans Mono", 14.0F)
         btn_Historique_Visites.Location = New Point(10, 160)
         btn_Historique_Visites.Name = "btn_Historique_Visites"
         btn_Historique_Visites.Size = New Size(230, 40)
@@ -151,9 +116,23 @@ Partial Class Visiteur
         PanelAffichage.Size = New Size(819, 573)
         PanelAffichage.TabIndex = 3
         ' 
+        ' btn_exit_Panel
+        ' 
+        btn_exit_Panel.Location = New Point(1017, 12)
+        btn_exit_Panel.Name = "btn_exit_Panel"
+        btn_exit_Panel.Size = New Size(40, 40)
+        btn_exit_Panel.TabIndex = 10
+        ' 
+        ' btn_logout_Panel
+        ' 
+        btn_logout_Panel.Location = New Point(835, 12)
+        btn_logout_Panel.Name = "btn_logout_Panel"
+        btn_logout_Panel.Size = New Size(163, 40)
+        btn_logout_Panel.TabIndex = 9
+        ' 
         ' Visiteur
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
         AutoScaleMode = AutoScaleMode.Font
         AutoSize = True
         AutoValidate = AutoValidate.EnablePreventFocusChange
@@ -178,4 +157,6 @@ Partial Class Visiteur
     Friend WithEvents btn_exit As Button
     Friend WithEvents lbl_nom As Label
     Friend WithEvents PanelAffichage As Panel
+    Friend WithEvents btn_exit_Panel As Panel
+    Friend WithEvents btn_logout_Panel As Panel
 End Class

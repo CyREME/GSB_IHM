@@ -33,7 +33,7 @@ Partial Class Login
         Panel4 = New Panel()
         Txt_Password = New TextBox()
         PanelHeader = New Panel()
-        btn_exit = New Button()
+        btn_exit_Panel = New Panel()
         Panel6 = New Panel()
         btn_login = New Button()
         Panel1.SuspendLayout()
@@ -138,7 +138,7 @@ Partial Class Login
         ' 
         ' PanelHeader
         ' 
-        PanelHeader.Controls.Add(btn_exit)
+        PanelHeader.Controls.Add(btn_exit_Panel)
         PanelHeader.Controls.Add(Login_label)
         PanelHeader.Dock = DockStyle.Top
         PanelHeader.Location = New Point(0, 0)
@@ -146,21 +146,12 @@ Partial Class Login
         PanelHeader.Size = New Size(721, 100)
         PanelHeader.TabIndex = 3
         ' 
-        ' btn_exit
+        ' btn_exit_Panel
         ' 
-        btn_exit.Anchor = AnchorStyles.Top
-        btn_exit.AutoSize = True
-        btn_exit.BackColor = Color.Red
-        btn_exit.BackgroundImageLayout = ImageLayout.Stretch
-        btn_exit.FlatStyle = FlatStyle.Popup
-        btn_exit.Font = New Font("Bauhaus 93", 30F)
-        btn_exit.ForeColor = Color.White
-        btn_exit.Location = New Point(653, 12)
-        btn_exit.Name = "btn_exit"
-        btn_exit.Size = New Size(56, 56)
-        btn_exit.TabIndex = 1
-        btn_exit.Text = "X"
-        btn_exit.UseVisualStyleBackColor = False
+        btn_exit_Panel.Location = New Point(653, 12)
+        btn_exit_Panel.Name = "btn_exit_Panel"
+        btn_exit_Panel.Size = New Size(56, 56)
+        btn_exit_Panel.TabIndex = 1
         ' 
         ' Panel6
         ' 
@@ -204,7 +195,6 @@ Partial Class Login
         Panel4.ResumeLayout(False)
         Panel4.PerformLayout()
         PanelHeader.ResumeLayout(False)
-        PanelHeader.PerformLayout()
         Panel6.ResumeLayout(False)
         ResumeLayout(False)
     End Sub
@@ -221,5 +211,5 @@ Partial Class Login
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents PictureBox2 As PictureBox
     Friend WithEvents btn_login As Button
-    Friend WithEvents btn_exit As Button
+    Friend WithEvents btn_exit_Panel As Panel
 End Class
