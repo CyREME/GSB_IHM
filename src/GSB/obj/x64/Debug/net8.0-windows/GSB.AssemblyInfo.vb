@@ -16,7 +16,7 @@ Imports System.Reflection
 <Assembly: System.Reflection.AssemblyCompanyAttribute("GSB"),  _
  Assembly: System.Reflection.AssemblyConfigurationAttribute("Debug"),  _
  Assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0"),  _
- Assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fd9979e8ae4337a30dc650b009ae7ac90f235dcf"),  _
+ Assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5fc9b76372496538d1f1456adfa57ab6aaad7cff"),  _
  Assembly: System.Reflection.AssemblyProductAttribute("GSB"),  _
  Assembly: System.Reflection.AssemblyTitleAttribute("GSB"),  _
  Assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0"),  _

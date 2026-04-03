@@ -22,6 +22,9 @@
     <Compile Update="IHM\Modules\VisionSynth.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="IHM\Modules\VueRegion.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="IHM\Modules\VueTableauRegionSecteur.vb">
       <SubType>UserControl</SubType>
     </Compile>
