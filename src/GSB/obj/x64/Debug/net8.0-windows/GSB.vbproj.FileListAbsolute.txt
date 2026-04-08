@@ -35,3 +35,4 @@ C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\obj\x64\Debug\net8.0-win
 C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\obj\x64\Debug\net8.0-windows\GSB.pdb
 C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\obj\x64\Debug\net8.0-windows\GSB.genruntimeconfig.cache
 C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\obj\x64\Debug\net8.0-windows\ref\GSB.dll
+C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\obj\x64\Debug\net8.0-windows\GSB.HistoriqueVisitesDelegue.resources

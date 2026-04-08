@@ -19,6 +19,9 @@
     <Compile Update="IHM\Modules\HistoriqueVisites.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="IHM\Modules\HistoriqueVisitesDelegue.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="IHM\Modules\VisionSynth.vb">
       <SubType>UserControl</SubType>
     </Compile>
