@@ -1,31 +1,40 @@
 {
   "version": 2,
-  "dgSpecHash": "dPyWUKW9Cb0=",
+  "dgSpecHash": "HIWN48b96VE=",
   "success": true,
-  "projectFilePath": "C:\\Users\\24ecellier\\source\\repos\\CyREME\\GSB_IHM\\src\\GSB\\GSB.vbproj",
+  "projectFilePath": "C:\\Users\\24Sruault\\source\\repos\\CyREME\\GSB_IHM\\src\\GSB\\GSB.vbproj",
   "expectedPackageFiles": [
-    "C:\\Users\\24ecellier\\.nuget\\packages\\oracle.manageddataaccess\\23.26.0\\oracle.manageddataaccess.23.26.0.nupkg.sha512",
-    "C:\\Users\\24ecellier\\.nuget\\packages\\oracle.manageddataaccess.core\\23.26.0\\oracle.manageddataaccess.core.23.26.0.nupkg.sha512",
-    "C:\\Users\\24ecellier\\.nuget\\packages\\system.configuration.configurationmanager\\8.0.0\\system.configuration.configurationmanager.8.0.0.nupkg.sha512",
-    "C:\\Users\\24ecellier\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.2\\system.diagnostics.diagnosticsource.6.0.2.nupkg.sha512",
-    "C:\\Users\\24ecellier\\.nuget\\packages\\system.diagnostics.eventlog\\8.0.0\\system.diagnostics.eventlog.8.0.0.nupkg.sha512",
-    "C:\\Users\\24ecellier\\.nuget\\packages\\system.diagnostics.performancecounter\\8.0.0\\system.diagnostics.performancecounter.8.0.0.nupkg.sha512",
-    "C:\\Users\\24ecellier\\.nuget\\packages\\system.directoryservices.protocols\\8.0.2\\system.directoryservices.protocols.8.0.2.nupkg.sha512",
-    "C:\\Users\\24ecellier\\.nuget\\packages\\system.formats.asn1\\8.0.1\\system.formats.asn1.8.0.1.nupkg.sha512",
-    "C:\\Users\\24ecellier\\.nuget\\packages\\system.memory\\4.6.0\\system.memory.4.6.0.nupkg.sha512",
-    "C:\\Users\\24ecellier\\.nuget\\packages\\system.security.cryptography.pkcs\\8.0.1\\system.security.cryptography.pkcs.8.0.1.nupkg.sha512",
-    "C:\\Users\\24ecellier\\.nuget\\packages\\system.security.cryptography.protecteddata\\8.0.0\\system.security.cryptography.protecteddata.8.0.0.nupkg.sha512",
-    "C:\\Users\\24ecellier\\.nuget\\packages\\system.text.json\\8.0.5\\system.text.json.8.0.5.nupkg.sha512",
-    "C:\\Users\\24ecellier\\.nuget\\packages\\system.threading.tasks.extensions\\4.6.0\\system.threading.tasks.extensions.4.6.0.nupkg.sha512"
+    "C:\\Users\\24Sruault\\.nuget\\packages\\oracle.manageddataaccess\\23.26.0\\oracle.manageddataaccess.23.26.0.nupkg.sha512",
+    "C:\\Users\\24Sruault\\.nuget\\packages\\oracle.manageddataaccess.core\\23.26.0\\oracle.manageddataaccess.core.23.26.0.nupkg.sha512",
+    "C:\\Users\\24Sruault\\.nuget\\packages\\system.configuration.configurationmanager\\8.0.0\\system.configuration.configurationmanager.8.0.0.nupkg.sha512",
+    "C:\\Users\\24Sruault\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.2\\system.diagnostics.diagnosticsource.6.0.2.nupkg.sha512",
+    "C:\\Users\\24Sruault\\.nuget\\packages\\system.diagnostics.eventlog\\8.0.0\\system.diagnostics.eventlog.8.0.0.nupkg.sha512",
+    "C:\\Users\\24Sruault\\.nuget\\packages\\system.diagnostics.performancecounter\\8.0.0\\system.diagnostics.performancecounter.8.0.0.nupkg.sha512",
+    "C:\\Users\\24Sruault\\.nuget\\packages\\system.directoryservices.protocols\\8.0.2\\system.directoryservices.protocols.8.0.2.nupkg.sha512",
+    "C:\\Users\\24Sruault\\.nuget\\packages\\system.formats.asn1\\8.0.1\\system.formats.asn1.8.0.1.nupkg.sha512",
+    "C:\\Users\\24Sruault\\.nuget\\packages\\system.memory\\4.6.0\\system.memory.4.6.0.nupkg.sha512",
+    "C:\\Users\\24Sruault\\.nuget\\packages\\system.security.cryptography.pkcs\\8.0.1\\system.security.cryptography.pkcs.8.0.1.nupkg.sha512",
+    "C:\\Users\\24Sruault\\.nuget\\packages\\system.security.cryptography.protecteddata\\8.0.0\\system.security.cryptography.protecteddata.8.0.0.nupkg.sha512",
+    "C:\\Users\\24Sruault\\.nuget\\packages\\system.text.json\\8.0.5\\system.text.json.8.0.5.nupkg.sha512",
+    "C:\\Users\\24Sruault\\.nuget\\packages\\system.threading.tasks.extensions\\4.6.0\\system.threading.tasks.extensions.4.6.0.nupkg.sha512"
   ],
   "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "message": "Problème de lecture du fichier cache C:\\Users\\24Sruault\\source\\repos\\CyREME\\GSB_IHM\\src\\GSB\\obj\\project.nuget.cache\u00A0: '<' is an invalid start of a property name. Expected a '\"'. Path: $ | LineNumber: 2 | BytePositionInLine: 0.",
+      "projectPath": "C:\\Users\\24Sruault\\source\\repos\\CyREME\\GSB_IHM\\src\\GSB\\GSB.vbproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\24Sruault\\source\\repos\\CyREME\\GSB_IHM\\src\\GSB\\GSB.vbproj",
+      "targetGraphs": []
+    },
     {
       "code": "NU1701",
       "level": "Warning",
       "message": "Le package 'Oracle.ManagedDataAccess 23.26.0' a été restauré en utilisant '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' au lieu du framework cible du projet 'net8.0-windows7.0'. Ce package n'est peut-être pas totalement compatible avec votre projet.",
-      "projectPath": "C:\\Users\\24ecellier\\source\\repos\\CyREME\\GSB_IHM\\src\\GSB\\GSB.vbproj",
+      "projectPath": "C:\\Users\\24Sruault\\source\\repos\\CyREME\\GSB_IHM\\src\\GSB\\GSB.vbproj",
       "warningLevel": 1,
-      "filePath": "C:\\Users\\24ecellier\\source\\repos\\CyREME\\GSB_IHM\\src\\GSB\\GSB.vbproj",
+      "filePath": "C:\\Users\\24Sruault\\source\\repos\\CyREME\\GSB_IHM\\src\\GSB\\GSB.vbproj",
       "libraryId": "Oracle.ManagedDataAccess",
       "targetGraphs": [
         "net8.0-windows7.0"

@@ -1,9 +1,8 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class HistoriqueVisitesDelegue
     Inherits System.Windows.Forms.UserControl
 
-    'UserControl remplace la méthode Dispose pour nettoyer la liste des composants.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -14,13 +13,9 @@ Partial Class HistoriqueVisitesDelegue
         End Try
     End Sub
 
-    'Requise par le Concepteur Windows Form
     Private components As System.ComponentModel.IContainer
 
-    'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
-    'Elle peut être modifiée à l'aide du Concepteur Windows Form.  
-    'Ne la modifiez pas à l'aide de l'éditeur de code.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Tableau_Activite = New DataGridView()
         Tableau_Synthese_Praticiens = New DataGridView()
@@ -32,16 +27,48 @@ Partial Class HistoriqueVisitesDelegue
         CType(Tableau_Synthese_Praticiens, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
-        ' Tableau_Activite
+        ' Liste_Annee
         ' 
-        Tableau_Activite.AllowUserToAddRows = False
-        Tableau_Activite.AllowUserToDeleteRows = False
-        Tableau_Activite.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
-        Tableau_Activite.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Tableau_Activite.Location = New Point(451, 172)
-        Tableau_Activite.Name = "Tableau_Activite"
-        Tableau_Activite.Size = New Size(355, 380)
-        Tableau_Activite.TabIndex = 8
+        Liste_Annee.DropDownStyle = ComboBoxStyle.DropDownList
+        Liste_Annee.Font = New Font("Segoe UI", 12.0F)
+        Liste_Annee.FormattingEnabled = True
+        Liste_Annee.Location = New Point(33, 53)
+        Liste_Annee.Name = "Liste_Annee"
+        Liste_Annee.Size = New Size(150, 29)
+        Liste_Annee.TabIndex = 4
+        ' 
+        ' lbl_annee
+        ' 
+        lbl_annee.AutoSize = True
+        lbl_annee.Font = New Font("Segoe UI Semibold", 12.0F, FontStyle.Bold)
+        lbl_annee.ForeColor = Color.FromArgb(CByte(45), CByte(52), CByte(70))
+        lbl_annee.Location = New Point(33, 26)
+        lbl_annee.Name = "lbl_annee"
+        lbl_annee.Size = New Size(141, 21)
+        lbl_annee.TabIndex = 5
+        lbl_annee.Text = "Filtrer par année :"
+        ' 
+        ' lbl_visites
+        ' 
+        lbl_visites.AutoSize = True
+        lbl_visites.Font = New Font("Segoe UI", 12.0F)
+        lbl_visites.ForeColor = Color.FromArgb(CByte(45), CByte(52), CByte(70))
+        lbl_visites.Location = New Point(33, 103)
+        lbl_visites.Name = "lbl_visites"
+        lbl_visites.Size = New Size(260, 21)
+        lbl_visites.TabIndex = 7
+        lbl_visites.Text = "Nombre total de visites de l'équipe :"
+        ' 
+        ' lbl_echantillon
+        ' 
+        lbl_echantillon.AutoSize = True
+        lbl_echantillon.Font = New Font("Segoe UI", 12.0F)
+        lbl_echantillon.ForeColor = Color.FromArgb(CByte(45), CByte(52), CByte(70))
+        lbl_echantillon.Location = New Point(33, 140)
+        lbl_echantillon.Name = "lbl_echantillon"
+        lbl_echantillon.Size = New Size(265, 21)
+        lbl_echantillon.TabIndex = 6
+        lbl_echantillon.Text = "Nombre total d'échantillons distribués :"
         ' 
         ' Tableau_Synthese_Praticiens
         ' 
@@ -49,54 +76,27 @@ Partial Class HistoriqueVisitesDelegue
         Tableau_Synthese_Praticiens.AllowUserToDeleteRows = False
         Tableau_Synthese_Praticiens.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         Tableau_Synthese_Praticiens.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Tableau_Synthese_Praticiens.Location = New Point(13, 172)
+        Tableau_Synthese_Praticiens.Location = New Point(33, 177)
         Tableau_Synthese_Praticiens.Name = "Tableau_Synthese_Praticiens"
-        Tableau_Synthese_Praticiens.Size = New Size(432, 380)
+        Tableau_Synthese_Praticiens.Size = New Size(410, 360)
         Tableau_Synthese_Praticiens.TabIndex = 9
         ' 
-        ' lbl_echantillon
+        ' Tableau_Activite
         ' 
-        lbl_echantillon.AutoSize = True
-        lbl_echantillon.Font = New Font("Spline Sans Mono", 9F)
-        lbl_echantillon.Location = New Point(33, 135)
-        lbl_echantillon.Name = "lbl_echantillon"
-        lbl_echantillon.Size = New Size(274, 17)
-        lbl_echantillon.TabIndex = 6
-        lbl_echantillon.Text = "Nombre total d'échantillon distribué :"
-        ' 
-        ' lbl_visites
-        ' 
-        lbl_visites.AutoSize = True
-        lbl_visites.Font = New Font("Spline Sans Mono", 9F)
-        lbl_visites.Location = New Point(33, 98)
-        lbl_visites.Name = "lbl_visites"
-        lbl_visites.Size = New Size(176, 17)
-        lbl_visites.TabIndex = 7
-        lbl_visites.Text = "Nombre total de visite :"
-        ' 
-        ' lbl_annee
-        ' 
-        lbl_annee.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
-        lbl_annee.Font = New Font("Spline Sans Mono", 14F)
-        lbl_annee.Location = New Point(33, 21)
-        lbl_annee.Name = "lbl_annee"
-        lbl_annee.Size = New Size(121, 24)
-        lbl_annee.TabIndex = 5
-        lbl_annee.Text = "Année"
-        lbl_annee.TextAlign = ContentAlignment.MiddleCenter
-        ' 
-        ' Liste_Annee
-        ' 
-        Liste_Annee.FormattingEnabled = True
-        Liste_Annee.Location = New Point(33, 48)
-        Liste_Annee.Name = "Liste_Annee"
-        Liste_Annee.Size = New Size(121, 23)
-        Liste_Annee.TabIndex = 4
+        Tableau_Activite.AllowUserToAddRows = False
+        Tableau_Activite.AllowUserToDeleteRows = False
+        Tableau_Activite.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+        Tableau_Activite.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Tableau_Activite.Location = New Point(460, 177)
+        Tableau_Activite.Name = "Tableau_Activite"
+        Tableau_Activite.Size = New Size(326, 360)
+        Tableau_Activite.TabIndex = 8
         ' 
         ' HistoriqueVisitesDelegue
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
         AutoScaleMode = AutoScaleMode.Font
+        BackColor = Color.FromArgb(CByte(245), CByte(247), CByte(250))
         Controls.Add(Tableau_Activite)
         Controls.Add(Tableau_Synthese_Praticiens)
         Controls.Add(lbl_echantillon)

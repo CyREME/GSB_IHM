@@ -1,12 +1,37 @@
-﻿Imports Oracle.ManagedDataAccess.Client
+﻿Imports System.Windows.Forms
+Imports System.Data
+Imports Oracle.ManagedDataAccess.Client
 
 Public Class VueRegion
 
     ' Se déclenche au chargement du composant
     Private Sub VueRegion_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' On applique le style moderne GSB au tableau !
+        AppliquerStyleTableaux(Tab)
+
         ' Au lieu d'actualiser directement le tableau, on charge d'abord les années.
         ' L'actualisation du tableau se fera automatiquement après !
         ChargerAnnees()
+    End Sub
+
+    ' --- STYLE DU TABLEAU ---
+    Private Sub AppliquerStyleTableaux(grid As DataGridView)
+        grid.BackgroundColor = Color.White
+        grid.BorderStyle = BorderStyle.None
+        grid.RowHeadersVisible = False ' Supprime la petite colonne vide à gauche
+        grid.EnableHeadersVisualStyles = False
+        grid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
+
+        ' En-tête Bleu
+        grid.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(83, 175, 255)
+        grid.ColumnHeadersDefaultCellStyle.ForeColor = Color.White
+        grid.ColumnHeadersDefaultCellStyle.Font = New Font("Segoe UI", 10, FontStyle.Bold)
+
+        ' Lignes épurées
+        grid.DefaultCellStyle.SelectionBackColor = Color.FromArgb(240, 245, 250)
+        grid.DefaultCellStyle.SelectionForeColor = Color.Black
+        grid.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
+        grid.GridColor = Color.FromArgb(230, 230, 230)
     End Sub
 
     ' ---------------------------------------------------------
