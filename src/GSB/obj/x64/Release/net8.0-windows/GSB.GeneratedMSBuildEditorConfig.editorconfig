@@ -14,7 +14,11 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = GSB
+<<<<<<< HEAD
 build_property.ProjectDir = C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\
+=======
+build_property.ProjectDir = C:\Users\emeri\source\repos\CyREME\GSB_IHM\src\GSB\
+>>>>>>> 5181edd05215053a5941c552c20e413c0eb8017a
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.CsWinRTUseWindowsUIXamlProjections = false
