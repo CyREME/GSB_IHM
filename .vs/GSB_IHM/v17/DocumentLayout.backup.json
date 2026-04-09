@@ -1,11 +1,16 @@
 {
   "Version": 1,
+<<<<<<< HEAD
   "WorkspaceRootPath": "C:\\Users\\24Sruault\\source\\repos\\CyREME\\GSB_IHM\\",
+=======
+  "WorkspaceRootPath": "C:\\Users\\24ecellier\\source\\repos\\CyREME\\GSB_IHM\\",
+>>>>>>> bea601418e10e5e629fe03f7a6de1c6514bdd0be
   "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
+<<<<<<< HEAD
       "DocumentGroups": [
         {
           "DockedWidth": 347,
@@ -26,6 +31,9 @@
           ]
         }
       ]
+=======
+      "DocumentGroups": []
+>>>>>>> bea601418e10e5e629fe03f7a6de1c6514bdd0be
     }
   ]
 }

@@ -1,9 +1,8 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class HistoriqueVisites
     Inherits System.Windows.Forms.UserControl
 
-    'UserControl remplace la méthode Dispose pour nettoyer la liste des composants.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -14,108 +13,151 @@ Partial Class HistoriqueVisites
         End Try
     End Sub
 
-    'Requise par le Concepteur Windows Form
     Private components As System.ComponentModel.IContainer
 
-    'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
-    'Elle peut être modifiée à l'aide du Concepteur Windows Form.  
-    'Ne la modifiez pas à l'aide de l'éditeur de code.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Liste_Annee = New ComboBox()
-        lbl_annee = New Label()
-        lbl_visites = New Label()
-        lbl_echantillon = New Label()
-        Tableau_Synthese_Praticiens = New DataGridView()
-        Tableau_Activite = New DataGridView()
-        CType(Tableau_Synthese_Praticiens, ComponentModel.ISupportInitialize).BeginInit()
-        CType(Tableau_Activite, ComponentModel.ISupportInitialize).BeginInit()
+        Tableau_Historique = New DataGridView()
+        Tableau_Details = New DataGridView()
+        lbl_periode = New Label()
+        DatePickerMin = New DateTimePicker()
+        Label1 = New Label()
+        DatePickerMax = New DateTimePicker()
+        Txt_Bilan = New TextBox()
+        lbl_bilan = New Label()
+        lbl_echantillons = New Label()
+        CType(Tableau_Historique, ComponentModel.ISupportInitialize).BeginInit()
+        CType(Tableau_Details, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
-        ' Liste_Annee
+        ' Tableau_Historique
         ' 
-        Liste_Annee.FormattingEnabled = True
-        Liste_Annee.Location = New Point(33, 53)
-        Liste_Annee.Name = "Liste_Annee"
-        Liste_Annee.Size = New Size(121, 23)
-        Liste_Annee.TabIndex = 0
+        Tableau_Historique.AllowUserToAddRows = False
+        Tableau_Historique.AllowUserToDeleteRows = False
+        Tableau_Historique.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+        Tableau_Historique.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Tableau_Historique.Location = New Point(33, 95)
+        Tableau_Historique.Name = "Tableau_Historique"
+        Tableau_Historique.ReadOnly = True
+        Tableau_Historique.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+        Tableau_Historique.Size = New Size(400, 445)
+        Tableau_Historique.TabIndex = 5
         ' 
-        ' lbl_annee
+        ' Tableau_Details
         ' 
-        lbl_annee.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
-        lbl_annee.Font = New Font("Spline Sans Mono", 14F)
-        lbl_annee.Location = New Point(33, 26)
-        lbl_annee.Name = "lbl_annee"
-        lbl_annee.Size = New Size(121, 24)
-        lbl_annee.TabIndex = 1
-        lbl_annee.Text = "Année"
-        lbl_annee.TextAlign = ContentAlignment.MiddleCenter
+        Tableau_Details.AllowUserToAddRows = False
+        Tableau_Details.AllowUserToDeleteRows = False
+        Tableau_Details.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+        Tableau_Details.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Tableau_Details.Location = New Point(460, 310)
+        Tableau_Details.Name = "Tableau_Details"
+        Tableau_Details.ReadOnly = True
+        Tableau_Details.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+        Tableau_Details.Size = New Size(326, 230)
+        Tableau_Details.TabIndex = 6
         ' 
-        ' lbl_visites
+        ' lbl_periode
         ' 
-        lbl_visites.AutoSize = True
-        lbl_visites.Font = New Font("Spline Sans Mono", 9F)
-        lbl_visites.Location = New Point(33, 103)
-        lbl_visites.Name = "lbl_visites"
-        lbl_visites.Size = New Size(176, 17)
-        lbl_visites.TabIndex = 2
-        lbl_visites.Text = "Nombre total de visite :"
+        lbl_periode.AutoSize = True
+        lbl_periode.Font = New Font("Segoe UI Semibold", 12.0F, FontStyle.Bold)
+        lbl_periode.ForeColor = Color.FromArgb(CByte(45), CByte(52), CByte(70))
+        lbl_periode.Location = New Point(33, 40)
+        lbl_periode.Name = "lbl_periode"
+        lbl_periode.Size = New Size(160, 21)
+        lbl_periode.TabIndex = 4
+        lbl_periode.Text = "Période d'analyse : Du"
         ' 
-        ' lbl_echantillon
+        ' DatePickerMin
         ' 
-        lbl_echantillon.AutoSize = True
-        lbl_echantillon.Font = New Font("Spline Sans Mono", 9F)
-        lbl_echantillon.Location = New Point(33, 140)
-        lbl_echantillon.Name = "lbl_echantillon"
-        lbl_echantillon.Size = New Size(274, 17)
-        lbl_echantillon.TabIndex = 2
-        lbl_echantillon.Text = "Nombre total d'échantillon distribué :"
+        DatePickerMin.Font = New Font("Segoe UI", 10.0F)
+        DatePickerMin.Location = New Point(195, 38)
+        DatePickerMin.Name = "DatePickerMin"
+        DatePickerMin.Size = New Size(200, 25)
+        DatePickerMin.TabIndex = 7
         ' 
-        ' Tableau_Synthese_Praticiens
+        ' Label1
         ' 
-        Tableau_Synthese_Praticiens.AllowUserToAddRows = False
-        Tableau_Synthese_Praticiens.AllowUserToDeleteRows = False
-        Tableau_Synthese_Praticiens.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
-        Tableau_Synthese_Praticiens.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Tableau_Synthese_Praticiens.Location = New Point(33, 177)
-        Tableau_Synthese_Praticiens.Name = "Tableau_Synthese_Praticiens"
-        Tableau_Synthese_Praticiens.Size = New Size(355, 380)
-        Tableau_Synthese_Praticiens.TabIndex = 3
+        Label1.AutoSize = True
+        Label1.Font = New Font("Segoe UI Semibold", 12.0F, FontStyle.Bold)
+        Label1.ForeColor = Color.FromArgb(CByte(45), CByte(52), CByte(70))
+        Label1.Location = New Point(405, 40)
+        Label1.Name = "Label1"
+        Label1.Size = New Size(27, 21)
+        Label1.TabIndex = 4
+        Label1.Text = "au"
         ' 
-        ' Tableau_Activite
+        ' DatePickerMax
         ' 
-        Tableau_Activite.AllowUserToAddRows = False
-        Tableau_Activite.AllowUserToDeleteRows = False
-        Tableau_Activite.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
-        Tableau_Activite.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Tableau_Activite.Location = New Point(431, 177)
-        Tableau_Activite.Name = "Tableau_Activite"
-        Tableau_Activite.Size = New Size(355, 380)
-        Tableau_Activite.TabIndex = 3
+        DatePickerMax.Font = New Font("Segoe UI", 10.0F)
+        DatePickerMax.Location = New Point(440, 38)
+        DatePickerMax.Name = "DatePickerMax"
+        DatePickerMax.Size = New Size(200, 25)
+        DatePickerMax.TabIndex = 7
+        ' 
+        ' lbl_bilan
+        ' 
+        lbl_bilan.AutoSize = True
+        lbl_bilan.Font = New Font("Segoe UI Semibold", 10.0F, FontStyle.Bold)
+        lbl_bilan.ForeColor = Color.FromArgb(CByte(83), CByte(175), CByte(255))
+        lbl_bilan.Location = New Point(460, 95)
+        lbl_bilan.Name = "lbl_bilan"
+        lbl_bilan.Size = New Size(99, 19)
+        lbl_bilan.TabIndex = 8
+        lbl_bilan.Text = "Bilan de Visite"
+        ' 
+        ' Txt_Bilan
+        ' 
+        Txt_Bilan.BackColor = Color.White
+        Txt_Bilan.Font = New Font("Segoe UI", 10.0F)
+        Txt_Bilan.Location = New Point(460, 117)
+        Txt_Bilan.Multiline = True
+        Txt_Bilan.Name = "Txt_Bilan"
+        Txt_Bilan.ReadOnly = True
+        Txt_Bilan.ScrollBars = ScrollBars.Vertical
+        Txt_Bilan.Size = New Size(326, 150)
+        Txt_Bilan.TabIndex = 9
+        ' 
+        ' lbl_echantillons
+        ' 
+        lbl_echantillons.AutoSize = True
+        lbl_echantillons.Font = New Font("Segoe UI Semibold", 10.0F, FontStyle.Bold)
+        lbl_echantillons.ForeColor = Color.FromArgb(CByte(83), CByte(175), CByte(255))
+        lbl_echantillons.Location = New Point(460, 288)
+        lbl_echantillons.Name = "lbl_echantillons"
+        lbl_echantillons.Size = New Size(147, 19)
+        lbl_echantillons.TabIndex = 10
+        lbl_echantillons.Text = "Échantillons distribués"
         ' 
         ' HistoriqueVisites
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
         AutoScaleMode = AutoScaleMode.Font
-        Controls.Add(Tableau_Activite)
-        Controls.Add(Tableau_Synthese_Praticiens)
-        Controls.Add(lbl_echantillon)
-        Controls.Add(lbl_visites)
-        Controls.Add(lbl_annee)
-        Controls.Add(Liste_Annee)
+        BackColor = Color.FromArgb(CByte(245), CByte(247), CByte(250))
+        Controls.Add(lbl_echantillons)
+        Controls.Add(Txt_Bilan)
+        Controls.Add(lbl_bilan)
+        Controls.Add(DatePickerMax)
+        Controls.Add(DatePickerMin)
+        Controls.Add(Tableau_Details)
+        Controls.Add(Tableau_Historique)
+        Controls.Add(Label1)
+        Controls.Add(lbl_periode)
         Name = "HistoriqueVisites"
         Size = New Size(819, 573)
-        CType(Tableau_Synthese_Praticiens, ComponentModel.ISupportInitialize).EndInit()
-        CType(Tableau_Activite, ComponentModel.ISupportInitialize).EndInit()
+        CType(Tableau_Historique, ComponentModel.ISupportInitialize).EndInit()
+        CType(Tableau_Details, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
 
-    Friend WithEvents Liste_Annee As ComboBox
-    Friend WithEvents lbl_annee As Label
-    Friend WithEvents lbl_visites As Label
-    Friend WithEvents lbl_echantillon As Label
-    Friend WithEvents Tableau_Synthese_Praticiens As DataGridView
-    Friend WithEvents Tableau_Activite As DataGridView
+    Friend WithEvents Tableau_Historique As DataGridView
+    Friend WithEvents Tableau_Details As DataGridView
+    Friend WithEvents lbl_periode As Label
+    Friend WithEvents DatePickerMin As DateTimePicker
+    Friend WithEvents Label1 As Label
+    Friend WithEvents DatePickerMax As DateTimePicker
+    Friend WithEvents Txt_Bilan As TextBox
+    Friend WithEvents lbl_bilan As Label
+    Friend WithEvents lbl_echantillons As Label
 
 End Class

@@ -19,7 +19,6 @@ C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\obj\x64\Debug\net8.0-win
 C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\obj\x64\Debug\net8.0-windows\GSB.HistoriqueVisites.resources
 C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\obj\x64\Debug\net8.0-windows\GSB.VisionSynth.resources
 C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\obj\x64\Debug\net8.0-windows\GSB.VueRegion.resources
-C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\obj\x64\Debug\net8.0-windows\GSB.VueTableauRegionSecteur.resources
 C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\obj\x64\Debug\net8.0-windows\GSB.Responsable.resources
 C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\obj\x64\Debug\net8.0-windows\GSB.Visiteur.resources
 C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\obj\x64\Debug\net8.0-windows\GSB.Resources.resources
@@ -36,6 +35,10 @@ C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\obj\x64\Debug\net8.0-win
 C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\obj\x64\Debug\net8.0-windows\GSB.genruntimeconfig.cache
 C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\obj\x64\Debug\net8.0-windows\ref\GSB.dll
 C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\obj\x64\Debug\net8.0-windows\GSB.HistoriqueVisitesDelegue.resources
+<<<<<<< HEAD
+C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\obj\x64\Debug\net8.0-windows\GSB.VueEquipeVisiteurs.resources
+C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\obj\x64\Debug\net8.0-windows\GSB.VueSecteurRegionResp.resources
+=======
 C:\Users\24Sruault\source\repos\CyREME\GSB_IHM\src\GSB\bin\x64\Debug\net8.0-windows\GSB.exe
 C:\Users\24Sruault\source\repos\CyREME\GSB_IHM\src\GSB\bin\x64\Debug\net8.0-windows\GSB.deps.json
 C:\Users\24Sruault\source\repos\CyREME\GSB_IHM\src\GSB\bin\x64\Debug\net8.0-windows\GSB.runtimeconfig.json
@@ -74,3 +77,4 @@ C:\Users\24Sruault\source\repos\CyREME\GSB_IHM\src\GSB\obj\x64\Debug\net8.0-wind
 C:\Users\24Sruault\source\repos\CyREME\GSB_IHM\src\GSB\obj\x64\Debug\net8.0-windows\GSB.pdb
 C:\Users\24Sruault\source\repos\CyREME\GSB_IHM\src\GSB\obj\x64\Debug\net8.0-windows\GSB.genruntimeconfig.cache
 C:\Users\24Sruault\source\repos\CyREME\GSB_IHM\src\GSB\obj\x64\Debug\net8.0-windows\ref\GSB.dll
+>>>>>>> e8681ec723fb5e285a95e6b69690cbbaf2d4e883

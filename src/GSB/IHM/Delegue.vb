@@ -1,28 +1,38 @@
-﻿Imports Mysqlx.XDevAPI.Relational
+﻿Imports System.Windows.Forms
 
 Public Class Delegue
 
     Private Property MoveForm As Boolean
     Private Property MoveForm_MousePosition As Point
     Private Property MoveForm_Position As Point
-    Private colorBtnSelect As Color = Color.FromArgb(83, 175, 255)
 
+    ' Couleurs du thème moderne
+    Private colorMenuFond As Color = Color.FromArgb(45, 52, 70)
+    Private colorMenuActif As Color = Color.FromArgb(245, 247, 250)
+    Private colorTexteActif As Color = Color.FromArgb(45, 52, 70)
+    Private colorTexteInactif As Color = Color.White
+
+    ' Pages
     Dim VueRegion As New VueRegion()
+    Dim VueEquipe As New VueEquipeVisiteurs()
     Dim PageCR As New CompteRendu()
     Dim HistVisit As New HistoriqueVisitesDelegue()
+    ' (Il manque peut-être la page de l'équipe des visiteurs ici selon votre architecture)
 
-    Dim btn_logout As New btn_logout()
-    Dim btn_deco As New btn_exit()
+    Dim WithEvents btn_logout As New btn_logout()
+    Dim WithEvents btn_deco As New btn_exit()
 
 
-    '' Ici c'est pour pouvoir déplacer la fenêtre en cliquant sur le panel du haut ou le label Login
+    ' =========================================================
+    ' DEPLACEMENT FENETRE
+    ' =========================================================
     Private Sub PanelHeader_MouseDown(sender As Object, e As MouseEventArgs) Handles PanelHeader.MouseDown, lbl_nom.MouseDown
         MoveForm = True
         MoveForm_MousePosition = Cursor.Position
         MoveForm_Position = Location
     End Sub
 
-    Private Sub PanelHeader_MouseMove(sender As Object, e As MouseEventArgs) Handles PanelHeader.MouseMove, lbl_nom.MouseUp, lbl_nom.MouseMove
+    Private Sub PanelHeader_MouseMove(sender As Object, e As MouseEventArgs) Handles PanelHeader.MouseMove, lbl_nom.MouseMove
         If MoveForm Then
             Dim dif = New Point(Cursor.Position.X - MoveForm_MousePosition.X, Cursor.Position.Y - MoveForm_MousePosition.Y)
             Location = New Point(MoveForm_Position.X + dif.X, MoveForm_Position.Y + dif.Y)
@@ -33,32 +43,11 @@ Public Class Delegue
         MoveForm = False
     End Sub
 
-
-
-
+    ' =========================================================
+    ' INITIALISATION
+    ' =========================================================
     Private Sub Delegue_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-        ' Affichage du Nom et Prénom dans le label
-        lbl_nom.Text = Login.PrenomUtilisateur & " " & Login.NomUtilisateur
-
-
-
-        btn_Regions.BackColor = colorBtnSelect
-        btn_Regions.ForeColor = Color.FromArgb(255, 255, 255)
-
-        btn_Visiteurs.BackColor = Color.FromArgb(255, 255, 255)
-        btn_Visiteurs.ForeColor = Color.FromArgb(0, 0, 0)
-
-        btn_Compte_Rendue.BackColor = Color.FromArgb(255, 255, 255)
-        btn_Compte_Rendue.ForeColor = Color.FromArgb(0, 0, 0)
-
-        btn_Historique_Visites.BackColor = Color.FromArgb(255, 255, 255)
-        btn_Historique_Visites.ForeColor = Color.FromArgb(0, 0, 0)
-
-        'Changement de l'affichage de la page dans le panneau
-        PanelAffichage.Controls.Clear()
-
-        VueRegion.Dock = DockStyle.Fill
+        lbl_nom.Text = "Délégué : " & Login.PrenomUtilisateur & " " & Login.NomUtilisateur
 
         btn_logout_Panel.Controls.Clear()
         btn_logout_Panel.Controls.Add(btn_logout)
@@ -66,113 +55,63 @@ Public Class Delegue
         btn_exit_Panel.Controls.Clear()
         btn_exit_Panel.Controls.Add(btn_deco)
 
-
-        PanelAffichage.Controls.Add(VueRegion)
-
+        ' Charger la vue région par défaut
+        btn_Regions.PerformClick()
     End Sub
 
+    ' =========================================================
+    ' METHODES OPTIMISEES POUR LE MENU
+    ' =========================================================
+    Private Sub ActiverBouton(btnActif As Button)
+        btn_Regions.BackColor = colorMenuFond
+        btn_Regions.ForeColor = colorTexteInactif
 
+        btn_Visiteurs.BackColor = colorMenuFond
+        btn_Visiteurs.ForeColor = colorTexteInactif
 
+        btn_Compte_Rendue.BackColor = colorMenuFond
+        btn_Compte_Rendue.ForeColor = colorTexteInactif
+
+        btn_Historique_Visites.BackColor = colorMenuFond
+        btn_Historique_Visites.ForeColor = colorTexteInactif
+
+        btnActif.BackColor = colorMenuActif
+        btnActif.ForeColor = colorTexteActif
+    End Sub
+
+    Private Sub ChangerPage(page As UserControl)
+        PanelAffichage.Controls.Clear()
+        page.Dock = DockStyle.Fill
+        PanelAffichage.Controls.Add(page)
+    End Sub
+
+    ' =========================================================
+    ' CLICS SUR LE MENU
+    ' =========================================================
     Private Sub btn_Regions_Click(sender As Object, e As EventArgs) Handles btn_Regions.Click
-        btn_Regions.BackColor = colorBtnSelect
-        btn_Regions.ForeColor = Color.FromArgb(255, 255, 255)
-
-        btn_Visiteurs.BackColor = Color.FromArgb(255, 255, 255)
-        btn_Visiteurs.ForeColor = Color.FromArgb(0, 0, 0)
-
-        btn_Compte_Rendue.BackColor = Color.FromArgb(255, 255, 255)
-        btn_Compte_Rendue.ForeColor = Color.FromArgb(0, 0, 0)
-
-        btn_Historique_Visites.BackColor = Color.FromArgb(255, 255, 255)
-        btn_Historique_Visites.ForeColor = Color.FromArgb(0, 0, 0)
-
-
-
-        'Changement de l'affichage de la page dans le panneau
-        PanelAffichage.Controls.Clear()
-
-        VueRegion.Dock = DockStyle.Fill
-
-
-        PanelAffichage.Controls.Add(VueRegion)
-
+        ActiverBouton(btn_Regions)
+        ChangerPage(VueRegion)
     End Sub
 
-    Private Sub btn_Visiteur_Click(sender As Object, e As EventArgs) Handles btn_Visiteurs.Click
+    Private Sub btn_Visiteurs_Click(sender As Object, e As EventArgs) Handles btn_Visiteurs.Click
+        ActiverBouton(btn_Visiteurs)
 
-        btn_Visiteurs.BackColor = colorBtnSelect
-        btn_Visiteurs.ForeColor = Color.FromArgb(255, 255, 255)
-
-        btn_Regions.BackColor = Color.FromArgb(255, 255, 255)
-        btn_Regions.ForeColor = Color.FromArgb(0, 0, 0)
-
-        btn_Compte_Rendue.BackColor = Color.FromArgb(255, 255, 255)
-        btn_Compte_Rendue.ForeColor = Color.FromArgb(0, 0, 0)
-
-        btn_Historique_Visites.BackColor = Color.FromArgb(255, 255, 255)
-        btn_Historique_Visites.ForeColor = Color.FromArgb(0, 0, 0)
-
-
-
-        'Changement de l'affichage de la page dans le panneau
-        PanelAffichage.Controls.Clear()
-
-        VueRegion.Dock = DockStyle.Fill
-
-        PanelAffichage.Controls.Add(VueRegion)
-
+        ' ON APPELLE ENFIN LA BONNE VUE POUR L'ÉQUIPE !
+        ChangerPage(VueEquipe)
     End Sub
-
-
 
     Private Sub btn_Compte_Rendue_Click(sender As Object, e As EventArgs) Handles btn_Compte_Rendue.Click
-
-        btn_Compte_Rendue.BackColor = colorBtnSelect
-        btn_Compte_Rendue.ForeColor = Color.FromArgb(255, 255, 255)
-
-        btn_Regions.BackColor = Color.FromArgb(255, 255, 255)
-        btn_Regions.ForeColor = Color.FromArgb(0, 0, 0)
-
-        btn_Visiteurs.BackColor = Color.FromArgb(255, 255, 255)
-        btn_Visiteurs.ForeColor = Color.FromArgb(0, 0, 0)
-
-        btn_Historique_Visites.BackColor = Color.FromArgb(255, 255, 255)
-        btn_Historique_Visites.ForeColor = Color.FromArgb(0, 0, 0)
-
-        'Changement de l'affichage de la page dans le panneau
-        PanelAffichage.Controls.Clear()
-
-        PageCR.Dock = DockStyle.Fill
-
-        PanelAffichage.Controls.Add(PageCR)
-
+        ActiverBouton(btn_Compte_Rendue)
+        ChangerPage(PageCR)
     End Sub
-
-
 
     Private Sub btn_Historique_Visites_Click(sender As Object, e As EventArgs) Handles btn_Historique_Visites.Click
-
-        btn_Historique_Visites.BackColor = colorBtnSelect
-        btn_Historique_Visites.ForeColor = Color.FromArgb(255, 255, 255)
-
-        btn_Regions.BackColor = Color.FromArgb(255, 255, 255)
-        btn_Regions.ForeColor = Color.FromArgb(0, 0, 0)
-
-        btn_Visiteurs.BackColor = Color.FromArgb(255, 255, 255)
-        btn_Visiteurs.ForeColor = Color.FromArgb(0, 0, 0)
-
-        btn_Compte_Rendue.BackColor = Color.FromArgb(255, 255, 255)
-        btn_Compte_Rendue.ForeColor = Color.FromArgb(0, 0, 0)
-
-        'Changement de l'affichage de la page dans le panneau
-        PanelAffichage.Controls.Clear()
-
-        HistVisit.Dock = DockStyle.Fill
-
-        PanelAffichage.Controls.Add(HistVisit)
-
+        ActiverBouton(btn_Historique_Visites)
+        ChangerPage(HistVisit)
     End Sub
 
+<<<<<<< HEAD
+=======
 
 
 
@@ -185,4 +124,5 @@ Public Class Delegue
     Private Sub PanelAffichage_Paint(sender As Object, e As PaintEventArgs) Handles PanelAffichage.Paint
 
     End Sub
+>>>>>>> e8681ec723fb5e285a95e6b69690cbbaf2d4e883
 End Class

@@ -5,26 +5,30 @@ Public Class Visiteur
     Private Property MoveForm_MousePosition As Point
     Private Property MoveForm_Position As Point
 
-    Private colorBtnSelect As Color = Color.FromArgb(83, 175, 255)
+    ' Couleurs du thème moderne
+    Private colorMenuFond As Color = Color.FromArgb(45, 52, 70) ' Bleu nuit
+    Private colorMenuActif As Color = Color.FromArgb(245, 247, 250) ' Gris très clair (comme le fond)
+    Private colorTexteActif As Color = Color.FromArgb(45, 52, 70)
+    Private colorTexteInactif As Color = Color.White
 
+    ' Pages
     Dim PageCR As New CompteRendu()
-
     Dim HistVisit As New HistoriqueVisites()
-
     Dim VisionSynth As New VisionSynth()
 
+    ' Boutons système
     Dim btn_logout As New btn_logout()
     Dim btn_deco As New btn_exit()
 
 
-    '' Ici c'est pour pouvoir déplacer la fenêtre en cliquant sur le panel du haut ou le label Login
+    '' Déplacement de la fenêtre
     Private Sub PanelHeader_MouseDown(sender As Object, e As MouseEventArgs) Handles PanelHeader.MouseDown, lbl_nom.MouseDown
         MoveForm = True
         MoveForm_MousePosition = Cursor.Position
         MoveForm_Position = Location
     End Sub
 
-    Private Sub PanelHeader_MouseMove(sender As Object, e As MouseEventArgs) Handles PanelHeader.MouseMove, lbl_nom.MouseUp, lbl_nom.MouseMove
+    Private Sub PanelHeader_MouseMove(sender As Object, e As MouseEventArgs) Handles PanelHeader.MouseMove, lbl_nom.MouseMove
         If MoveForm Then
             Dim dif = New Point(Cursor.Position.X - MoveForm_MousePosition.X, Cursor.Position.Y - MoveForm_MousePosition.Y)
             Location = New Point(MoveForm_Position.X + dif.X, MoveForm_Position.Y + dif.Y)
@@ -36,104 +40,68 @@ Public Class Visiteur
     End Sub
 
 
-
-    Private Sub Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+    Private Sub Visiteur_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Affichage du Nom et Prénom dans le label
-        lbl_nom.Text = Login.PrenomUtilisateur & " " & Login.NomUtilisateur
+        lbl_nom.Text = "Bonjour, " & Login.PrenomUtilisateur & " " & Login.NomUtilisateur
 
-        'Bouton Compte Rendu Chargée
-        btn_Compte_Rendu.BackColor = colorBtnSelect
-        btn_Compte_Rendu.ForeColor = Color.FromArgb(255, 255, 255)
-
-        btn_Historique_Visites.BackColor = Color.FromArgb(255, 255, 255)
-        btn_Historique_Visites.ForeColor = Color.FromArgb(0, 0, 0)
-
-        btn_Vision_Synthese.BackColor = Color.FromArgb(255, 255, 255)
-        btn_Vision_Synthese.ForeColor = Color.FromArgb(0, 0, 0)
-
+        ' Ajout des boutons système
         btn_logout_Panel.Controls.Clear()
         btn_logout_Panel.Controls.Add(btn_logout)
 
         btn_exit_Panel.Controls.Clear()
         btn_exit_Panel.Controls.Add(btn_deco)
 
-        'Affichage dans le panneau du Compte Rendu
-        PanelAffichage.Controls.Clear()
-
-        PageCR.Dock = DockStyle.Fill
-
-        PanelAffichage.Controls.Add(PageCR)
-
+        ' Charger la première page par défaut
+        ActiverBouton(btn_Compte_Rendu)
+        ChangerPage(PageCR)
     End Sub
 
-    'Gestion des boutons de navigations
-    Private Sub btn_Compte_Rendu_Click(sender As Object, e As EventArgs) Handles btn_Compte_Rendu.Click
-        'Changement des couleurs des boutons
-        btn_Compte_Rendu.BackColor = colorBtnSelect
-        btn_Compte_Rendu.ForeColor = Color.FromArgb(255, 255, 255)
+    ' ---------------------------------------------------------
+    ' METHODES OPTIMISEES POUR LE MENU
+    ' ---------------------------------------------------------
 
-        btn_Historique_Visites.BackColor = Color.FromArgb(255, 255, 255)
-        btn_Historique_Visites.ForeColor = Color.FromArgb(0, 0, 0)
+    ' Cette méthode gère le design visuel des boutons en 1 clic
+    Private Sub ActiverBouton(btnActif As Button)
+        ' 1. On remet tous les boutons à l'état inactif (Fond bleu nuit, Texte blanc)
+        btn_Compte_Rendu.BackColor = colorMenuFond
+        btn_Compte_Rendu.ForeColor = colorTexteInactif
 
-        btn_Vision_Synthese.BackColor = Color.FromArgb(255, 255, 255)
-        btn_Vision_Synthese.ForeColor = Color.FromArgb(0, 0, 0)
+        btn_Historique_Visites.BackColor = colorMenuFond
+        btn_Historique_Visites.ForeColor = colorTexteInactif
 
+        btn_Vision_Synthese.BackColor = colorMenuFond
+        btn_Vision_Synthese.ForeColor = colorTexteInactif
 
+        ' 2. On illumine le bouton sélectionné (Fond clair, Texte bleu nuit)
+        btnActif.BackColor = colorMenuActif
+        btnActif.ForeColor = colorTexteActif
+    End Sub
 
-        'Changement de l'affichage de la page dans le panneau
+    ' Cette méthode gère l'affichage des UserControls
+    Private Sub ChangerPage(page As UserControl)
         PanelAffichage.Controls.Clear()
-
-        PageCR.Dock = DockStyle.Fill
-
-        PanelAffichage.Controls.Add(PageCR)
-
+        page.Dock = DockStyle.Fill
+        PanelAffichage.Controls.Add(page)
+    End Sub
 
 
+    ' ---------------------------------------------------------
+    ' CLICS SUR LE MENU
+    ' ---------------------------------------------------------
+
+    Private Sub btn_Compte_Rendu_Click(sender As Object, e As EventArgs) Handles btn_Compte_Rendu.Click
+        ActiverBouton(btn_Compte_Rendu)
+        ChangerPage(PageCR)
     End Sub
 
     Private Sub btn_Historique_Visites_Click(sender As Object, e As EventArgs) Handles btn_Historique_Visites.Click
-        'Changement des couleurs des boutons
-        btn_Historique_Visites.BackColor = colorBtnSelect
-        btn_Historique_Visites.ForeColor = Color.FromArgb(255, 255, 255)
-
-        btn_Compte_Rendu.BackColor = Color.FromArgb(255, 255, 255)
-        btn_Compte_Rendu.ForeColor = Color.FromArgb(0, 0, 0)
-
-        btn_Vision_Synthese.BackColor = Color.FromArgb(255, 255, 255)
-        btn_Vision_Synthese.ForeColor = Color.FromArgb(0, 0, 0)
-
-
-
-        'Changement de l'affichage de la page dans le panneau
-        PanelAffichage.Controls.Clear()
-
-        HistVisit.Dock = DockStyle.Fill
-
-        PanelAffichage.Controls.Add(HistVisit)
-
-
+        ActiverBouton(btn_Historique_Visites)
+        ChangerPage(HistVisit)
     End Sub
 
     Private Sub btn_Vision_Synthese_Click(sender As Object, e As EventArgs) Handles btn_Vision_Synthese.Click
-        'Changement des couleurs des boutons
-        btn_Vision_Synthese.BackColor = colorBtnSelect
-        btn_Vision_Synthese.ForeColor = Color.FromArgb(255, 255, 255)
-
-        btn_Compte_Rendu.BackColor = Color.FromArgb(255, 255, 255)
-        btn_Compte_Rendu.ForeColor = Color.FromArgb(0, 0, 0)
-
-        btn_Historique_Visites.BackColor = Color.FromArgb(255, 255, 255)
-        btn_Historique_Visites.ForeColor = Color.FromArgb(0, 0, 0)
-
-
-
-        'Changement de l'affichage de la page dans le panneau
-        PanelAffichage.Controls.Clear()
-
-        VisionSynth.Dock = DockStyle.Fill
-
-        PanelAffichage.Controls.Add(VisionSynth)
-
+        ActiverBouton(btn_Vision_Synthese)
+        ChangerPage(VisionSynth)
     End Sub
+
 End Class

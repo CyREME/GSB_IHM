@@ -1,9 +1,8 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class CompteRendu
     Inherits System.Windows.Forms.UserControl
 
-    'UserControl remplace la méthode Dispose pour nettoyer la liste des composants.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -14,13 +13,9 @@ Partial Class CompteRendu
         End Try
     End Sub
 
-    'Requise par le Concepteur Windows Form
     Private components As System.ComponentModel.IContainer
 
-    'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
-    'Elle peut être modifiée à l'aide du Concepteur Windows Form.  
-    'Ne la modifiez pas à l'aide de l'éditeur de code.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Tableau_Recherche = New DataGridView()
         Btn_Praticien = New Button()
@@ -59,30 +54,44 @@ Partial Class CompteRendu
         ' 
         ' Btn_Praticien
         ' 
+        Btn_Praticien.Cursor = Cursors.Hand
+        Btn_Praticien.FlatAppearance.BorderSize = 0
+        Btn_Praticien.FlatStyle = FlatStyle.Flat
+        Btn_Praticien.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
         Btn_Praticien.Location = New Point(576, 64)
         Btn_Praticien.Name = "Btn_Praticien"
-        Btn_Praticien.Size = New Size(214, 25)
+        Btn_Praticien.Size = New Size(214, 30)
         Btn_Praticien.TabIndex = 40
-        Btn_Praticien.Text = "PRATICIEN"
+        Btn_Praticien.Text = "PRATICIENS"
         Btn_Praticien.UseVisualStyleBackColor = True
         ' 
         ' Btn_Produit
         ' 
+        Btn_Produit.Cursor = Cursors.Hand
+        Btn_Produit.FlatAppearance.BorderSize = 0
+        Btn_Produit.FlatStyle = FlatStyle.Flat
+        Btn_Produit.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
         Btn_Produit.Location = New Point(362, 64)
         Btn_Produit.Name = "Btn_Produit"
-        Btn_Produit.Size = New Size(214, 25)
+        Btn_Produit.Size = New Size(214, 30)
         Btn_Produit.TabIndex = 39
         Btn_Produit.Text = "PRODUITS"
         Btn_Produit.UseVisualStyleBackColor = True
         ' 
         ' Btn_Valider
         ' 
+        Btn_Valider.BackColor = Color.FromArgb(CByte(40), CByte(167), CByte(69))
+        Btn_Valider.Cursor = Cursors.Hand
+        Btn_Valider.FlatAppearance.BorderSize = 0
+        Btn_Valider.FlatStyle = FlatStyle.Flat
+        Btn_Valider.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
+        Btn_Valider.ForeColor = Color.White
         Btn_Valider.Location = New Point(530, 522)
         Btn_Valider.Name = "Btn_Valider"
-        Btn_Valider.Size = New Size(104, 36)
+        Btn_Valider.Size = New Size(104, 40)
         Btn_Valider.TabIndex = 38
         Btn_Valider.Text = "VALIDER"
-        Btn_Valider.UseVisualStyleBackColor = True
+        Btn_Valider.UseVisualStyleBackColor = False
         ' 
         ' Tableau_Echantillons
         ' 
@@ -98,133 +107,151 @@ Partial Class CompteRendu
         ' NumericUpDown1
         ' 
         NumericUpDown1.DecimalPlaces = 2
-        NumericUpDown1.Location = New Point(164, 374)
+        NumericUpDown1.Font = New Font("Segoe UI", 10.0F)
+        NumericUpDown1.Location = New Point(184, 374)
         NumericUpDown1.Name = "NumericUpDown1"
-        NumericUpDown1.Size = New Size(120, 23)
+        NumericUpDown1.Size = New Size(120, 25)
         NumericUpDown1.TabIndex = 35
         ' 
         ' TextBox2
         ' 
+        TextBox2.Font = New Font("Segoe UI", 10.0F)
         TextBox2.Location = New Point(16, 291)
         TextBox2.Multiline = True
         TextBox2.Name = "TextBox2"
-        TextBox2.Size = New Size(267, 68)
+        TextBox2.Size = New Size(288, 68)
         TextBox2.TabIndex = 34
         ' 
         ' Barre_Recherche
         ' 
-        Barre_Recherche.Location = New Point(362, 34)
+        Barre_Recherche.Font = New Font("Segoe UI", 11.0F)
+        Barre_Recherche.Location = New Point(362, 31)
         Barre_Recherche.Name = "Barre_Recherche"
-        Barre_Recherche.Size = New Size(428, 23)
+        Barre_Recherche.PlaceholderText = " Rechercher..."
+        Barre_Recherche.Size = New Size(428, 27)
         Barre_Recherche.TabIndex = 32
         ' 
         ' Liste_Motif
         ' 
+        Liste_Motif.Font = New Font("Segoe UI", 10.0F)
         Liste_Motif.FormattingEnabled = True
         Liste_Motif.Location = New Point(104, 105)
         Liste_Motif.Name = "Liste_Motif"
-        Liste_Motif.Size = New Size(200, 23)
+        Liste_Motif.Size = New Size(200, 25)
         Liste_Motif.TabIndex = 30
         ' 
         ' lbl_Liste_Echantillon
         ' 
         lbl_Liste_Echantillon.AutoSize = True
-        lbl_Liste_Echantillon.Location = New Point(16, 406)
+        lbl_Liste_Echantillon.Font = New Font("Segoe UI Semibold", 10.0F, FontStyle.Bold)
+        lbl_Liste_Echantillon.ForeColor = Color.FromArgb(CByte(45), CByte(52), CByte(70))
+        lbl_Liste_Echantillon.Location = New Point(16, 403)
         lbl_Liste_Echantillon.Name = "lbl_Liste_Echantillon"
-        lbl_Liste_Echantillon.Size = New Size(149, 15)
+        lbl_Liste_Echantillon.Size = New Size(162, 19)
         lbl_Liste_Echantillon.TabIndex = 29
-        lbl_Liste_Echantillon.Text = "Liste échantillons/Quantité"
-        lbl_Liste_Echantillon.TextAlign = ContentAlignment.MiddleRight
+        lbl_Liste_Echantillon.Text = "Échantillons distribués"
         ' 
         ' lbl_Coef_Confiance
         ' 
         lbl_Coef_Confiance.AutoSize = True
+        lbl_Coef_Confiance.Font = New Font("Segoe UI Semibold", 10.0F, FontStyle.Bold)
+        lbl_Coef_Confiance.ForeColor = Color.FromArgb(CByte(45), CByte(52), CByte(70))
         lbl_Coef_Confiance.Location = New Point(16, 376)
         lbl_Coef_Confiance.Name = "lbl_Coef_Confiance"
-        lbl_Coef_Confiance.Size = New Size(138, 15)
+        lbl_Coef_Confiance.Size = New Size(160, 19)
         lbl_Coef_Confiance.TabIndex = 28
-        lbl_Coef_Confiance.Text = "Coefficiant de Confiance"
-        lbl_Coef_Confiance.TextAlign = ContentAlignment.MiddleRight
+        lbl_Coef_Confiance.Text = "Coefficient de confiance"
         ' 
         ' lbl_Bilan_Visite
         ' 
         lbl_Bilan_Visite.AutoSize = True
-        lbl_Bilan_Visite.Location = New Point(16, 273)
+        lbl_Bilan_Visite.Font = New Font("Segoe UI Semibold", 10.0F, FontStyle.Bold)
+        lbl_Bilan_Visite.ForeColor = Color.FromArgb(CByte(45), CByte(52), CByte(70))
+        lbl_Bilan_Visite.Location = New Point(16, 269)
         lbl_Bilan_Visite.Name = "lbl_Bilan_Visite"
-        lbl_Bilan_Visite.Size = New Size(64, 15)
+        lbl_Bilan_Visite.Size = New Size(96, 19)
         lbl_Bilan_Visite.TabIndex = 27
-        lbl_Bilan_Visite.Text = "Bilan Visite"
-        lbl_Bilan_Visite.TextAlign = ContentAlignment.MiddleRight
+        lbl_Bilan_Visite.Text = "Bilan de visite"
         ' 
         ' lbl_Details_Produit
         ' 
         lbl_Details_Produit.AutoSize = True
-        lbl_Details_Produit.Location = New Point(16, 138)
+        lbl_Details_Produit.Font = New Font("Segoe UI Semibold", 10.0F, FontStyle.Bold)
+        lbl_Details_Produit.ForeColor = Color.FromArgb(CByte(45), CByte(52), CByte(70))
+        lbl_Details_Produit.Location = New Point(16, 134)
         lbl_Details_Produit.Name = "lbl_Details_Produit"
-        lbl_Details_Produit.Size = New Size(84, 15)
+        lbl_Details_Produit.Size = New Size(125, 19)
         lbl_Details_Produit.TabIndex = 26
-        lbl_Details_Produit.Text = "Détails Produit"
-        lbl_Details_Produit.TextAlign = ContentAlignment.MiddleRight
+        lbl_Details_Produit.Text = "Détails du Produit"
         ' 
         ' lbl_Motif_Visite
         ' 
         lbl_Motif_Visite.AutoSize = True
-        lbl_Motif_Visite.Location = New Point(16, 105)
+        lbl_Motif_Visite.Font = New Font("Segoe UI Semibold", 10.0F, FontStyle.Bold)
+        lbl_Motif_Visite.ForeColor = Color.FromArgb(CByte(45), CByte(52), CByte(70))
+        lbl_Motif_Visite.Location = New Point(16, 108)
         lbl_Motif_Visite.Name = "lbl_Motif_Visite"
-        lbl_Motif_Visite.Size = New Size(67, 15)
+        lbl_Motif_Visite.Size = New Size(44, 19)
         lbl_Motif_Visite.TabIndex = 24
-        lbl_Motif_Visite.Text = "Motif Visite"
-        lbl_Motif_Visite.TextAlign = ContentAlignment.MiddleRight
+        lbl_Motif_Visite.Text = "Motif"
         ' 
         ' lbl_Praticien_Vu
         ' 
         lbl_Praticien_Vu.AutoSize = True
+        lbl_Praticien_Vu.Font = New Font("Segoe UI Semibold", 10.0F, FontStyle.Bold)
+        lbl_Praticien_Vu.ForeColor = Color.FromArgb(CByte(45), CByte(52), CByte(70))
         lbl_Praticien_Vu.Location = New Point(16, 70)
         lbl_Praticien_Vu.Name = "lbl_Praticien_Vu"
-        lbl_Praticien_Vu.Size = New Size(69, 15)
+        lbl_Praticien_Vu.Size = New Size(62, 19)
         lbl_Praticien_Vu.TabIndex = 23
-        lbl_Praticien_Vu.Text = "Praticien vu"
-        lbl_Praticien_Vu.TextAlign = ContentAlignment.MiddleRight
+        lbl_Praticien_Vu.Text = "Praticien"
         ' 
         ' lbl_Date_Visite
         ' 
         lbl_Date_Visite.AutoSize = True
+        lbl_Date_Visite.Font = New Font("Segoe UI Semibold", 10.0F, FontStyle.Bold)
+        lbl_Date_Visite.ForeColor = Color.FromArgb(CByte(45), CByte(52), CByte(70))
         lbl_Date_Visite.Location = New Point(16, 34)
         lbl_Date_Visite.Name = "lbl_Date_Visite"
-        lbl_Date_Visite.Size = New Size(62, 15)
+        lbl_Date_Visite.Size = New Size(38, 19)
         lbl_Date_Visite.TabIndex = 22
-        lbl_Date_Visite.Text = "Date Visite"
-        lbl_Date_Visite.TextAlign = ContentAlignment.MiddleRight
+        lbl_Date_Visite.Text = "Date"
         ' 
         ' Date_Visite
         ' 
-        Date_Visite.Location = New Point(104, 34)
+        Date_Visite.Font = New Font("Segoe UI", 10.0F)
+        Date_Visite.Location = New Point(104, 31)
         Date_Visite.Name = "Date_Visite"
-        Date_Visite.Size = New Size(200, 23)
+        Date_Visite.Size = New Size(200, 25)
         Date_Visite.TabIndex = 21
         ' 
         ' Txt_Description
         ' 
+        Txt_Description.BackColor = Color.White
+        Txt_Description.Font = New Font("Segoe UI", 10.0F)
         Txt_Description.Location = New Point(16, 156)
         Txt_Description.Multiline = True
         Txt_Description.Name = "Txt_Description"
         Txt_Description.ReadOnly = True
-        Txt_Description.Size = New Size(267, 114)
+        Txt_Description.Size = New Size(288, 100)
         Txt_Description.TabIndex = 34
         ' 
         ' txt_nom__praticien
         ' 
-        txt_nom__praticien.Location = New Point(104, 70)
-        txt_nom__praticien.Multiline = True
+        txt_nom__praticien.BackColor = Color.White
+        txt_nom__praticien.Font = New Font("Segoe UI", 10.0F)
+        txt_nom__praticien.Location = New Point(104, 67)
         txt_nom__praticien.Name = "txt_nom__praticien"
+        txt_nom__praticien.PlaceholderText = "Sélectionnez à droite ➔"
         txt_nom__praticien.ReadOnly = True
-        txt_nom__praticien.Size = New Size(200, 23)
+        txt_nom__praticien.Size = New Size(200, 25)
         txt_nom__praticien.TabIndex = 42
         ' 
         ' CompteRendu
         ' 
         AutoScaleDimensions = New SizeF(7.0F, 15.0F)
         AutoScaleMode = AutoScaleMode.Font
+        BackColor = Color.FromArgb(CByte(245), CByte(247), CByte(250))
         Controls.Add(txt_nom__praticien)
         Controls.Add(Tableau_Recherche)
         Controls.Add(Btn_Praticien)
@@ -271,7 +298,6 @@ Partial Class CompteRendu
     Friend WithEvents lbl_Date_Visite As Label
     Friend WithEvents Date_Visite As DateTimePicker
     Friend WithEvents Txt_Description As TextBox
-    Friend WithEvents Liste_Praticien As ComboBox
     Friend WithEvents txt_nom__praticien As TextBox
 
 End Class

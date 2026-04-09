@@ -68,6 +68,18 @@ C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\obj\Debug\net8.0-windows
 C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\obj\Debug\net8.0-windows\GSB.VueTableauRegionSecteur.resources
 C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\obj\Debug\net8.0-windows\GSB.VisionSynth.resources
 C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\bin\Debug\net8.0-windows\Oracle.ManagedDataAccess.dll
+<<<<<<< HEAD
+C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\bin\Debug\net8.0-windows\System.DirectoryServices.Protocols.dll
+C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\bin\Debug\net8.0-windows\System.Security.Cryptography.Pkcs.dll
+C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\bin\Debug\net8.0-windows\runtimes\linux\lib\net8.0\System.DirectoryServices.Protocols.dll
+C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\bin\Debug\net8.0-windows\runtimes\osx\lib\net8.0\System.DirectoryServices.Protocols.dll
+C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.DirectoryServices.Protocols.dll
+C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\obj\Debug\net8.0-windows\GSB.btn_exit.resources
+C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\obj\Debug\net8.0-windows\GSB.btn_logout.resources
+C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\obj\Debug\net8.0-windows\GSB.HistoriqueVisitesDelegue.resources
+C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\obj\Debug\net8.0-windows\GSB.VueRegion.resources
+=======
 C:\Users\24Sruault\source\repos\CyREME\GSB_IHM\src\GSB\bin\Debug\net8.0-windows\GSB.exe
 C:\Users\24Sruault\source\repos\CyREME\GSB_IHM\src\GSB\bin\Debug\net8.0-windows\GSB.deps.json
 C:\Users\24Sruault\source\repos\CyREME\GSB_IHM\src\GSB\bin\Debug\net8.0-windows\GSB.runtimeconfig.json
@@ -124,3 +136,4 @@ C:\Users\24Sruault\source\repos\CyREME\GSB_IHM\src\GSB\obj\Debug\net8.0-windows\
 C:\Users\24Sruault\source\repos\CyREME\GSB_IHM\src\GSB\obj\Debug\net8.0-windows\GSB.pdb
 C:\Users\24Sruault\source\repos\CyREME\GSB_IHM\src\GSB\obj\Debug\net8.0-windows\GSB.genruntimeconfig.cache
 C:\Users\24Sruault\source\repos\CyREME\GSB_IHM\src\GSB\obj\Debug\net8.0-windows\ref\GSB.dll
+>>>>>>> e8681ec723fb5e285a95e6b69690cbbaf2d4e883

@@ -9,6 +9,10 @@
       "GSB/1.0.0": {
         "dependencies": {
 <<<<<<< HEAD
+          "Oracle.ManagedDataAccess": "23.26.0",
+          "Oracle.ManagedDataAccess.Core": "23.26.0"
+=======
+<<<<<<< HEAD
           "MySql.Data": "9.5.0",
           "Oracle.ManagedDataAccess": "23.26.0",
           "Oracle.ManagedDataAccess.Core": "23.26.0",
@@ -16,6 +20,7 @@
 =======
           "Oracle.ManagedDataAccess": "23.26.0"
 >>>>>>> cc3afa47db23d5ab46b391d39c6b8fb66c8acbdf
+>>>>>>> e8681ec723fb5e285a95e6b69690cbbaf2d4e883
         },
         "runtime": {
           "GSB.dll": {}
@@ -160,6 +165,8 @@
           "lib/net8.0/Oracle.ManagedDataAccess.dll": {
             "assemblyVersion": "23.1.0.0",
             "fileVersion": "23.1.0.0"
+<<<<<<< HEAD
+=======
           }
         }
       },
@@ -242,7 +249,14 @@
             "assetType": "runtime",
             "assemblyVersion": "4.6.1.6",
             "fileVersion": "4.700.23.52603"
+>>>>>>> e8681ec723fb5e285a95e6b69690cbbaf2d4e883
           }
+        }
+      },
+      "System.Configuration.ConfigurationManager/8.0.0": {
+        "dependencies": {
+          "System.Diagnostics.EventLog": "8.0.0",
+          "System.Security.Cryptography.ProtectedData": "8.0.0"
         }
       },
       "System.Diagnostics.DiagnosticSource/6.0.2": {},
@@ -280,6 +294,10 @@
           }
         }
       },
+<<<<<<< HEAD
+      "System.Formats.Asn1/8.0.1": {},
+      "System.Memory/4.6.0": {},
+=======
 =======
       "System.Diagnostics.DiagnosticSource/6.0.2": {},
 >>>>>>> cc3afa47db23d5ab46b391d39c6b8fb66c8acbdf
@@ -292,6 +310,7 @@
           "System.Security.Principal.Windows": "4.7.0"
         }
       },
+>>>>>>> e8681ec723fb5e285a95e6b69690cbbaf2d4e883
       "System.Security.Cryptography.Pkcs/8.0.1": {
         "runtime": {
           "lib/net8.0/System.Security.Cryptography.Pkcs.dll": {
@@ -309,6 +328,8 @@
         }
       },
       "System.Security.Cryptography.ProtectedData/8.0.0": {},
+<<<<<<< HEAD
+=======
       "System.Security.Permissions/8.0.0": {
         "dependencies": {
           "System.Windows.Extensions": "8.0.0"
@@ -317,6 +338,7 @@
       "System.Security.Principal.Windows/4.7.0": {},
 =======
 >>>>>>> cc3afa47db23d5ab46b391d39c6b8fb66c8acbdf
+>>>>>>> e8681ec723fb5e285a95e6b69690cbbaf2d4e883
       "System.Text.Json/8.0.5": {},
       "System.Threading.Tasks.Extensions/4.6.0": {}
     }
@@ -408,6 +430,9 @@
       "hashPath": "oracle.manageddataaccess.23.26.0.nupkg.sha512"
     },
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e8681ec723fb5e285a95e6b69690cbbaf2d4e883
     "Oracle.ManagedDataAccess.Core/23.26.0": {
       "type": "package",
       "serviceable": true,
@@ -415,6 +440,8 @@
       "path": "oracle.manageddataaccess.core/23.26.0",
       "hashPath": "oracle.manageddataaccess.core.23.26.0.nupkg.sha512"
     },
+<<<<<<< HEAD
+=======
     "Oracle.ManagedDataAccess.EntityFramework/23.26.0": {
       "type": "package",
       "serviceable": true,
@@ -464,6 +491,7 @@
       "path": "system.componentmodel.annotations/5.0.0",
       "hashPath": "system.componentmodel.annotations.5.0.0.nupkg.sha512"
     },
+>>>>>>> e8681ec723fb5e285a95e6b69690cbbaf2d4e883
     "System.Configuration.ConfigurationManager/8.0.0": {
       "type": "package",
       "serviceable": true,
@@ -471,6 +499,8 @@
       "path": "system.configuration.configurationmanager/8.0.0",
       "hashPath": "system.configuration.configurationmanager.8.0.0.nupkg.sha512"
     },
+<<<<<<< HEAD
+=======
     "System.Data.SqlClient/4.8.6": {
       "type": "package",
       "serviceable": true,
@@ -480,6 +510,7 @@
     },
 =======
 >>>>>>> cc3afa47db23d5ab46b391d39c6b8fb66c8acbdf
+>>>>>>> e8681ec723fb5e285a95e6b69690cbbaf2d4e883
     "System.Diagnostics.DiagnosticSource/6.0.2": {
       "type": "package",
       "serviceable": true,
@@ -488,6 +519,9 @@
       "hashPath": "system.diagnostics.diagnosticsource.6.0.2.nupkg.sha512"
     },
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e8681ec723fb5e285a95e6b69690cbbaf2d4e883
     "System.Diagnostics.EventLog/8.0.0": {
       "type": "package",
       "serviceable": true,
@@ -509,8 +543,11 @@
       "path": "system.directoryservices.protocols/8.0.2",
       "hashPath": "system.directoryservices.protocols.8.0.2.nupkg.sha512"
     },
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> cc3afa47db23d5ab46b391d39c6b8fb66c8acbdf
+>>>>>>> e8681ec723fb5e285a95e6b69690cbbaf2d4e883
     "System.Formats.Asn1/8.0.1": {
       "type": "package",
       "serviceable": true,
@@ -526,6 +563,8 @@
       "hashPath": "system.memory.4.6.0.nupkg.sha512"
     },
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
     "System.Security.AccessControl/4.7.0": {
       "type": "package",
       "serviceable": true,
@@ -533,6 +572,7 @@
       "path": "system.security.accesscontrol/4.7.0",
       "hashPath": "system.security.accesscontrol.4.7.0.nupkg.sha512"
     },
+>>>>>>> e8681ec723fb5e285a95e6b69690cbbaf2d4e883
     "System.Security.Cryptography.Pkcs/8.0.1": {
       "type": "package",
       "serviceable": true,
@@ -547,6 +587,8 @@
       "path": "system.security.cryptography.protecteddata/8.0.0",
       "hashPath": "system.security.cryptography.protecteddata.8.0.0.nupkg.sha512"
     },
+<<<<<<< HEAD
+=======
     "System.Security.Permissions/8.0.0": {
       "type": "package",
       "serviceable": true,
@@ -563,6 +605,7 @@
     },
 =======
 >>>>>>> cc3afa47db23d5ab46b391d39c6b8fb66c8acbdf
+>>>>>>> e8681ec723fb5e285a95e6b69690cbbaf2d4e883
     "System.Text.Json/8.0.5": {
       "type": "package",
       "serviceable": true,

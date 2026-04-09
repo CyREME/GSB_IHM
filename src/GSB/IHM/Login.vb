@@ -23,8 +23,6 @@ Public Class Login
 
 
     Private Sub Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-
         Txt_Username.Text = "Login"
         Txt_Username.ForeColor = Color.DarkGray
         Txt_Password.Text = "Mot de passe"
@@ -34,6 +32,8 @@ Public Class Login
         btn_exit_Panel.Controls.Clear()
         btn_exit_Panel.Controls.Add(btn_exit)
 
+        ' --- LA LIGNE MAGIQUE POUR L'UX ---
+        Me.AcceptButton = btn_login
     End Sub
 
 

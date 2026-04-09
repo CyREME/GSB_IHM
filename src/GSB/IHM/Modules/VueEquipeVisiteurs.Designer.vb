@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class VueRegion
+Partial Class VueEquipeVisiteurs
     Inherits System.Windows.Forms.UserControl
 
     <System.Diagnostics.DebuggerNonUserCode()>
@@ -57,7 +57,7 @@ Partial Class VueRegion
         Liste_Annee.Size = New Size(150, 29)
         Liste_Annee.TabIndex = 7
         ' 
-        ' VueRegion
+        ' VueEquipeVisiteurs
         ' 
         AutoScaleDimensions = New SizeF(7.0F, 15.0F)
         AutoScaleMode = AutoScaleMode.Font
@@ -65,7 +65,7 @@ Partial Class VueRegion
         Controls.Add(Liste_Annee)
         Controls.Add(lbl_annee)
         Controls.Add(Tab)
-        Name = "VueRegion"
+        Name = "VueEquipeVisiteurs"
         Size = New Size(819, 573)
         CType(Tab, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)

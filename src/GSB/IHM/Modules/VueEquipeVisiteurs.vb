@@ -2,15 +2,10 @@
 Imports System.Data
 Imports Oracle.ManagedDataAccess.Client
 
-Public Class VueRegion
+Public Class VueEquipeVisiteurs
 
-    ' Se déclenche au chargement du composant
-    Private Sub VueRegion_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ' On applique le style moderne GSB au tableau !
+    Private Sub VueEquipeVisiteurs_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         AppliquerStyleTableaux(Tab)
-
-        ' Au lieu d'actualiser directement le tableau, on charge d'abord les années.
-        ' L'actualisation du tableau se fera automatiquement après !
         ChargerAnnees()
     End Sub
 
@@ -18,16 +13,12 @@ Public Class VueRegion
     Private Sub AppliquerStyleTableaux(grid As DataGridView)
         grid.BackgroundColor = Color.White
         grid.BorderStyle = BorderStyle.None
-        grid.RowHeadersVisible = False ' Supprime la petite colonne vide à gauche
+        grid.RowHeadersVisible = False
         grid.EnableHeadersVisualStyles = False
         grid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
-
-        ' En-tête Bleu
         grid.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(83, 175, 255)
         grid.ColumnHeadersDefaultCellStyle.ForeColor = Color.White
         grid.ColumnHeadersDefaultCellStyle.Font = New Font("Segoe UI", 10, FontStyle.Bold)
-
-        ' Lignes épurées
         grid.DefaultCellStyle.SelectionBackColor = Color.FromArgb(240, 245, 250)
         grid.DefaultCellStyle.SelectionForeColor = Color.Black
         grid.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
@@ -35,37 +26,30 @@ Public Class VueRegion
     End Sub
 
     ' ---------------------------------------------------------
-    ' 1. MÉTHODE POUR REMPLIR LA COMBOBOX DES ANNÉES
+    ' 1. CHARGER LES ANNÉES
     ' ---------------------------------------------------------
     Public Sub ChargerAnnees()
         Try
-            ' On cherche uniquement les années distinctes (YYYY) des visites de la région du délégué
+            ' On cherche les années d'activité de l'équipe de CE délégué
             Dim sql As String = "SELECT DISTINCT TO_CHAR(CR.DATE_VISITE, 'YYYY') AS ANNEE " &
                                 "FROM COMPTE_RENDU CR " &
                                 "JOIN UTILISATEUR V ON CR.ID_USER = V.ID_USER " &
-                                "WHERE V.ROLE = 'Visiteur' " &
-                                "AND V.ID_REGION = (SELECT ID_REGION FROM UTILISATEUR WHERE ID_USER = " & Login.IdUtilisateur & ") " &
-                                "ORDER BY ANNEE DESC" ' Tri décroissant : la plus récente sera en haut !
+                                "WHERE V.ROLE = 'Visiteur' AND V.ID_DELEGUE = " & Login.IdUtilisateur & " " &
+                                "ORDER BY ANNEE DESC"
 
             Dim dt As DataTable = Conn.getData(sql)
 
-            ' On désactive temporairement l'écouteur d'événement pour éviter les bugs pendant le remplissage
             RemoveHandler Liste_Annee.SelectedIndexChanged, AddressOf Liste_Annee_SelectedIndexChanged
-
             Liste_Annee.DataSource = dt
             Liste_Annee.DisplayMember = "ANNEE"
             Liste_Annee.ValueMember = "ANNEE"
-
-            ' On réactive l'écouteur d'événement
             AddHandler Liste_Annee.SelectedIndexChanged, AddressOf Liste_Annee_SelectedIndexChanged
 
-            ' S'il y a des années trouvées, on sélectionne la première (la plus récente par défaut)
-            ' Et on lance l'actualisation du tableau !
             If Liste_Annee.Items.Count > 0 Then
                 Liste_Annee.SelectedIndex = 0
                 ActualiserTableau()
             Else
-                Tab.DataSource = Nothing ' Si aucune visite, on vide le tableau
+                Tab.DataSource = Nothing
             End If
 
         Catch ex As Exception
@@ -73,19 +57,14 @@ Public Class VueRegion
         End Try
     End Sub
 
-    ' ---------------------------------------------------------
-    ' 2. ÉVÉNEMENT QUAND ON CHANGE L'ANNÉE DANS LA COMBOBOX
-    ' ---------------------------------------------------------
     Private Sub Liste_Annee_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Liste_Annee.SelectedIndexChanged
-        ' Dès que le délégué choisit une autre année, on met à jour le tableau
         ActualiserTableau()
     End Sub
 
     ' ---------------------------------------------------------
-    ' 3. FONCTION PRINCIPALE (Mise à jour avec filtre)
+    ' 2. METTRE À JOUR LE TABLEAU DES VISITEURS
     ' ---------------------------------------------------------
     Public Sub ActualiserTableau()
-        ' Sécurité : on vérifie qu'une année est bien sélectionnée
         If Liste_Annee.SelectedValue Is Nothing Then Return
 
         Dim anneeChoisie As String = Liste_Annee.SelectedValue.ToString()
@@ -94,25 +73,31 @@ Public Class VueRegion
             Tab.DataSource = Nothing
             Tab.Columns.Clear()
 
-            ' On ajoute le filtre "TO_CHAR(CR.DATE_VISITE, 'YYYY') = anneeChoisie" dans le WHERE
-            Dim sql As String = "SELECT " &
-                                "TO_CHAR(CR.DATE_VISITE, 'MM/YYYY') AS ""Période (Mois/Année)"", " &
-                                "COUNT(DISTINCT V.ID_USER) AS ""Nb. Visiteurs"", " &
-                                "COUNT(DISTINCT CR.ID_COMPTE_RENDU) AS ""Nb. Visites"", " &
-                                "NVL(SUM(E.QUANTITE), 0) AS ""Échantillons distribués"" " &
-                                "FROM COMPTE_RENDU CR " &
-                                "JOIN UTILISATEUR V ON CR.ID_USER = V.ID_USER " &
+            ' On liste chaque visiteur de l'équipe et ses statistiques
+            Dim sql As String = "SELECT V.ID_USER AS ""ID"", " &
+                                "V.NOM || ' ' || V.PRENOM AS ""Visiteur"", " &
+                                "COUNT(DISTINCT CR.ID_COMPTE_RENDU) AS ""Total Visites"", " &
+                                "NVL(SUM(E.QUANTITE), 0) AS ""Total Échantillons"", " &
+                                "ROUND(AVG(P.COEF_CONFIANCE), 2) AS ""Moyenne Confiance"", " &
+                                "TO_CHAR(MAX(CR.DATE_VISITE), 'DD/MM/YYYY') AS ""Dernière Visite"" " &
+                                "FROM UTILISATEUR V " &
+                                "LEFT JOIN COMPTE_RENDU CR ON V.ID_USER = CR.ID_USER AND TO_CHAR(CR.DATE_VISITE, 'YYYY') = '" & anneeChoisie & "' " &
                                 "LEFT JOIN ECHANTILLON E ON CR.ID_COMPTE_RENDU = E.ID_COMPTE_RENDU " &
-                                "WHERE V.ROLE = 'Visiteur' " &
-                                "AND V.ID_REGION = (SELECT ID_REGION FROM UTILISATEUR WHERE ID_USER = " & Login.IdUtilisateur & ") " &
-                                "AND TO_CHAR(CR.DATE_VISITE, 'YYYY') = '" & anneeChoisie & "' " &
-                                "GROUP BY TO_CHAR(CR.DATE_VISITE, 'MM/YYYY') " &
-                                "ORDER BY MAX(CR.DATE_VISITE) DESC"
+                                "LEFT JOIN PRATICIEN P ON CR.ID_PRATICIEN = P.ID_PRATICIEN " &
+                                "WHERE V.ROLE = 'Visiteur' AND V.ID_DELEGUE = " & Login.IdUtilisateur & " " &
+                                "GROUP BY V.ID_USER, V.NOM, V.PRENOM " &
+                                "ORDER BY V.NOM"
 
             Dim dt As DataTable = Conn.getData(sql)
 
             If dt IsNot Nothing Then
                 Tab.DataSource = dt
+
+                ' On cache l'ID, il n'est pas utile à l'affichage
+                If Tab.Columns.Contains("ID") Then
+                    Tab.Columns("ID").Visible = False
+                End If
+
                 Tab.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
                 Tab.ReadOnly = True
                 Tab.AllowUserToAddRows = False
@@ -121,7 +106,6 @@ Public Class VueRegion
             End If
 
         Catch ex As Exception
-            MessageBox.Show("Erreur lors du chargement des statistiques de la région : " & ex.Message, "Erreur SQL", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 

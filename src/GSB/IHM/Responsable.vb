@@ -1,18 +1,46 @@
-﻿Public Class Responsable
+﻿Imports System.Windows.Forms
+
+Public Class Responsable
 
     Private Property MoveForm As Boolean
     Private Property MoveForm_MousePosition As Point
     Private Property MoveForm_Position As Point
-    Private colorBtnSelect As Color = Color.FromArgb(83, 175, 255)
 
-    Dim WithEvents VueTab As New VueTableauRegionSecteur()
+    ' Couleurs du thème moderne
+    Private colorMenuFond As Color = Color.FromArgb(45, 52, 70) ' Bleu nuit
+    Private colorMenuActif As Color = Color.FromArgb(245, 247, 250) ' Gris clair du fond
+    Private colorTexteActif As Color = Color.FromArgb(45, 52, 70)
+    Private colorTexteInactif As Color = Color.White
+
+    Dim WithEvents VueTab As New VueSecteurRegionResp()
     Dim WithEvents btn_logout As New btn_logout()
-    Dim WithEvents btn_exit As New btn_exit
+    Dim WithEvents btn_exit As New btn_exit()
 
-    ' ... (Gardez vos méthodes PanelHeader_MouseDown, MouseMove, MouseUp intactes ici) ...
+    ' =========================================================
+    ' DEPLACEMENT FENETRE
+    ' =========================================================
+    Private Sub PanelHeader_MouseDown(sender As Object, e As MouseEventArgs) Handles PanelHeader.MouseDown, lbl_nom.MouseDown
+        MoveForm = True
+        MoveForm_MousePosition = Cursor.Position
+        MoveForm_Position = Location
+    End Sub
 
+    Private Sub PanelHeader_MouseMove(sender As Object, e As MouseEventArgs) Handles PanelHeader.MouseMove, lbl_nom.MouseMove
+        If MoveForm Then
+            Dim dif = New Point(Cursor.Position.X - MoveForm_MousePosition.X, Cursor.Position.Y - MoveForm_MousePosition.Y)
+            Location = New Point(MoveForm_Position.X + dif.X, MoveForm_Position.Y + dif.Y)
+        End If
+    End Sub
+
+    Private Sub PanelHeader_MouseUp(sender As Object, e As MouseEventArgs) Handles PanelHeader.MouseUp, lbl_nom.MouseUp
+        MoveForm = False
+    End Sub
+
+    ' =========================================================
+    ' INITIALISATION
+    ' =========================================================
     Private Sub Responsable_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        lbl_nom.Text = Login.PrenomUtilisateur & " " & Login.NomUtilisateur
+        lbl_nom.Text = "Responsable : " & Login.PrenomUtilisateur & " " & Login.NomUtilisateur
 
         btn_logout_Panel.Controls.Clear()
         btn_logout_Panel.Controls.Add(btn_logout)
@@ -28,31 +56,40 @@
         btn_Secteur.PerformClick()
     End Sub
 
+    ' =========================================================
+    ' METHODE OPTIMISEE POUR LE THEME
+    ' =========================================================
+    Private Sub ActiverBouton(btnActif As Button)
+        btn_Secteur.BackColor = colorMenuFond
+        btn_Secteur.ForeColor = colorTexteInactif
+
+        btn_Regions.BackColor = colorMenuFond
+        btn_Regions.ForeColor = colorTexteInactif
+
+        btn_Visiteurs.BackColor = colorMenuFond
+        btn_Visiteurs.ForeColor = colorTexteInactif
+
+        btnActif.BackColor = colorMenuActif
+        btnActif.ForeColor = colorTexteActif
+    End Sub
+
+    ' =========================================================
+    ' CLICS SUR LE MENU
+    ' =========================================================
     Private Sub btn_Secteur_Click(sender As Object, e As EventArgs) Handles btn_Secteur.Click
-        btn_Secteur.BackColor = colorBtnSelect
-        btn_Secteur.ForeColor = Color.FromArgb(255, 255, 255)
-        btn_Regions.BackColor = Color.FromArgb(255, 255, 255)
-        btn_Regions.ForeColor = Color.FromArgb(0, 0, 0)
-        btn_Visiteurs.BackColor = Color.FromArgb(255, 255, 255)
-        btn_Visiteurs.ForeColor = Color.FromArgb(0, 0, 0)
+        ActiverBouton(btn_Secteur)
 
         VueTab.lbl_Delegue.Visible = False
         VueTab.Liste_Delegues.Visible = False
         VueTab.lbl_Visiteur.Visible = False
         VueTab.Liste_Visiteurs.Visible = False
 
-        ' ---> MODIFIÉ : On active le mode Secteur et on charge le tableau <---
         VueTab.ModeActuel = "Secteur"
         VueTab.ActualiserTableau()
     End Sub
 
     Private Sub btn_Regions_Click(sender As Object, e As EventArgs) Handles btn_Regions.Click
-        btn_Secteur.BackColor = Color.FromArgb(255, 255, 255)
-        btn_Secteur.ForeColor = Color.FromArgb(0, 0, 0)
-        btn_Regions.BackColor = colorBtnSelect
-        btn_Regions.ForeColor = Color.FromArgb(255, 255, 255)
-        btn_Visiteurs.BackColor = Color.FromArgb(255, 255, 255)
-        btn_Visiteurs.ForeColor = Color.FromArgb(0, 0, 0)
+        ActiverBouton(btn_Regions)
 
         VueTab.lbl_Delegue.Visible = True
         VueTab.Liste_Delegues.Visible = True
@@ -64,12 +101,7 @@
     End Sub
 
     Private Sub btn_Visiteurs_Click(sender As Object, e As EventArgs) Handles btn_Visiteurs.Click
-        btn_Secteur.BackColor = Color.FromArgb(255, 255, 255)
-        btn_Secteur.ForeColor = Color.FromArgb(0, 0, 0)
-        btn_Regions.BackColor = Color.FromArgb(255, 255, 255)
-        btn_Regions.ForeColor = Color.FromArgb(0, 0, 0)
-        btn_Visiteurs.BackColor = colorBtnSelect
-        btn_Visiteurs.ForeColor = Color.FromArgb(255, 255, 255)
+        ActiverBouton(btn_Visiteurs)
 
         VueTab.ModeActuel = "Visiteurs"
         VueTab.lbl_Delegue.Visible = True
@@ -82,51 +114,33 @@
         If VueTab.Liste_Delegues.Items.Count = 0 Then
             VueTab.lbl_Visiteur.Visible = False
             VueTab.Liste_Visiteurs.Visible = False
-            MessageBox.Show("Vous n'avez aucun délégué dans votre secteur.")
+            MessageBox.Show("Vous n'avez aucun délégué dans votre secteur.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
     End Sub
 
     ' =========================================================
-    ' NOUVEAU : Clic sur Observer dans l'onglet SECTEUR
+    ' ÉVÉNEMENTS PERSONNALISÉS (INTERACTIVITÉ ENTRE ONGLETS)
     ' =========================================================
     Private Sub VueTab_DemandeObservationDelegue(idDelegue As Integer) Handles VueTab.DemandeObservationDelegue
-        ' On simule un clic sur l'onglet Régions pour changer les couleurs
         btn_Regions.PerformClick()
-
-        ' La méthode PerformClick a déjà chargé les délégués, 
-        ' on a plus qu'à forcer la sélection du bon délégué !
         VueTab.Liste_Delegues.SelectedValue = idDelegue
     End Sub
 
-    ' =========================================================
-    ' CORRECTION : Clic sur Observer dans l'onglet RÉGIONS
-    ' =========================================================
     Private Sub VueTab_DemandeObservationVisiteur(idVisiteur As Integer) Handles VueTab.DemandeObservationVisiteur
-        ' On change les couleurs des boutons
-        btn_Secteur.BackColor = Color.FromArgb(255, 255, 255)
-        btn_Secteur.ForeColor = Color.FromArgb(0, 0, 0)
-        btn_Regions.BackColor = Color.FromArgb(255, 255, 255)
-        btn_Regions.ForeColor = Color.FromArgb(0, 0, 0)
-        btn_Visiteurs.BackColor = colorBtnSelect
-        btn_Visiteurs.ForeColor = Color.FromArgb(255, 255, 255)
+        ' 1. On mémorise le délégué actuellement sélectionné avant que la vue ne change !
+        Dim idDelegueActuel As Integer = Convert.ToInt32(VueTab.Liste_Delegues.SelectedValue)
 
-        VueTab.ModeActuel = "Visiteurs"
-        VueTab.lbl_Visiteur.Visible = True
-        VueTab.Liste_Visiteurs.Visible = True
+        ' 2. On change de page (cela simule le clic sur "Vue Visiteurs")
+        btn_Visiteurs.PerformClick()
 
-        ' ---> LA CORRECTION EST ICI : On force le remplissage de la liste des visiteurs AVANT <---
-        VueTab.ChargerListeVisiteurs(Convert.ToInt32(VueTab.Liste_Delegues.SelectedValue))
+        ' 3. On FORCE la re-sélection du délégué mémorisé
+        VueTab.Liste_Delegues.SelectedValue = idDelegueActuel
 
-        ' Ensuite on peut sélectionner le visiteur, et le tableau s'actualisera tout seul !
+        ' 4. On charge la liste des visiteurs pour CE délégué
+        VueTab.ChargerListeVisiteurs(idDelegueActuel)
+
+        ' 5. On sélectionne enfin le visiteur ciblé par le bouton Observer
         VueTab.Liste_Visiteurs.SelectedValue = idVisiteur
-    End Sub
-
-    Private Sub btn_exit_Click(sender As Object, e As EventArgs)
-        Close()
-    End Sub
-
-    Private Sub btn_Deconnexion_Click(sender As Object, e As EventArgs)
-        ' Code de déconnexion...
     End Sub
 
 End Class

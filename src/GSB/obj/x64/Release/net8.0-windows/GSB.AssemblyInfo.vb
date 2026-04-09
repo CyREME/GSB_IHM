@@ -17,10 +17,14 @@ Imports System.Reflection
  Assembly: System.Reflection.AssemblyConfigurationAttribute("Release"),  _
  Assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0"),  _
 <<<<<<< HEAD
+ Assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f9522e05f0bb1cf18b9aa1c965706a7420f10dde"),  _
+=======
+<<<<<<< HEAD
  Assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+106608d45078c356af9d640efb2ab78a14fe2706"),  _
 =======
  Assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fc5714c989c87c083a5f94acb6262ced04a00cfa"),  _
 >>>>>>> f9522e05f0bb1cf18b9aa1c965706a7420f10dde
+>>>>>>> e8681ec723fb5e285a95e6b69690cbbaf2d4e883
  Assembly: System.Reflection.AssemblyProductAttribute("GSB"),  _
  Assembly: System.Reflection.AssemblyTitleAttribute("GSB"),  _
  Assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0"),  _
