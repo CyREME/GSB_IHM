@@ -123,16 +123,24 @@ Partial Class Delegue
         ' 
         ' btn_exit_Panel
         ' 
+<<<<<<< HEAD
         btn_exit_Panel.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         btn_exit_Panel.Location = New Point(767, 10)
+=======
+        btn_exit_Panel.Location = New Point(1017, 12)
+>>>>>>> e8681ec723fb5e285a95e6b69690cbbaf2d4e883
         btn_exit_Panel.Name = "btn_exit_Panel"
         btn_exit_Panel.Size = New Size(40, 40)
         btn_exit_Panel.TabIndex = 12
         ' 
         ' btn_logout_Panel
         ' 
+<<<<<<< HEAD
         btn_logout_Panel.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         btn_logout_Panel.Location = New Point(598, 10)
+=======
+        btn_logout_Panel.Location = New Point(835, 12)
+>>>>>>> e8681ec723fb5e285a95e6b69690cbbaf2d4e883
         btn_logout_Panel.Name = "btn_logout_Panel"
         btn_logout_Panel.Size = New Size(163, 40)
         btn_logout_Panel.TabIndex = 11
@@ -140,6 +148,7 @@ Partial Class Delegue
         ' lbl_nom
         ' 
         lbl_nom.Dock = DockStyle.Left
+<<<<<<< HEAD
         lbl_nom.Font = New Font("Segoe UI Semibold", 18.0F, FontStyle.Bold)
         lbl_nom.ForeColor = Color.FromArgb(CByte(45), CByte(52), CByte(70))
         lbl_nom.Location = New Point(0, 0)
@@ -153,6 +162,19 @@ Partial Class Delegue
         ' PanelAffichage
         ' 
         PanelAffichage.BackColor = Color.FromArgb(CByte(245), CByte(247), CByte(250))
+=======
+        lbl_nom.Font = New Font("Spline Sans Mono", 26F)
+        lbl_nom.Location = New Point(0, 0)
+        lbl_nom.Margin = New Padding(4, 0, 4, 0)
+        lbl_nom.Name = "lbl_nom"
+        lbl_nom.Size = New Size(644, 60)
+        lbl_nom.TabIndex = 4
+        lbl_nom.Text = "NOM / PRENOM DELEGUE"
+        lbl_nom.TextAlign = ContentAlignment.MiddleCenter
+        ' 
+        ' PanelAffichage
+        ' 
+>>>>>>> e8681ec723fb5e285a95e6b69690cbbaf2d4e883
         PanelAffichage.Dock = DockStyle.Fill
         PanelAffichage.Location = New Point(250, 60)
         PanelAffichage.Name = "PanelAffichage"

@@ -110,4 +110,19 @@ Public Class Delegue
         ChangerPage(HistVisit)
     End Sub
 
+<<<<<<< HEAD
+=======
+
+
+
+
+
+    Private Sub btn_exit_Click(sender As Object, e As EventArgs)
+        Close
+    End Sub
+
+    Private Sub PanelAffichage_Paint(sender As Object, e As PaintEventArgs) Handles PanelAffichage.Paint
+
+    End Sub
+>>>>>>> e8681ec723fb5e285a95e6b69690cbbaf2d4e883
 End Class
