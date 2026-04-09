@@ -1,6 +1,14 @@
 ﻿Imports Oracle.ManagedDataAccess.Client
 Imports Conn
+Imports System.Security.Cryptography
+Imports System.Text
+
 Public Class Login
+
+    ' Variables partagées pour stocker les infos de l'utilisateur connecté
+    Public Shared NomUtilisateur As String = ""
+    Public Shared PrenomUtilisateur As String = ""
+    Public Shared IdUtilisateur As Integer = 0 ' Très utile pour vos futurs INSERT de rapports
 
     Private Property MoveForm As Boolean
     Private Property MoveForm_MousePosition As Point
@@ -11,29 +19,10 @@ Public Class Login
     Dim connexionSql As OracleConnection
 
 
+    Dim WithEvents btn_exit As New btn_exit()
 
 
     Private Sub Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim test As New Conn
-        Try
-            Dim connexion As OracleConnection = test.GetConnection()
-            connexion.Open()
-            MessageBox.Show("Connexion réussie !", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            connexion.Close()
-        Catch ex As Exception
-            MessageBox.Show("Erreur de connexion : " & ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-
-
-
-
-
-
-
-
-
-
-
 
 
         Txt_Username.Text = "Login"
@@ -42,10 +31,26 @@ Public Class Login
         Txt_Password.ForeColor = Color.DarkGray
         Txt_Password.PasswordChar = ""
 
+        btn_exit_Panel.Controls.Clear()
+        btn_exit_Panel.Controls.Add(btn_exit)
+
     End Sub
 
 
-
+    ' ---------------------------------------------------------
+    ' La fonction qui transforme "1234" en "03ac67..."
+    ' ---------------------------------------------------------
+    Public Function GenererHashSHA256(texte As String) As String
+        Using sha256 As SHA256 = SHA256.Create()
+            Dim bytes As Byte() = Encoding.UTF8.GetBytes(texte)
+            Dim hash As Byte() = sha256.ComputeHash(bytes)
+            Dim builder As New StringBuilder()
+            For Each b As Byte In hash
+                builder.Append(b.ToString("x2"))
+            Next
+            Return builder.ToString()
+        End Using
+    End Function
 
 
 
@@ -109,7 +114,65 @@ Public Class Login
 
 
     '' Ici c'est pour les boutons de la fenêtre
-    Private Sub btn_exit_Click(sender As Object, e As EventArgs) Handles btn_exit.Click
-        Me.Close()
+    Private Sub btn_exit_Click(sender As Object, e As EventArgs)
+        Close
     End Sub
+
+    Private Sub btn_login_Click(sender As Object, e As EventArgs) Handles btn_login.Click
+
+        If Txt_Password.Text = "Mot de passe" Or Txt_Username.Text = "Login" Then
+            MessageBox.Show("Veuillez entrer vos identifiants.")
+            Exit Sub
+        End If
+
+        Dim loginInput As String = Txt_Username.Text
+        Dim passwordHash As String = GenererHashSHA256(Txt_Password.Text)
+
+        Dim dbConn As New Conn()
+        connexionSql = dbConn.GetConnection()
+
+        Try
+            connexionSql.Open()
+
+            ' On récupère ID, NOM, PRENOM et ROLE
+            Dim sql As String = "SELECT ID_USER, NOM, PRENOM, ROLE FROM UTILISATEUR WHERE LOGIN = :p_login AND MOTDEPASSE = :p_mdp"
+            Dim cmd As New OracleCommand(sql, connexionSql)
+
+            cmd.Parameters.Add(New OracleParameter("p_login", loginInput))
+            cmd.Parameters.Add(New OracleParameter("p_mdp", passwordHash))
+
+            Dim reader As OracleDataReader = cmd.ExecuteReader()
+
+            If reader.Read() Then
+                ' Stockage des infos dans les variables partagées
+                IdUtilisateur = reader.GetInt32(0)
+                NomUtilisateur = reader.GetString(1)
+                PrenomUtilisateur = reader.GetString(2)
+                Dim role As String = reader.GetString(3)
+
+                Select Case role
+                    Case "Visiteur"
+                        Dim visiteurForm As New Visiteur()
+                        visiteurForm.Show()
+                        Me.Hide()
+                    Case "Delegue"
+                        Dim delegueForm As New Delegue()
+                        delegueForm.Show()
+                        Me.Hide()
+                    Case "Responsable"
+                        Dim responsableForm As New Responsable()
+                        responsableForm.Show()
+                        Me.Hide()
+                End Select
+            Else
+                MessageBox.Show("Identifiant ou mot de passe incorrect.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+
+        Catch ex As Exception
+            MessageBox.Show("Erreur de connexion : " & ex.Message)
+        Finally
+            connexionSql.Close()
+        End Try
+    End Sub
+
 End Class

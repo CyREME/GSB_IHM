@@ -27,9 +27,9 @@ Partial Class Responsable
         btn_Regions = New Button()
         btn_Secteur = New Button()
         PanelHeader = New Panel()
+        btn_exit_Panel = New Panel()
+        btn_logout_Panel = New Panel()
         lbl_nom = New Label()
-        btn_Deconnexion = New Button()
-        btn_exit = New Button()
         PanelAffichage = New Panel()
         Panel1.SuspendLayout()
         PanelHeader.SuspendLayout()
@@ -103,14 +103,28 @@ Partial Class Responsable
         ' 
         PanelHeader.BackColor = Color.FromArgb(CByte(81), CByte(175), CByte(255))
         PanelHeader.BackgroundImageLayout = ImageLayout.None
+        PanelHeader.Controls.Add(btn_exit_Panel)
+        PanelHeader.Controls.Add(btn_logout_Panel)
         PanelHeader.Controls.Add(lbl_nom)
-        PanelHeader.Controls.Add(btn_Deconnexion)
-        PanelHeader.Controls.Add(btn_exit)
         PanelHeader.Dock = DockStyle.Top
         PanelHeader.Location = New Point(0, 0)
         PanelHeader.Name = "PanelHeader"
         PanelHeader.Size = New Size(1069, 60)
         PanelHeader.TabIndex = 1
+        ' 
+        ' btn_exit_Panel
+        ' 
+        btn_exit_Panel.Location = New Point(1018, 10)
+        btn_exit_Panel.Name = "btn_exit_Panel"
+        btn_exit_Panel.Size = New Size(40, 40)
+        btn_exit_Panel.TabIndex = 8
+        ' 
+        ' btn_logout_Panel
+        ' 
+        btn_logout_Panel.Location = New Point(836, 10)
+        btn_logout_Panel.Name = "btn_logout_Panel"
+        btn_logout_Panel.Size = New Size(163, 40)
+        btn_logout_Panel.TabIndex = 7
         ' 
         ' lbl_nom
         ' 
@@ -123,41 +137,6 @@ Partial Class Responsable
         lbl_nom.TabIndex = 6
         lbl_nom.Text = "NOM / PRENOM RESPONSABLE"
         lbl_nom.TextAlign = ContentAlignment.MiddleCenter
-        ' 
-        ' btn_Deconnexion
-        ' 
-        btn_Deconnexion.Anchor = AnchorStyles.Top
-        btn_Deconnexion.BackColor = Color.White
-        btn_Deconnexion.BackgroundImageLayout = ImageLayout.Stretch
-        btn_Deconnexion.Font = New Font("Spline Sans Mono", 14F)
-        btn_Deconnexion.ForeColor = Color.Black
-        btn_Deconnexion.ImageAlign = ContentAlignment.TopCenter
-        btn_Deconnexion.Location = New Point(836, 10)
-        btn_Deconnexion.Margin = New Padding(4, 3, 4, 3)
-        btn_Deconnexion.Name = "btn_Deconnexion"
-        btn_Deconnexion.Size = New Size(163, 40)
-        btn_Deconnexion.TabIndex = 3
-        btn_Deconnexion.Text = "Deconnexion"
-        btn_Deconnexion.UseVisualStyleBackColor = False
-        ' 
-        ' btn_exit
-        ' 
-        btn_exit.Anchor = AnchorStyles.Top
-        btn_exit.BackColor = Color.Red
-        btn_exit.BackgroundImageLayout = ImageLayout.Stretch
-        btn_exit.FlatAppearance.BorderColor = Color.Red
-        btn_exit.FlatAppearance.BorderSize = 0
-        btn_exit.FlatStyle = FlatStyle.Popup
-        btn_exit.Font = New Font("Spline Sans Mono", 75F, FontStyle.Bold, GraphicsUnit.Document, CByte(0))
-        btn_exit.ForeColor = Color.White
-        btn_exit.ImageAlign = ContentAlignment.BottomCenter
-        btn_exit.Location = New Point(1018, 10)
-        btn_exit.Name = "btn_exit"
-        btn_exit.Size = New Size(40, 40)
-        btn_exit.TabIndex = 3
-        btn_exit.Text = "X"
-        btn_exit.TextAlign = ContentAlignment.TopRight
-        btn_exit.UseVisualStyleBackColor = False
         ' 
         ' PanelAffichage
         ' 
@@ -185,11 +164,11 @@ Partial Class Responsable
     End Sub
     Friend WithEvents Panel1 As Panel
     Friend WithEvents PanelHeader As Panel
-    Friend WithEvents btn_exit As Button
     Friend WithEvents lbl_nom As Label
-    Friend WithEvents btn_Deconnexion As Button
     Friend WithEvents btn_Visiteurs As Button
     Friend WithEvents btn_Regions As Button
     Friend WithEvents btn_Secteur As Button
     Friend WithEvents PanelAffichage As Panel
+    Friend WithEvents btn_logout_Panel As Panel
+    Friend WithEvents btn_exit_Panel As Panel
 End Class

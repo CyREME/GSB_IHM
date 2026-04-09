@@ -26,8 +26,8 @@ Partial Class VueTableauRegionSecteur
         Liste_Delegues = New ComboBox()
         lbl_Visiteur = New Label()
         lbl_Delegue = New Label()
-        Tableau = New DataGridView()
-        CType(Tableau, ComponentModel.ISupportInitialize).BeginInit()
+        Tab = New DataGridView()
+        CType(Tab, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' Liste_Visiteurs
@@ -66,14 +66,15 @@ Partial Class VueTableauRegionSecteur
         lbl_Delegue.Text = "Délégué :"
         lbl_Delegue.TextAlign = ContentAlignment.TopCenter
         ' 
-        ' Tableau
+        ' Tab
         ' 
-        Tableau.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Tableau.Location = New Point(25, 98)
-        Tableau.Margin = New Padding(4, 3, 4, 3)
-        Tableau.Name = "Tableau"
-        Tableau.Size = New Size(769, 444)
-        Tableau.TabIndex = 5
+        Tab.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Tab.Location = New Point(25, 98)
+        Tab.Margin = New Padding(4, 3, 4, 3)
+        Tab.Name = "Tab"
+        Tab.ReadOnly = True
+        Tab.Size = New Size(769, 444)
+        Tab.TabIndex = 5
         ' 
         ' VueTableauRegionSecteur
         ' 
@@ -83,10 +84,10 @@ Partial Class VueTableauRegionSecteur
         Controls.Add(Liste_Delegues)
         Controls.Add(lbl_Visiteur)
         Controls.Add(lbl_Delegue)
-        Controls.Add(Tableau)
+        Controls.Add(Tab)
         Name = "VueTableauRegionSecteur"
         Size = New Size(819, 573)
-        CType(Tableau, ComponentModel.ISupportInitialize).EndInit()
+        CType(Tab, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub
 
@@ -94,6 +95,6 @@ Partial Class VueTableauRegionSecteur
     Friend WithEvents Liste_Delegues As ComboBox
     Friend WithEvents lbl_Visiteur As Label
     Friend WithEvents lbl_Delegue As Label
-    Friend WithEvents Tableau As DataGridView
+    Friend WithEvents Tab As DataGridView
 
 End Class

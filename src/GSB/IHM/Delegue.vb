@@ -7,9 +7,12 @@ Public Class Delegue
     Private Property MoveForm_Position As Point
     Private colorBtnSelect As Color = Color.FromArgb(83, 175, 255)
 
-    Dim VueTab As New VueTableauRegionSecteur()
+    Dim VueRegion As New VueRegion()
     Dim PageCR As New CompteRendu()
-    Dim HistVisit As New HistoriqueVisites()
+    Dim HistVisit As New HistoriqueVisitesDelegue()
+
+    Dim btn_logout As New btn_logout()
+    Dim btn_deco As New btn_exit()
 
 
     '' Ici c'est pour pouvoir déplacer la fenêtre en cliquant sur le panel du haut ou le label Login
@@ -35,6 +38,9 @@ Public Class Delegue
 
     Private Sub Delegue_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+        ' Affichage du Nom et Prénom dans le label
+        lbl_nom.Text = Login.PrenomUtilisateur & " " & Login.NomUtilisateur
+
 
 
         btn_Regions.BackColor = colorBtnSelect
@@ -52,19 +58,16 @@ Public Class Delegue
         'Changement de l'affichage de la page dans le panneau
         PanelAffichage.Controls.Clear()
 
-        VueTab.Dock = DockStyle.Fill
+        VueRegion.Dock = DockStyle.Fill
 
-        VueTab.lbl_Delegue.Visible = False
-        VueTab.Liste_Delegues.Visible = False
+        btn_logout_Panel.Controls.Clear()
+        btn_logout_Panel.Controls.Add(btn_logout)
 
-        VueTab.lbl_Visiteur.Visible = False
-        VueTab.Liste_Visiteurs.Visible = False
-
-        VueTab.lbl_Visiteur.Location() = New Point(25, 31)
-        VueTab.Liste_Visiteurs.Location() = New Point(25, 58)
+        btn_exit_Panel.Controls.Clear()
+        btn_exit_Panel.Controls.Add(btn_deco)
 
 
-        PanelAffichage.Controls.Add(VueTab)
+        PanelAffichage.Controls.Add(VueRegion)
 
     End Sub
 
@@ -88,16 +91,10 @@ Public Class Delegue
         'Changement de l'affichage de la page dans le panneau
         PanelAffichage.Controls.Clear()
 
-        VueTab.Dock = DockStyle.Fill
-
-        VueTab.lbl_Delegue.Visible = False
-        VueTab.Liste_Delegues.Visible = False
-
-        VueTab.lbl_Visiteur.Visible = False
-        VueTab.Liste_Visiteurs.Visible = False
+        VueRegion.Dock = DockStyle.Fill
 
 
-        PanelAffichage.Controls.Add(VueTab)
+        PanelAffichage.Controls.Add(VueRegion)
 
     End Sub
 
@@ -120,13 +117,9 @@ Public Class Delegue
         'Changement de l'affichage de la page dans le panneau
         PanelAffichage.Controls.Clear()
 
-        VueTab.Dock = DockStyle.Fill
+        VueRegion.Dock = DockStyle.Fill
 
-        VueTab.lbl_Visiteur.Visible = True
-        VueTab.Liste_Visiteurs.Visible = True
-
-
-        PanelAffichage.Controls.Add(VueTab)
+        PanelAffichage.Controls.Add(VueRegion)
 
     End Sub
 
@@ -185,7 +178,11 @@ Public Class Delegue
 
 
 
-    Private Sub btn_exit_Click(sender As Object, e As EventArgs) Handles btn_exit.Click
-        Me.Close()
+    Private Sub btn_exit_Click(sender As Object, e As EventArgs)
+        Close
+    End Sub
+
+    Private Sub PanelAffichage_Paint(sender As Object, e As PaintEventArgs) Handles PanelAffichage.Paint
+
     End Sub
 End Class

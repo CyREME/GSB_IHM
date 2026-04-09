@@ -35,6 +35,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="IHM\Modules\Imports System.Windows.Designer.Forms" />
+    <None Remove="IHM\Modules\Imports System.Windows.Forms" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Import Include="MySql.Data" />
     <Import Include="Oracle.ManagedDataAccess.Client" />
     <Import Include="Oracle.ManagedDataAccess.OpenTelemetry" />
@@ -50,6 +55,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="IHM\Modules\VueRegion.vb" />
     <Compile Update="My Project\Application.Designer.vb">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -75,6 +81,10 @@
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="IHM\NewFolder\" />
   </ItemGroup>
 
 </Project>

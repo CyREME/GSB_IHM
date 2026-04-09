@@ -33,9 +33,9 @@ Partial Class Login
         Panel4 = New Panel()
         Txt_Password = New TextBox()
         PanelHeader = New Panel()
-        btn_exit = New Button()
+        btn_exit_Panel = New Panel()
         Panel6 = New Panel()
-        Button1 = New Button()
+        btn_login = New Button()
         Panel1.SuspendLayout()
         Panel2.SuspendLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
@@ -138,7 +138,7 @@ Partial Class Login
         ' 
         ' PanelHeader
         ' 
-        PanelHeader.Controls.Add(btn_exit)
+        PanelHeader.Controls.Add(btn_exit_Panel)
         PanelHeader.Controls.Add(Login_label)
         PanelHeader.Dock = DockStyle.Top
         PanelHeader.Location = New Point(0, 0)
@@ -146,26 +146,17 @@ Partial Class Login
         PanelHeader.Size = New Size(721, 100)
         PanelHeader.TabIndex = 3
         ' 
-        ' btn_exit
+        ' btn_exit_Panel
         ' 
-        btn_exit.Anchor = AnchorStyles.Top
-        btn_exit.AutoSize = True
-        btn_exit.BackColor = Color.Red
-        btn_exit.BackgroundImageLayout = ImageLayout.Stretch
-        btn_exit.FlatStyle = FlatStyle.Popup
-        btn_exit.Font = New Font("Bauhaus 93", 30F)
-        btn_exit.ForeColor = Color.White
-        btn_exit.Location = New Point(653, 12)
-        btn_exit.Name = "btn_exit"
-        btn_exit.Size = New Size(56, 56)
-        btn_exit.TabIndex = 1
-        btn_exit.Text = "X"
-        btn_exit.UseVisualStyleBackColor = False
+        btn_exit_Panel.Location = New Point(653, 12)
+        btn_exit_Panel.Name = "btn_exit_Panel"
+        btn_exit_Panel.Size = New Size(56, 56)
+        btn_exit_Panel.TabIndex = 1
         ' 
         ' Panel6
         ' 
         Panel6.Anchor = AnchorStyles.None
-        Panel6.Controls.Add(Button1)
+        Panel6.Controls.Add(btn_login)
         Panel6.Controls.Add(Panel1)
         Panel6.Controls.Add(Panel4)
         Panel6.Location = New Point(0, 99)
@@ -173,16 +164,16 @@ Partial Class Login
         Panel6.Size = New Size(721, 505)
         Panel6.TabIndex = 4
         ' 
-        ' Button1
+        ' btn_login
         ' 
-        Button1.Font = New Font("Spline Sans Mono", 18F)
-        Button1.ForeColor = Color.FromArgb(CByte(83), CByte(175), CByte(255))
-        Button1.Location = New Point(229, 319)
-        Button1.Name = "Button1"
-        Button1.Size = New Size(271, 46)
-        Button1.TabIndex = 3
-        Button1.Text = "SE CONNECTER"
-        Button1.UseVisualStyleBackColor = True
+        btn_login.Font = New Font("Spline Sans Mono", 18F)
+        btn_login.ForeColor = Color.FromArgb(CByte(83), CByte(175), CByte(255))
+        btn_login.Location = New Point(229, 319)
+        btn_login.Name = "btn_login"
+        btn_login.Size = New Size(271, 46)
+        btn_login.TabIndex = 3
+        btn_login.Text = "SE CONNECTER"
+        btn_login.UseVisualStyleBackColor = True
         ' 
         ' Login
         ' 
@@ -204,7 +195,6 @@ Partial Class Login
         Panel4.ResumeLayout(False)
         Panel4.PerformLayout()
         PanelHeader.ResumeLayout(False)
-        PanelHeader.PerformLayout()
         Panel6.ResumeLayout(False)
         ResumeLayout(False)
     End Sub
@@ -220,6 +210,6 @@ Partial Class Login
     Friend WithEvents Panel6 As Panel
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents PictureBox2 As PictureBox
-    Friend WithEvents Button1 As Button
-    Friend WithEvents btn_exit As Button
+    Friend WithEvents btn_login As Button
+    Friend WithEvents btn_exit_Panel As Panel
 End Class
