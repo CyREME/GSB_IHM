@@ -1,4 +1,4 @@
-# 🌿 Branche personnelle : Emeric 
+# 🌿 Branche principale
 
 ## 👨‍💻 Objectif principal
 
