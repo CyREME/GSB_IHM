@@ -68,3 +68,13 @@ C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\obj\Debug\net8.0-windows
 C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\obj\Debug\net8.0-windows\GSB.VueTableauRegionSecteur.resources
 C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\obj\Debug\net8.0-windows\GSB.VisionSynth.resources
 C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\bin\Debug\net8.0-windows\Oracle.ManagedDataAccess.dll
+C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\bin\Debug\net8.0-windows\System.DirectoryServices.Protocols.dll
+C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\bin\Debug\net8.0-windows\System.Security.Cryptography.Pkcs.dll
+C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\bin\Debug\net8.0-windows\runtimes\linux\lib\net8.0\System.DirectoryServices.Protocols.dll
+C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\bin\Debug\net8.0-windows\runtimes\osx\lib\net8.0\System.DirectoryServices.Protocols.dll
+C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.DirectoryServices.Protocols.dll
+C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\obj\Debug\net8.0-windows\GSB.btn_exit.resources
+C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\obj\Debug\net8.0-windows\GSB.btn_logout.resources
+C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\obj\Debug\net8.0-windows\GSB.HistoriqueVisitesDelegue.resources
+C:\Users\24ecellier\source\repos\CyREME\GSB_IHM\src\GSB\obj\Debug\net8.0-windows\GSB.VueRegion.resources

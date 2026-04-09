@@ -2,15 +2,32 @@
 Imports System.Data
 
 Public Class VisionSynth
-    ' ID du visiteur connecté (à dynamiser selon votre système de login)
-    Private idVisiteur As Integer = 3
 
     Private Sub VisionSynth_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ' 1. Initialiser les dates par défaut (Première et Dernière visite)
-        InitialiserDatesParDefaut()
+        SetupTableaux()
+        AppliquerStyleTableaux(Tableau_Synthese_Praticiens)
+        AppliquerStyleTableaux(Tableau_Activite)
+        RemplirListeAnnees()
+        ActualiserSynthese()
+    End Sub
 
-        ' 2. Configurer le tableau
-        With Tableau_vision_synthèse
+    Private Sub AppliquerStyleTableaux(grid As DataGridView)
+        grid.BackgroundColor = Color.White
+        grid.BorderStyle = BorderStyle.None
+        grid.RowHeadersVisible = False
+        grid.EnableHeadersVisualStyles = False
+        grid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
+        grid.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(83, 175, 255)
+        grid.ColumnHeadersDefaultCellStyle.ForeColor = Color.White
+        grid.ColumnHeadersDefaultCellStyle.Font = New Font("Segoe UI", 10, FontStyle.Bold)
+        grid.DefaultCellStyle.SelectionBackColor = Color.FromArgb(240, 245, 250)
+        grid.DefaultCellStyle.SelectionForeColor = Color.Black
+        grid.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
+        grid.GridColor = Color.FromArgb(230, 230, 230)
+    End Sub
+
+    Private Sub SetupTableaux()
+        With Tableau_Synthese_Praticiens
             .AllowUserToAddRows = False
             .RowHeadersVisible = False
             .ReadOnly = True
@@ -18,59 +35,62 @@ Public Class VisionSynth
             .SelectionMode = DataGridViewSelectionMode.FullRowSelect
         End With
 
-        ' 3. Charger les données
-        ActualiserVisionSynthese()
+        With Tableau_Activite
+            .AllowUserToAddRows = False
+            .RowHeadersVisible = False
+            .ReadOnly = True
+            .AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+            .SelectionMode = DataGridViewSelectionMode.FullRowSelect
+        End With
     End Sub
 
-    Private Sub InitialiserDatesParDefaut()
-        Try
-            ' On cherche la date min et max dans la table compte_rendu pour ce visiteur
-            Dim sqlDates As String = $"SELECT MIN(DATE_VISITE), MAX(DATE_VISITE) FROM COMPTE_RENDU WHERE ID_USER = {idVisiteur}"
-            Dim dtDates As DataTable = Conn.getData(sqlDates)
+    Private Sub RemplirListeAnnees()
+        Dim sql As String = $"SELECT DISTINCT TO_CHAR(DATE_VISITE, 'YYYY') as ANNEE FROM COMPTE_RENDU WHERE ID_USER = {Login.IdUtilisateur} ORDER BY ANNEE DESC"
+        Dim dt As DataTable = Conn.getData(sql)
 
-            If dtDates.Rows.Count > 0 AndAlso Not IsDBNull(dtDates.Rows(0)(0)) Then
-                ' On règle les DatePickers
-                DatePickerMin.Value = Convert.ToDateTime(dtDates.Rows(0)(0))
-                DatePickerMax.Value = Convert.ToDateTime(dtDates.Rows(0)(1))
-            Else
-                ' Si aucune visite, on met par défaut le mois en cours
-                DatePickerMin.Value = New Date(DateTime.Now.Year, DateTime.Now.Month, 1)
-                DatePickerMax.Value = DateTime.Now
-            End If
+        RemoveHandler Liste_Annee.SelectedIndexChanged, AddressOf Liste_Annee_SelectedIndexChanged
+        Liste_Annee.Items.Clear()
+        Liste_Annee.Items.Add("Toutes")
+        For Each row As DataRow In dt.Rows
+            Liste_Annee.Items.Add(row("ANNEE").ToString())
+        Next
+        Liste_Annee.SelectedIndex = 0
+        AddHandler Liste_Annee.SelectedIndexChanged, AddressOf Liste_Annee_SelectedIndexChanged
+    End Sub
+
+    Private Sub Liste_Annee_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Liste_Annee.SelectedIndexChanged
+        ActualiserSynthese()
+    End Sub
+
+    Private Sub ActualiserSynthese()
+        If Liste_Annee.SelectedItem Is Nothing Then Return
+
+        Dim anneeFiltre As String = Liste_Annee.SelectedItem.ToString()
+        Dim conditionAnnee As String = If(anneeFiltre = "Toutes", "", $" AND TO_CHAR(CR.DATE_VISITE, 'YYYY') = '{anneeFiltre}'")
+        Dim conditionAnneeSimple As String = If(anneeFiltre = "Toutes", "", $" AND TO_CHAR(DATE_VISITE, 'YYYY') = '{anneeFiltre}'")
+
+        Try
+            Dim resVisites = Conn.getData($"SELECT COUNT(*) FROM COMPTE_RENDU WHERE ID_USER = {Login.IdUtilisateur} {conditionAnneeSimple}")
+            If resVisites.Rows.Count > 0 Then lbl_visites.Text = "Nombre total de visites : " & resVisites.Rows(0)(0).ToString()
+
+            Dim sqlEch As String = "SELECT NVL(SUM(E.QUANTITE), 0) FROM ECHANTILLON E JOIN COMPTE_RENDU CR ON E.ID_COMPTE_RENDU = CR.ID_COMPTE_RENDU " &
+                                  $"WHERE CR.ID_USER = {Login.IdUtilisateur} {conditionAnnee}"
+            Dim resEch = Conn.getData(sqlEch)
+            If resEch.Rows.Count > 0 Then lbl_echantillon.Text = "Nombre total d'échantillons distribués : " & resEch.Rows(0)(0).ToString()
+
+            Dim sqlPrat As String = "SELECT P.NOM as ""Praticien"", TO_CHAR(MAX(CR.DATE_VISITE), 'DD/MM/YYYY') as ""Dernière Visite"", " &
+                                   "COUNT(CR.ID_COMPTE_RENDU) as ""Total Visites"", ROUND(AVG(P.COEF_CONFIANCE), 1) as ""Moy. Confiance"" " &
+                                   "FROM COMPTE_RENDU CR JOIN PRATICIEN P ON CR.ID_PRATICIEN = P.ID_PRATICIEN " &
+                                   $"WHERE CR.ID_USER = {Login.IdUtilisateur} {conditionAnnee} GROUP BY P.NOM"
+            Tableau_Synthese_Praticiens.DataSource = Conn.getData(sqlPrat)
+
+            Dim sqlActivite As String = "SELECT M.LBL_MOTIF as ""Motif"", COUNT(CR.ID_COMPTE_RENDU) as ""Nombre"" " &
+                                       "FROM COMPTE_RENDU CR JOIN MOTIF_VISITE M ON CR.MOTIF_VISITE = M.ID_MOTIF " &
+                                       $"WHERE CR.ID_USER = {Login.IdUtilisateur} {conditionAnnee} GROUP BY M.LBL_MOTIF"
+            Tableau_Activite.DataSource = Conn.getData(sqlActivite)
+
         Catch ex As Exception
-            MessageBox.Show("Erreur lors de l'initialisation des dates : " & ex.Message)
         End Try
     End Sub
 
-    Private Sub ActualiserVisionSynthese()
-        ' On formate les dates pour Oracle (JJ/MM/AA)
-        Dim dateDebut As String = DatePickerMin.Value.ToString("dd/MM/yy")
-        Dim dateFin As String = DatePickerMax.Value.ToString("dd/MM/yy")
-
-        ' Requête de synthèse : on regroupe par Mois/Année pour voir l'évolution de la productivité
-        ' On compte les visites et on somme les échantillons liés
-        Dim sql As String = "SELECT TO_CHAR(CR.DATE_VISITE, 'MM/YYYY') as ""Période"", " &
-                           "COUNT(DISTINCT CR.ID_COMPTE_RENDU) as ""Nb Visites"", " &
-                           "COUNT(DISTINCT CR.ID_PRATICIEN) as ""Praticiens différents"", " &
-                           "NVL(SUM(E.QUANTITE), 0) as ""Échantillons distribués"" " &
-                           "FROM COMPTE_RENDU CR " &
-                           "LEFT JOIN ECHANTILLON E ON CR.ID_COMPTE_RENDU = E.ID_COMPTE_RENDU " &
-                           $"WHERE CR.ID_USER = {idVisiteur} " &
-                           $"AND CR.DATE_VISITE BETWEEN TO_DATE('{dateDebut}', 'DD/MM/YY') AND TO_DATE('{dateFin}', 'DD/MM/YY') " &
-                           "GROUP BY TO_CHAR(CR.DATE_VISITE, 'MM/YYYY'), TO_CHAR(CR.DATE_VISITE, 'YYYYMM') " &
-                           "ORDER BY TO_CHAR(CR.DATE_VISITE, 'YYYYMM') DESC"
-
-        Tableau_vision_synthèse.DataSource = Conn.getData(sql)
-    End Sub
-
-    ' --- ÉVÉNEMENTS ---
-
-    ' Quand l'utilisateur change une date, le tableau se met à jour instantanément
-    Private Sub DatePickerMin_ValueChanged(sender As Object, e As EventArgs) Handles DatePickerMin.ValueChanged
-        ActualiserVisionSynthese()
-    End Sub
-
-    Private Sub DatePickerMax_ValueChanged(sender As Object, e As EventArgs) Handles DatePickerMax.ValueChanged
-        ActualiserVisionSynthese()
-    End Sub
 End Class

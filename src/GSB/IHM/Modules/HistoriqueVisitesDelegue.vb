@@ -21,8 +21,33 @@ Public Class HistoriqueVisitesDelegue
             conditionEquipe = $"= {Login.IdUtilisateur}"
         End If
 
+        ' 2. Configuration des Tableaux et du Style GSB
         SetupTableaux()
+        AppliquerStyleTableaux(Tableau_Synthese_Praticiens)
+        AppliquerStyleTableaux(Tableau_Activite)
+
+        ' 3. Remplissage des données
         RemplirListeAnnees()
+    End Sub
+
+    ' --- STYLE DES TABLEAUX ---
+    Private Sub AppliquerStyleTableaux(grid As DataGridView)
+        grid.BackgroundColor = Color.White
+        grid.BorderStyle = BorderStyle.None
+        grid.RowHeadersVisible = False ' Supprime la petite colonne vide à gauche
+        grid.EnableHeadersVisualStyles = False
+        grid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
+
+        ' En-tête Bleu
+        grid.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(83, 175, 255)
+        grid.ColumnHeadersDefaultCellStyle.ForeColor = Color.White
+        grid.ColumnHeadersDefaultCellStyle.Font = New Font("Segoe UI", 10, FontStyle.Bold)
+
+        ' Lignes épurées
+        grid.DefaultCellStyle.SelectionBackColor = Color.FromArgb(240, 245, 250)
+        grid.DefaultCellStyle.SelectionForeColor = Color.Black
+        grid.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
+        grid.GridColor = Color.FromArgb(230, 230, 230)
     End Sub
 
     Private Sub SetupTableaux()
@@ -81,7 +106,7 @@ Public Class HistoriqueVisitesDelegue
             ' 1. Mise à jour des Labels
             Dim resVisites = Conn.getData($"SELECT COUNT(*) FROM COMPTE_RENDU WHERE ID_USER {conditionEquipe} {conditionAnneeSimple}")
             If resVisites IsNot Nothing AndAlso resVisites.Rows.Count > 0 Then
-                lbl_visites.Text = "Nombre total de visites : " & resVisites.Rows(0)(0).ToString()
+                lbl_visites.Text = "Nombre total de visites de l'équipe : " & resVisites.Rows(0)(0).ToString()
             End If
 
             Dim sqlEch As String = "SELECT NVL(SUM(E.QUANTITE), 0) FROM ECHANTILLON E JOIN COMPTE_RENDU CR ON E.ID_COMPTE_RENDU = CR.ID_COMPTE_RENDU " &

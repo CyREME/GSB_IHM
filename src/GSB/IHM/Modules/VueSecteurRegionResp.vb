@@ -1,6 +1,8 @@
-﻿Imports Oracle.ManagedDataAccess.Client
+﻿Imports System.Windows.Forms
+Imports System.Data
+Imports Oracle.ManagedDataAccess.Client
 
-Public Class VueTableauRegionSecteur
+Public Class VueSecteurRegionResp
 
     Public ModeActuel As String = "Regions"
 
@@ -9,7 +11,28 @@ Public Class VueTableauRegionSecteur
     Public Event DemandeObservationDelegue(idDelegue As Integer)
 
     Private Sub VueTableauRegionSecteur_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        AppliquerStyleTableaux(Tab)
         ActualiserTableau()
+    End Sub
+
+    ' --- STYLE DU TABLEAU ---
+    Private Sub AppliquerStyleTableaux(grid As DataGridView)
+        grid.BackgroundColor = Color.White
+        grid.BorderStyle = BorderStyle.None
+        grid.RowHeadersVisible = False ' Supprime la petite colonne vide à gauche
+        grid.EnableHeadersVisualStyles = False
+        grid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
+
+        ' En-tête Bleu
+        grid.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(83, 175, 255)
+        grid.ColumnHeadersDefaultCellStyle.ForeColor = Color.White
+        grid.ColumnHeadersDefaultCellStyle.Font = New Font("Segoe UI", 10, FontStyle.Bold)
+
+        ' Lignes épurées
+        grid.DefaultCellStyle.SelectionBackColor = Color.FromArgb(240, 245, 250)
+        grid.DefaultCellStyle.SelectionForeColor = Color.Black
+        grid.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
+        grid.GridColor = Color.FromArgb(230, 230, 230)
     End Sub
 
     ' ---------------------------------------------------------
@@ -37,10 +60,9 @@ Public Class VueTableauRegionSecteur
             Tab.Columns.Clear()
 
             ' =========================================================
-            ' CAS 0 : MODE SECTEUR (Nouvel onglet d'accueil)
+            ' CAS 0 : MODE SECTEUR 
             ' =========================================================
             If ModeActuel = "Secteur" Then
-                ' On affiche les statistiques globales pour chaque délégué du secteur
                 sql = "SELECT D.ID_USER AS ""ID"", " &
                       "D.NOM || ' ' || D.PRENOM AS ""Délégué"", " &
                       "COUNT(DISTINCT V.ID_USER) AS ""Nb. Visiteurs"", " &
@@ -75,9 +97,6 @@ Public Class VueTableauRegionSecteur
                               "WHERE U.ROLE = 'Visiteur' AND U.ID_DELEGUE = " & Liste_Delegues.SelectedValue.ToString() & " " &
                               "GROUP BY U.ID_USER, U.NOM, U.PRENOM"
                     End If
-                Else
-                    sql = "SELECT r.Lbl_Region AS ""Région"", s.Lbl_Secteur AS ""Secteur"" " &
-                          "FROM Region r JOIN Secteur s ON r.ID_Region = s.ID_Region"
                 End If
 
                 ' =========================================================
@@ -108,33 +127,34 @@ Public Class VueTableauRegionSecteur
                 Dim dt As DataTable = Conn.getData(sql)
                 Tab.DataSource = dt
 
-                ' ---> AJOUT DU BOUTON "OBSERVER" (Pour Secteur OU Regions) <---
+                ' ---> AJOUT DU BOUTON "OBSERVER" <---
                 If ModeActuel = "Secteur" OrElse (ModeActuel = "Regions" AndAlso Liste_Delegues.Visible AndAlso Not Liste_Visiteurs.Visible) Then
                     Dim btnCol As New DataGridViewButtonColumn()
                     btnCol.Name = "BtnObserver"
                     btnCol.HeaderText = "Action"
-                    btnCol.Text = "Observer"
+                    btnCol.Text = "🔍 Observer"
                     btnCol.UseColumnTextForButtonValue = True
+                    btnCol.FlatStyle = FlatStyle.Flat
+                    btnCol.DefaultCellStyle.ForeColor = Color.FromArgb(83, 175, 255)
+                    btnCol.DefaultCellStyle.Font = New Font("Segoe UI", 10, FontStyle.Bold)
                     Tab.Columns.Add(btnCol)
                 End If
 
-                ' ---> GESTION INTELLIGENTE DES LARGEURS DE COLONNES <---
-                Tab.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
+                ' ---> CORRECTION : GESTION DES COLONNES ET MASQUAGE DE L'ID <---
 
-                If Tab.Columns.Contains("Bilan") Then
-                    Tab.Columns("Bilan").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-                ElseIf Tab.Columns.Contains("Délégué") Then
-                    Tab.Columns("Délégué").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-                ElseIf Tab.Columns.Contains("Visiteur") Then
-                    Tab.Columns("Visiteur").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-                ElseIf Tab.Columns.Count > 0 Then
-                    Tab.Columns(Tab.Columns.Count - 1).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+                ' On masque la colonne ID pour l'utilisateur
+                If Tab.Columns.Contains("ID") Then
+                    Tab.Columns("ID").Visible = False
                 End If
 
-                ' ---> LECTURE SEULE <---
+                ' On demande à toutes les colonnes de remplir l'espace disponible
+                Tab.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+
+                ' LECTURE SEULE
                 Tab.ReadOnly = True
                 Tab.AllowUserToAddRows = False
                 Tab.AllowUserToDeleteRows = False
+                Tab.SelectionMode = DataGridViewSelectionMode.FullRowSelect
             End If
 
         Catch ex As Exception
@@ -148,7 +168,6 @@ Public Class VueTableauRegionSecteur
         If e.RowIndex >= 0 AndAlso Tab.Columns(e.ColumnIndex).Name = "BtnObserver" Then
             Dim idCible As Integer = Convert.ToInt32(Tab.Rows(e.RowIndex).Cells("ID").Value)
 
-            ' On déclenche le bon événement selon la page où l'on se trouve
             If ModeActuel = "Secteur" Then
                 RaiseEvent DemandeObservationDelegue(idCible)
             ElseIf ModeActuel = "Regions" Then
@@ -189,7 +208,11 @@ Public Class VueTableauRegionSecteur
         Liste_Visiteurs.ValueMember = "ID_USER"
         AddHandler Liste_Visiteurs.SelectedIndexChanged, AddressOf Liste_Visiteurs_SelectedIndexChanged
 
-        ActualiserTableau()
+        If Liste_Visiteurs.Items.Count > 0 Then
+            ActualiserTableau()
+        Else
+            Tab.DataSource = Nothing
+        End If
     End Sub
 
 End Class
