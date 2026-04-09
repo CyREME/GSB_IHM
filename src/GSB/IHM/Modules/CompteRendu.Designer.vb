@@ -30,19 +30,17 @@ Partial Class CompteRendu
         NumericUpDown1 = New NumericUpDown()
         TextBox2 = New TextBox()
         Barre_Recherche = New TextBox()
-        Nom_Praticien = New TextBox()
-        CheckedListBox1 = New CheckedListBox()
-        ComboBox2 = New ComboBox()
+        Liste_Motif = New ComboBox()
         lbl_Liste_Echantillon = New Label()
         lbl_Coef_Confiance = New Label()
         lbl_Bilan_Visite = New Label()
         lbl_Details_Produit = New Label()
-        lbl_Produit_Presente = New Label()
         lbl_Motif_Visite = New Label()
         lbl_Praticien_Vu = New Label()
         lbl_Date_Visite = New Label()
         Date_Visite = New DateTimePicker()
         Txt_Description = New TextBox()
+        txt_nom__praticien = New TextBox()
         CType(Tableau_Recherche, ComponentModel.ISupportInitialize).BeginInit()
         CType(Tableau_Echantillons, ComponentModel.ISupportInitialize).BeginInit()
         CType(NumericUpDown1, ComponentModel.ISupportInitialize).BeginInit()
@@ -120,29 +118,13 @@ Partial Class CompteRendu
         Barre_Recherche.Size = New Size(428, 23)
         Barre_Recherche.TabIndex = 32
         ' 
-        ' Nom_Praticien
+        ' Liste_Motif
         ' 
-        Nom_Praticien.Location = New Point(104, 70)
-        Nom_Praticien.Name = "Nom_Praticien"
-        Nom_Praticien.ReadOnly = True
-        Nom_Praticien.Size = New Size(100, 23)
-        Nom_Praticien.TabIndex = 33
-        ' 
-        ' CheckedListBox1
-        ' 
-        CheckedListBox1.FormattingEnabled = True
-        CheckedListBox1.Location = New Point(126, 144)
-        CheckedListBox1.Name = "CheckedListBox1"
-        CheckedListBox1.Size = New Size(120, 22)
-        CheckedListBox1.TabIndex = 31
-        ' 
-        ' ComboBox2
-        ' 
-        ComboBox2.FormattingEnabled = True
-        ComboBox2.Location = New Point(104, 105)
-        ComboBox2.Name = "ComboBox2"
-        ComboBox2.Size = New Size(121, 23)
-        ComboBox2.TabIndex = 30
+        Liste_Motif.FormattingEnabled = True
+        Liste_Motif.Location = New Point(104, 105)
+        Liste_Motif.Name = "Liste_Motif"
+        Liste_Motif.Size = New Size(200, 23)
+        Liste_Motif.TabIndex = 30
         ' 
         ' lbl_Liste_Echantillon
         ' 
@@ -177,22 +159,12 @@ Partial Class CompteRendu
         ' lbl_Details_Produit
         ' 
         lbl_Details_Produit.AutoSize = True
-        lbl_Details_Produit.Location = New Point(16, 176)
+        lbl_Details_Produit.Location = New Point(16, 138)
         lbl_Details_Produit.Name = "lbl_Details_Produit"
         lbl_Details_Produit.Size = New Size(84, 15)
         lbl_Details_Produit.TabIndex = 26
         lbl_Details_Produit.Text = "Détails Produit"
         lbl_Details_Produit.TextAlign = ContentAlignment.MiddleRight
-        ' 
-        ' lbl_Produit_Presente
-        ' 
-        lbl_Produit_Presente.AutoSize = True
-        lbl_Produit_Presente.Location = New Point(16, 144)
-        lbl_Produit_Presente.Name = "lbl_Produit_Presente"
-        lbl_Produit_Presente.Size = New Size(104, 15)
-        lbl_Produit_Presente.TabIndex = 25
-        lbl_Produit_Presente.Text = "Produits Présentés"
-        lbl_Produit_Presente.TextAlign = ContentAlignment.MiddleRight
         ' 
         ' lbl_Motif_Visite
         ' 
@@ -233,17 +205,27 @@ Partial Class CompteRendu
         ' 
         ' Txt_Description
         ' 
-        Txt_Description.Location = New Point(16, 194)
+        Txt_Description.Location = New Point(16, 156)
         Txt_Description.Multiline = True
         Txt_Description.Name = "Txt_Description"
         Txt_Description.ReadOnly = True
-        Txt_Description.Size = New Size(267, 68)
+        Txt_Description.Size = New Size(267, 114)
         Txt_Description.TabIndex = 34
+        ' 
+        ' txt_nom__praticien
+        ' 
+        txt_nom__praticien.Location = New Point(104, 70)
+        txt_nom__praticien.Multiline = True
+        txt_nom__praticien.Name = "txt_nom__praticien"
+        txt_nom__praticien.ReadOnly = True
+        txt_nom__praticien.Size = New Size(200, 23)
+        txt_nom__praticien.TabIndex = 42
         ' 
         ' CompteRendu
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
         AutoScaleMode = AutoScaleMode.Font
+        Controls.Add(txt_nom__praticien)
         Controls.Add(Tableau_Recherche)
         Controls.Add(Btn_Praticien)
         Controls.Add(Btn_Produit)
@@ -253,14 +235,11 @@ Partial Class CompteRendu
         Controls.Add(Txt_Description)
         Controls.Add(TextBox2)
         Controls.Add(Barre_Recherche)
-        Controls.Add(Nom_Praticien)
-        Controls.Add(CheckedListBox1)
-        Controls.Add(ComboBox2)
+        Controls.Add(Liste_Motif)
         Controls.Add(lbl_Liste_Echantillon)
         Controls.Add(lbl_Coef_Confiance)
         Controls.Add(lbl_Bilan_Visite)
         Controls.Add(lbl_Details_Produit)
-        Controls.Add(lbl_Produit_Presente)
         Controls.Add(lbl_Motif_Visite)
         Controls.Add(lbl_Praticien_Vu)
         Controls.Add(lbl_Date_Visite)
@@ -282,18 +261,17 @@ Partial Class CompteRendu
     Friend WithEvents NumericUpDown1 As NumericUpDown
     Friend WithEvents TextBox2 As TextBox
     Friend WithEvents Barre_Recherche As TextBox
-    Friend WithEvents Nom_Praticien As TextBox
-    Friend WithEvents CheckedListBox1 As CheckedListBox
-    Friend WithEvents ComboBox2 As ComboBox
+    Friend WithEvents Liste_Motif As ComboBox
     Friend WithEvents lbl_Liste_Echantillon As Label
     Friend WithEvents lbl_Coef_Confiance As Label
     Friend WithEvents lbl_Bilan_Visite As Label
     Friend WithEvents lbl_Details_Produit As Label
-    Friend WithEvents lbl_Produit_Presente As Label
     Friend WithEvents lbl_Motif_Visite As Label
     Friend WithEvents lbl_Praticien_Vu As Label
     Friend WithEvents lbl_Date_Visite As Label
     Friend WithEvents Date_Visite As DateTimePicker
     Friend WithEvents Txt_Description As TextBox
+    Friend WithEvents Liste_Praticien As ComboBox
+    Friend WithEvents txt_nom__praticien As TextBox
 
 End Class

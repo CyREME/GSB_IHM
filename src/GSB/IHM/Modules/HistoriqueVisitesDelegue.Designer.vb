@@ -38,7 +38,7 @@ Partial Class HistoriqueVisitesDelegue
         Tableau_Activite.AllowUserToDeleteRows = False
         Tableau_Activite.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         Tableau_Activite.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Tableau_Activite.Location = New Point(431, 172)
+        Tableau_Activite.Location = New Point(451, 172)
         Tableau_Activite.Name = "Tableau_Activite"
         Tableau_Activite.Size = New Size(355, 380)
         Tableau_Activite.TabIndex = 8
@@ -49,9 +49,9 @@ Partial Class HistoriqueVisitesDelegue
         Tableau_Synthese_Praticiens.AllowUserToDeleteRows = False
         Tableau_Synthese_Praticiens.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         Tableau_Synthese_Praticiens.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Tableau_Synthese_Praticiens.Location = New Point(33, 172)
+        Tableau_Synthese_Praticiens.Location = New Point(13, 172)
         Tableau_Synthese_Praticiens.Name = "Tableau_Synthese_Praticiens"
-        Tableau_Synthese_Praticiens.Size = New Size(355, 380)
+        Tableau_Synthese_Praticiens.Size = New Size(432, 380)
         Tableau_Synthese_Praticiens.TabIndex = 9
         ' 
         ' lbl_echantillon

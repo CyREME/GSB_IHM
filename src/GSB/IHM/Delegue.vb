@@ -9,7 +9,7 @@ Public Class Delegue
 
     Dim VueRegion As New VueRegion()
     Dim PageCR As New CompteRendu()
-    Dim HistVisit As New HistoriqueVisites()
+    Dim HistVisit As New HistoriqueVisitesDelegue()
 
     Dim btn_logout As New btn_logout()
     Dim btn_deco As New btn_exit()

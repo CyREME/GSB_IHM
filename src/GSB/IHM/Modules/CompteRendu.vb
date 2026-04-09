@@ -6,12 +6,8 @@ Public Class CompteRendu
     Private tableEchantillonsMemoire As New DataTable
     Private dvRecherche As DataView ' Pour filtrer les praticiens et les produits sans recharger la base
 
-
-
-
-
     Private Sub CompteRendu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ' Setup Table Echantillons (Droite)
+        ' 1. Configuration de la Table Echantillons (Droite)
         If tableEchantillonsMemoire.Columns.Count = 0 Then
             tableEchantillonsMemoire.Columns.Add("ID_PRODUIT", GetType(Integer))
             tableEchantillonsMemoire.Columns.Add("NOM", GetType(String))
@@ -25,9 +21,6 @@ Public Class CompteRendu
             Tableau_Echantillons.Columns("ID_PRODUIT").Visible = False
         End If
 
-        AfficherProduits()
-
-
         ' Fixer la largeur de la colonne d'en-tête à 25 pixels
         Tableau_Recherche.RowHeadersWidth = 25
         Tableau_Recherche.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
@@ -35,25 +28,44 @@ Public Class CompteRendu
         Tableau_Echantillons.RowHeadersWidth = 25
         Tableau_Echantillons.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
 
+        ' 2. Initialisation des composants de saisie
+        RemplirListeMotifs()
+        ' (On a supprimé RemplirListePraticiens car on utilise maintenant txt_nom__praticien)
+
+        ' 3. Affichage par défaut de la liste de recherche
+        AfficherProduits()
     End Sub
 
-    ' --- PARTIE GAUCHE ---
+    ' --- INITIALISATION DES COMBOBOX ---
+
+    Private Sub RemplirListeMotifs()
+        Try
+            Dim sql As String = "SELECT ID_MOTIF, LBL_MOTIF FROM MOTIF_VISITE ORDER BY ID_MOTIF"
+            Dim dtMotifs As DataTable = Conn.getData(sql)
+
+            Liste_Motif.DataSource = dtMotifs
+            Liste_Motif.DisplayMember = "LBL_MOTIF"
+            Liste_Motif.ValueMember = "ID_MOTIF"
+        Catch ex As Exception
+            MessageBox.Show("Erreur lors du chargement des motifs : " & ex.Message)
+        End Try
+    End Sub
+
+    ' --- PARTIE GAUCHE (Recherche) ---
+
     Private Sub AfficherProduits()
         modeAffichage = "PRODUIT"
         Tableau_Recherche.Columns.Clear()
 
         Dim dt As DataTable = Conn.getData("SELECT ID_PRODUIT, NOMCOMMERCIAL FROM PRODUIT")
 
-        ' On initialise le DataView avec la DataTable
         dvRecherche = New DataView(dt)
-        ' On lie le DataView au DataGrid au lieu de la DataTable directement
         Tableau_Recherche.DataSource = dvRecherche
 
         If Tableau_Recherche.Columns.Contains("ID_PRODUIT") Then
             Tableau_Recherche.Columns("ID_PRODUIT").Visible = False
         End If
 
-        ' Important : On vide la barre de recherche quand on change de mode
         Barre_Recherche.Clear()
 
         Dim btnCol As New DataGridViewButtonColumn()
@@ -97,57 +109,46 @@ Public Class CompteRendu
     ' --- EVENEMENTS TABLEAU RECHERCHE ---
 
     Private Sub Txt_Recherche_TextChanged(sender As Object, e As EventArgs) Handles Barre_Recherche.TextChanged
-        ' On vérifie que le DataView est bien initialisé
         If dvRecherche IsNot Nothing Then
             Try
-                ' On crée le filtre selon le mode (Produit ou Praticien)
                 If modeAffichage = "PRODUIT" Then
-                    ' Filtre sur le nom commercial (le % permet de chercher n'importe où dans le mot)
                     dvRecherche.RowFilter = "NOMCOMMERCIAL LIKE '%" & Barre_Recherche.Text.Replace("'", "''") & "%'"
                 Else
-                    ' Filtre sur le nom du praticien
                     dvRecherche.RowFilter = "NOM LIKE '%" & Barre_Recherche.Text.Replace("'", "''") & "%'"
                 End If
             Catch ex As Exception
-                ' En cas d'erreur de saisie (caractères spéciaux)
                 dvRecherche.RowFilter = ""
             End Try
         End If
     End Sub
 
     Private Sub Tableau_Recherche_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles Tableau_Recherche.CellContentClick
-        ' Si on clique sur le bouton "+"
         If modeAffichage = "PRODUIT" AndAlso Tableau_Recherche.Columns(e.ColumnIndex).Name = "Action" AndAlso e.RowIndex >= 0 Then
-            Dim row As DataGridViewRow = Tableau_Recherche.Rows(e.RowIndex)
+            Dim row = Tableau_Recherche.Rows(e.RowIndex)
             Dim idProd As Integer = row.Cells("ID_PRODUIT").Value
             Dim nomProd As String = row.Cells("NOMCOMMERCIAL").Value
 
-            ' Ajouter à la liste de droite (quantité 1 par défaut, modifiable ensuite)
             AjouterEchantillon(idProd, nomProd)
         End If
     End Sub
 
     Private Sub Tableau_Recherche_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles Tableau_Recherche.CellClick
-        ' Affichage de la description (sans ajouter)
         If e.RowIndex >= 0 And modeAffichage = "PRODUIT" Then
-            Dim id As Integer = Tableau_Recherche.Rows(e.RowIndex).Cells("ID_PRODUIT").Value
-            Dim dt As DataTable = Conn.getData("SELECT * FROM PRODUIT WHERE ID_PRODUIT = " & id)
+            Dim id As Integer = CInt(Tableau_Recherche.Rows(e.RowIndex).Cells("ID_PRODUIT").Value)
+            Dim dt = Conn.getData("SELECT * FROM PRODUIT WHERE ID_PRODUIT = " & id)
             If dt.Rows.Count > 0 Then
-                Txt_Description.Text = dt.Rows(0)("COMPOSITION").ToString() & vbCrLf & dt.Rows(0)("EFFETS_THERAPEUTIQUES").ToString()
+                Txt_Description.Text = dt.Rows(0)("COMPOSITION").ToString & vbCrLf & dt.Rows(0)("EFFETS_THERAPEUTIQUES").ToString
             End If
 
+            ' --- NOUVEAU CAS PRATICIEN ---
+        ElseIf modeAffichage = "PRATICIEN" And e.RowIndex >= 0 Then
+            ' 1. On récupère le Nom et la Spécialité pour faire un bel affichage
+            Dim nom As String = Tableau_Recherche.Rows(e.RowIndex).Cells("NOM").Value.ToString()
+            Dim specialite As String = Tableau_Recherche.Rows(e.RowIndex).Cells("SPECIALITE").Value.ToString()
+            txt_nom__praticien.Text = nom & " - " & specialite
 
-            ' --- CAS PRATICIEN ---
-        ElseIf modeAffichage = "PRATICIEN" Then
-            ' On récupère le nom du praticien de la ligne cliquée
-            Dim nomSelectionne As String = Tableau_Recherche.Rows(e.RowIndex).Cells("NOM").Value.ToString()
-
-            ' On l'affiche dans votre TextBox
-            Nom_Praticien.Text = nomSelectionne
-
-            ' OPTIONNEL : Vous pouvez aussi stocker l'ID du praticien dans le Tag 
-            ' de la TextBox pour l'utiliser lors de la validation finale (INSERT)
-            Nom_Praticien.Tag = Tableau_Recherche.Rows(e.RowIndex).Cells("ID_PRATICIEN").Value
+            ' 2. ASTUCE : On stocke l'ID_PRATICIEN secrètement dans la propriété Tag de la TextBox !
+            txt_nom__praticien.Tag = Tableau_Recherche.Rows(e.RowIndex).Cells("ID_PRATICIEN").Value
         End If
 
     End Sub
@@ -170,13 +171,29 @@ Public Class CompteRendu
     ' --- VALIDATION ---
     Private Sub Btn_Valider_Click(sender As Object, e As EventArgs) Handles Btn_Valider.Click
         Try
+            ' VERIFICATIONS AVANT INSERTION
+            If txt_nom__praticien.Tag Is Nothing OrElse txt_nom__praticien.Text = "" Then
+                MessageBox.Show("Veuillez sélectionner un praticien dans le tableau de recherche.")
+                Return
+            End If
+
+            If Liste_Motif.SelectedValue Is Nothing Then
+                MessageBox.Show("Veuillez sélectionner un motif de visite.")
+                Return
+            End If
+
+            ' On récupère les valeurs
+            Dim idPraticien As Integer = CInt(txt_nom__praticien.Tag) ' On récupère l'ID caché !
+            Dim idMotif As Integer = CInt(Liste_Motif.SelectedValue)
+            Dim bilan As String = TextBox2.Text.Replace("'", "''")
+
             ' On récupère le dernier ID + 1
             Dim resID = Conn.getData("SELECT COALESCE(MAX(ID_COMPTE_RENDU), 0) + 1 FROM COMPTE_RENDU")
             Dim nextID As Integer = Convert.ToInt32(resID.Rows(0)(0))
 
-            ' Insert CR (Exemple avec ID statiques pour test, à lier à vos combos)
+            ' Insert CR 
             Dim sqlCR As String = $"INSERT INTO COMPTE_RENDU (ID_COMPTE_RENDU, DATE_VISITE, DATE_SAISIE, MOTIF_VISITE, BILAN_VISITE, ID_USER, ID_PRATICIEN) " &
-                                 $"VALUES ({nextID}, SYSDATE, SYSDATE, 1, 'Visite effectuée', 3, 1)"
+                                  $"VALUES ({nextID}, TO_DATE('{Date_Visite.Value.ToString("dd/MM/yyyy")}', 'DD/MM/YYYY'), SYSDATE, {idMotif}, '{bilan}', {Login.IdUtilisateur}, {idPraticien})"
             Conn.execute(sqlCR)
 
             ' Insert Echantillons
@@ -185,10 +202,17 @@ Public Class CompteRendu
                 Conn.execute(sqlEch)
             Next
 
-            MessageBox.Show("Enregistré avec succès !")
+            MessageBox.Show("Compte-rendu enregistré avec succès !")
+
+            ' Remise à zéro du formulaire après succès
             tableEchantillonsMemoire.Clear()
+            TextBox2.Clear()
+            txt_nom__praticien.Clear()
+            txt_nom__praticien.Tag = Nothing
+            Date_Visite.Value = DateTime.Now
+
         Catch ex As Exception
-            MessageBox.Show("Erreur : " & ex.Message)
+            MessageBox.Show("Erreur lors de la validation : " & ex.Message)
         End Try
     End Sub
 
