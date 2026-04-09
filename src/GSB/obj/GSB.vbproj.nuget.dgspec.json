@@ -50,19 +50,11 @@
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
           "dependencies": {
-            "MySql.Data": {
-              "target": "Package",
-              "version": "[9.5.0, )"
-            },
             "Oracle.ManagedDataAccess": {
               "target": "Package",
               "version": "[23.26.0, )"
             },
             "Oracle.ManagedDataAccess.Core": {
-              "target": "Package",
-              "version": "[23.26.0, )"
-            },
-            "Oracle.ManagedDataAccess.EntityFramework": {
               "target": "Package",
               "version": "[23.26.0, )"
             }
