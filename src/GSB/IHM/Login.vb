@@ -119,7 +119,6 @@ Public Class Login
     End Sub
 
     Private Sub btn_login_Click(sender As Object, e As EventArgs) Handles btn_login.Click
-
         If Txt_Password.Text = "Mot de passe" Or Txt_Username.Text = "Login" Then
             MessageBox.Show("Veuillez entrer vos identifiants.")
             Exit Sub
@@ -127,51 +126,66 @@ Public Class Login
 
         Dim loginInput As String = Txt_Username.Text
         Dim passwordHash As String = GenererHashSHA256(Txt_Password.Text)
-
         Dim dbConn As New Conn()
-        connexionSql = dbConn.GetConnection()
 
         Try
+            connexionSql = dbConn.GetConnection()
             connexionSql.Open()
 
-            ' On récupère ID, NOM, PRENOM et ROLE
             Dim sql As String = "SELECT ID_USER, NOM, PRENOM, ROLE FROM UTILISATEUR WHERE LOGIN = :p_login AND MOTDEPASSE = :p_mdp"
-            Dim cmd As New OracleCommand(sql, connexionSql)
+            Using cmd As New OracleCommand(sql, connexionSql)
+                cmd.Parameters.Add(New OracleParameter("p_login", loginInput))
+                cmd.Parameters.Add(New OracleParameter("p_mdp", passwordHash))
 
-            cmd.Parameters.Add(New OracleParameter("p_login", loginInput))
-            cmd.Parameters.Add(New OracleParameter("p_mdp", passwordHash))
+                Using reader As OracleDataReader = cmd.ExecuteReader()
+                    If reader.Read() Then
+                        IdUtilisateur = reader.GetInt32(0)
+                        NomUtilisateur = reader.GetString(1)
+                        PrenomUtilisateur = reader.GetString(2)
+                        Dim roleBrut As String = reader.GetString(3)
+                        Dim role As String = roleBrut.Trim() ' Nettoyage des espaces Oracle 
 
-            Dim reader As OracleDataReader = cmd.ExecuteReader()
+                        ' Log de session
+                        Try
+                            Dim sqlLog As String = "INSERT INTO LOG_SESSIONS (ID_USER, LOGIN_UTILISATEUR, DATE_DEBUT) VALUES (:id, :log, CURRENT_TIMESTAMP)"
+                            Dim cmdLog As New OracleCommand(sqlLog, connexionSql)
+                            cmdLog.Parameters.Add(New OracleParameter("id", IdUtilisateur))
+                            cmdLog.Parameters.Add(New OracleParameter("log", loginInput))
+                            cmdLog.ExecuteNonQuery()
+                        Catch : End Try
 
-            If reader.Read() Then
-                ' Stockage des infos dans les variables partagées
-                IdUtilisateur = reader.GetInt32(0)
-                NomUtilisateur = reader.GetString(1)
-                PrenomUtilisateur = reader.GetString(2)
-                Dim role As String = reader.GetString(3)
-
-                Select Case role
-                    Case "Visiteur"
-                        Dim visiteurForm As New Visiteur()
-                        visiteurForm.Show()
-                        Me.Hide()
-                    Case "Delegue"
-                        Dim delegueForm As New Delegue()
-                        delegueForm.Show()
-                        Me.Hide()
-                    Case "Responsable"
-                        Dim responsableForm As New Responsable()
-                        responsableForm.Show()
-                        Me.Hide()
-                End Select
-            Else
-                MessageBox.Show("Identifiant ou mot de passe incorrect.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            End If
-
+                        ' Redirection
+                        Select Case role
+                            Case "Visiteur"
+                                Dim f As New Visiteur() : f.Show() : Me.Hide()
+                            Case "Delegue"
+                                Dim f As New Delegue() : f.Show() : Me.Hide()
+                            Case "Responsable"
+                                Dim adminForm As New Administrateur()
+                                adminForm.Show()
+                                Me.Hide()
+                            Case "Admin"
+                                Try
+                                    Dim adminForm As New Administrateur()
+                                    adminForm.Show()
+                                    Me.Hide()
+                                Catch ex As Exception
+                                    MessageBox.Show("Erreur critique dans le chargement de la page Administrateur : " & ex.Message)
+                                End Try
+                            Case Else
+                                MessageBox.Show("Rôle trouvé en base mais non géré dans le code : [" & role & "]")
+                        End Select
+                    Else
+                        MessageBox.Show("Aucun utilisateur trouvé avec ce login/mot de passe.")
+                    End If
+                End Using
+            End Using
         Catch ex As Exception
-            MessageBox.Show("Erreur de connexion : " & ex.Message)
+            MessageBox.Show("Erreur technique de connexion : " & ex.Message)
         Finally
-            connexionSql.Close()
+            If connexionSql IsNot Nothing AndAlso connexionSql.State = ConnectionState.Open Then
+                connexionSql.Close()
+            End If
         End Try
     End Sub
 
