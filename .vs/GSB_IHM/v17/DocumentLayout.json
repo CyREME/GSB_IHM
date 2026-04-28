@@ -1,6 +1,10 @@
 {
   "Version": 1,
+<<<<<<< Updated upstream
   "WorkspaceRootPath": "C:\\Users\\24ecellier\\source\\repos\\CyREME\\GSB_IHM\\",
+=======
+  "WorkspaceRootPath": "C:\\Users\\24ecellier\\Documents\\GSB_Loud\\GSB_IHM\\",
+>>>>>>> Stashed changes
   "Documents": [],
   "DocumentGroupContainers": [
     {
